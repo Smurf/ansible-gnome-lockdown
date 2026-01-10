@@ -63,7 +63,7 @@ def generate_module(schema_file, template_file, output_dir):
     schema_id, schema_path, keys = parse_schema(schema_file)
 
     # Module name from schema id
-    module_name = "gsettings_" + schema_id.replace('.', '_')
+    module_name = schema_id.replace('.', '_')
 
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader(os.path.dirname(template_file)), trim_blocks=True, lstrip_blocks=True)
