@@ -17,12 +17,20 @@ def gsettings_to_ansible_type(gsettings_type):
         # Default to string for unknown types
         return 'str'
 
+# Ugh the schema is all over the place, normalize to the spec default
 def to_spec_default(key_default, key_type):
 
     if (key_default == "true" or key_default == "false") and key_type == "bool":
         return bool(key_default)
-    else:
-        return key_default
+
+    if (key_type == "str" and key_default == '""'):
+        return ""
+    
+    # Sometimes schemas have strings of "" for some reason which aren't actually emtpy
+    if (key_type == "str" and key_default.startswith('"')):
+        return key_default[1:-1] #Trim first and last char
+
+    return key_default
 
 def parse_schema(xml_file):
     """Parses a GSettings XML schema and extracts relevant information."""
@@ -42,17 +50,16 @@ def parse_schema(xml_file):
         key_type = key_node.get('type')
         key_type = gsettings_to_ansible_type(key_type)
         default_node = key_node.find('default')
+
         # Defaults for strings are in quotes, so strip them
-        # Strip and join cause multiline strings are a PITA
+        # Strip and join too cause multiline strings are a PITA
         key_default = " ".join(default_node.text.strip("'").split()) if default_node is not None else 'None defined'
 
         # Convert boolean defaults to Python booleans for Jinja2
         if key_type == 'bool':
             key_default = key_default.lower()
         
-        if key_type == 'str' and len(key_default) > 2 and key_default[0] != '"': # Add quotes if string
-            key_default = "\""+key_default+"\""
-        
+        # Schemas are all over the place, double check just in case
         if key_default == "true" or key_default == "false":
             key_type = "bool"
 

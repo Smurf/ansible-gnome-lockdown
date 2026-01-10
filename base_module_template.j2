@@ -48,9 +48,9 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for {{ schema_id }}
   {{ module_name }}:
 {% for key in keys[:2] %}
-    {% if key.ansible_type == 'str' and key.default != "" %}
-    {{ key.name }}: {{ key.default }}
-    {% elif key.default == '' %}
+    {% if key.ansible_type == 'str' and key.default != ""  and key.default != '""' %}
+    {{ key.name }}: "{{ key.default }}"
+    {% elif key.default == '' or key.default == '""' %}
     {{ key.name }}: ""
     {% else %}
     {{ key.name }}: {{ key.default }}
@@ -74,8 +74,8 @@ def main():
     {% for key in keys %}
         '{{ key.name }}': {
             'type': '{{ key.ansible_type }}',
-            {% if key.ansible_type == 'str' and key.spec_default != "" %}
-            'default': {{ key.spec_default }}
+            {% if key.ansible_type == 'str' and key.spec_default != "" and key.spec_default != '""' %}
+            'default': "{{ key.spec_default }}"
             {% elif key.spec_default == "" %}
             'default': ''
             {% else %}
@@ -132,7 +132,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 
