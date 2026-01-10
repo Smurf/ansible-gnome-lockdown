@@ -2,6 +2,8 @@ import xml.etree.ElementTree as ET
 from jinja2 import Environment, FileSystemLoader
 import os
 import argparse
+import subprocess
+import tempfile
 
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
@@ -84,11 +86,66 @@ def generate_module(schema_file, template_file, output_dir):
     print(f"Successfully generated module: {output_path}")
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Generate an Ansible module from a GSettings schema.")
-    parser.add_argument("--schema", default="org.gnome.desktop.lockdown.gschema.xml", help="Path to the GSettings XML schema file.")
+    parser = argparse.ArgumentParser(description="Generate Ansible modules from GSettings schemas.")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--schema", help="Path to a single GSettings XML schema file.")
+    group.add_argument("--schema-list", help="Path to a file containing a list of schema URLs or file paths.")
+
     parser.add_argument("--template", default="base_module_template.j2", help="Path to the Jinja2 template file.")
-    parser.add_argument("--output-dir", default="generated_modules", help="Directory to save the generated module.")
+    parser.add_argument("--output-dir", default="generated_modules", help="Directory to save the generated modules.")
 
     args = parser.parse_args()
 
-    generate_module(args.schema, args.template, args.output_dir)
+    schemas_to_process = []
+    if args.schema:
+        schemas_to_process.append(args.schema)
+    else:
+        try:
+            with open(args.schema_list, 'r') as f:
+                schemas_to_process = [line.strip() for line in f if line.strip()]
+        except FileNotFoundError:
+            print(f"Error: Schema list file not found at '{args.schema_list}'")
+            exit(1)
+
+    for schema_location in schemas_to_process:
+        schema_file_to_process = None
+        temp_file = None
+
+        if schema_location.startswith(('http://', 'https://')):
+            try:
+                print(f"Downloading schema from: {schema_location}")
+                # Create a temporary file to store the downloaded schema
+                temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".xml")
+                schema_file_to_process = temp_file.name
+
+                # Use curl to download the file
+                subprocess.run(
+                    ["curl", "-A", "Mozilla/5.0", "-o", schema_file_to_process, schema_location],
+                    check=True,
+                    capture_output=True,
+                    text=True
+                )
+            except subprocess.CalledProcessError as e:
+                print(f"Warning: Failed to download schema from '{schema_location}': {e.stderr}, skipping.")
+                if temp_file:
+                    os.remove(schema_file_to_process)
+                continue
+            except Exception as e:
+                print(f"Warning: An unexpected error occurred while downloading '{schema_location}': {e}, skipping.")
+                if temp_file:
+                    os.remove(schema_file_to_process)
+                continue
+        else:
+            schema_file_to_process = schema_location
+
+        try:
+            print(f"Processing schema: {schema_file_to_process}")
+            generate_module(schema_file_to_process, args.template, args.output_dir)
+        except FileNotFoundError:
+            print(f"Warning: Schema file not found at '{schema_file_to_process}', skipping.")
+        except Exception as e:
+            print(f"Warning: Failed to process schema '{schema_file_to_process}': {e}, skipping.")
+        finally:
+            # Clean up the temporary file if one was created
+            if temp_file:
+                os.remove(schema_file_to_process)
