@@ -1,0 +1,167 @@
+import xml.etree.ElementTree as ET
+from jinja2 import Environment, FileSystemLoader
+import os
+import argparse
+import subprocess
+import tempfile
+
+def gsettings_to_ansible_type(gsettings_type):
+    """Maps GSettings type to Ansible type."""
+    if gsettings_type == 'b':
+        return 'bool'
+    elif gsettings_type == 'i':
+        return 'int'
+    elif gsettings_type == 's':
+        return 'str'
+    else:
+        # Default to string for unknown types
+        return 'str'
+
+def to_spec_default(key_default, key_type):
+
+    if (key_default == "true" or key_default == "false") and key_type == "bool":
+        return bool(key_default)
+    else:
+        return key_default
+
+def parse_schema(xml_file):
+    """Parses a GSettings XML schema and extracts relevant information."""
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+
+    schema_node = root.find('schema')
+    if schema_node is None:
+        raise ValueError("No schema found in XML file")
+
+    schema_id = schema_node.get('id')
+    schema_path = schema_node.get('path')
+
+    keys = []
+    for key_node in schema_node.findall('key'):
+        key_name = key_node.get('name')
+        key_type = key_node.get('type')
+        key_type = gsettings_to_ansible_type(key_type)
+        default_node = key_node.find('default')
+        # Defaults for strings are in quotes, so strip them
+        # Strip and join cause multiline strings are a PITA
+        key_default = " ".join(default_node.text.strip("'").split()) if default_node is not None else 'None defined'
+
+        # Convert boolean defaults to Python booleans for Jinja2
+        if key_type == 'bool':
+            key_default = key_default.lower()
+        
+        if key_type == 'str' and len(key_default) > 2 and key_default[0] != '"': # Add quotes if string
+            key_default = "\""+key_default+"\""
+        
+        if key_default == "true" or key_default == "false":
+            key_type = "bool"
+
+        summary_node = key_node.find('summary')
+        key_summary = summary_node.text.strip() if summary_node is not None else 'Summary - Schema Blank'
+
+        description_node = key_node.find('description')
+        key_description = " ".join(description_node.text.strip().split()) if description_node is not None else 'Description - Schema Blank'
+        new_key = {
+            'name': key_name.strip(),
+            'ansible_type': key_type,
+            'default': key_default,
+            'spec_default': to_spec_default(key_default, key_type),
+            'summary': key_summary,
+            'description': key_description
+        }
+        print(new_key)
+        keys.append(new_key)
+
+    return schema_id, schema_path, keys
+
+def generate_module(schema_file, template_file, output_dir):
+    """Generates an Ansible module from a schema and a Jinja2 template."""
+    schema_id, schema_path, keys = parse_schema(schema_file)
+
+    # Module name from schema id
+    module_name = schema_id.replace('.', '_')
+
+    # Set up Jinja2 environment
+    env = Environment(loader=FileSystemLoader(os.path.dirname(template_file)), trim_blocks=True, lstrip_blocks=True)
+    template = env.get_template(os.path.basename(template_file))
+
+    # Render the template
+    module_content = template.render(
+        module_name=module_name,
+        schema_id=schema_id,
+        schema_path=schema_path,
+        keys=keys
+    )
+
+    # Write the output file
+    output_path = os.path.join(output_dir, module_name + ".py")
+    os.makedirs(output_dir, exist_ok=True)
+    with open(output_path, 'w') as f:
+        f.write(module_content)
+
+    print(f"Successfully generated module: {output_path}")
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Generate Ansible modules from GSettings schemas.")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--schema", help="Path to a single GSettings XML schema file.")
+    group.add_argument("--schema-list", help="Path to a file containing a list of schema URLs or file paths.")
+
+    parser.add_argument("--template", default="base_module_template.j2", help="Path to the Jinja2 template file.")
+    parser.add_argument("--output-dir", default="generated_modules", help="Directory to save the generated modules.")
+
+    args = parser.parse_args()
+
+    schemas_to_process = []
+    if args.schema:
+        schemas_to_process.append(args.schema)
+    else:
+        try:
+            with open(args.schema_list, 'r') as f:
+                schemas_to_process = [line.strip() for line in f if line.strip()]
+        except FileNotFoundError:
+            print(f"Error: Schema list file not found at '{args.schema_list}'")
+            exit(1)
+
+    for schema_location in schemas_to_process:
+        schema_file_to_process = None
+        temp_file = None
+
+        if schema_location.startswith(('http://', 'https://')):
+            try:
+                print(f"Downloading schema from: {schema_location}")
+                # Create a temporary file to store the downloaded schema
+                temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".xml")
+                schema_file_to_process = temp_file.name
+
+                # Use curl to download the file
+                subprocess.run(
+                    ["curl", "-A", "Mozilla/5.0", "-o", schema_file_to_process, schema_location],
+                    check=True,
+                    capture_output=True,
+                    text=True
+                )
+            except subprocess.CalledProcessError as e:
+                print(f"Warning: Failed to download schema from '{schema_location}': {e.stderr}, skipping.")
+                if temp_file:
+                    os.remove(schema_file_to_process)
+                continue
+            except Exception as e:
+                print(f"Warning: An unexpected error occurred while downloading '{schema_location}': {e}, skipping.")
+                if temp_file:
+                    os.remove(schema_file_to_process)
+                continue
+        else:
+            schema_file_to_process = schema_location
+
+        try:
+            print(f"Processing schema: {schema_file_to_process}")
+            generate_module(schema_file_to_process, args.template, args.output_dir)
+        except FileNotFoundError:
+            print(f"Warning: Schema file not found at '{schema_file_to_process}', skipping.")
+        except Exception as e:
+            print(f"Warning: Failed to process schema '{schema_file_to_process}': {e}, skipping.")
+        finally:
+            # Clean up the temporary file if one was created
+            if temp_file:
+                os.remove(schema_file_to_process)
