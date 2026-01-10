@@ -1,0 +1,207 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2023, Jules
+# All rights reserved.
+
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
+DOCUMENTATION = r'''
+---
+module: gsettings_org_gnome_desktop_lockdown
+short_description: Manages GNOME GSettings for org.gnome.desktop.lockdown
+description:
+  - This module allows for the configuration of GSettings keys within the 'org.gnome.desktop.lockdown' schema.
+  - It supports setting default values and locking keys to enforce system-wide policies.
+author:
+  - Jules
+version_added: "1.0.0"
+options:
+  disable-lock-screen:
+    description:
+      - "Disable lock screen functionality"
+      - "Set to true to prevent the user from locking the screen."
+    type: bool
+    default: False
+  disable-lock-screen_locked:
+    description:
+      - "If set to true, locks the 'disable-lock-screen' key to prevent user modification."
+    type: bool
+    default: false
+  disable-printing:
+    description:
+      - "Disable printing functionality"
+      - "Set to true to prevent the user from printing."
+    type: bool
+    default: False
+  disable-printing_locked:
+    description:
+      - "If set to true, locks the 'disable-printing' key to prevent user modification."
+    type: bool
+    default: false
+  disable-save-to-disk:
+    description:
+      - "Disable saving files to disk"
+      - "Set to true to prevent the user from saving files to disk."
+    type: bool
+    default: False
+  disable-save-to-disk_locked:
+    description:
+      - "If set to true, locks the 'disable-save-to-disk' key to prevent user modification."
+    type: bool
+    default: false
+  some-integer-setting:
+    description:
+      - "An example integer setting"
+      - "This is an example of an integer setting."
+    type: int
+    default: 10
+  some-integer-setting_locked:
+    description:
+      - "If set to true, locks the 'some-integer-setting' key to prevent user modification."
+    type: bool
+    default: false
+  a-string-setting:
+    description:
+      - "An example string setting"
+      - "This is an example of a string setting."
+    type: str
+    default: 'default-string'
+  a-string-setting_locked:
+    description:
+      - "If set to true, locks the 'a-string-setting' key to prevent user modification."
+    type: bool
+    default: false
+'''
+
+EXAMPLES = r'''
+- name: Configure and lock GNOME desktop settings for org.gnome.desktop.lockdown
+  gsettings_org_gnome_desktop_lockdown:
+    disable-lock-screen: False
+    disable-lock-screen_locked: true
+    disable-printing: False
+    disable-printing_locked: true
+'''
+
+RETURN = r'''
+# Default return values
+'''
+
+from ansible.module_utils.basic import AnsibleModule
+import os
+import configparser
+
+def main():
+    """Main function for the Ansible module."""
+
+    keys_spec = {
+        'disable-lock-screen': {
+            'type': 'bool',
+            'default': False
+        },
+        'disable-printing': {
+            'type': 'bool',
+            'default': False
+        },
+        'disable-save-to-disk': {
+            'type': 'bool',
+            'default': False
+        },
+        'some-integer-setting': {
+            'type': 'int',
+            'default': 10
+        },
+        'a-string-setting': {
+            'type': 'str',
+            'default': 'default-string'
+        },
+    }
+
+    argument_spec = {}
+    for key_name, spec in keys_spec.items():
+        argument_spec[key_name] = spec
+        argument_spec[f"{key_name}_locked"] = {'type': 'bool', 'default': False}
+
+    module = AnsibleModule(
+        argument_spec=argument_spec,
+        supports_check_mode=True
+    )
+
+    changed = False
+
+    settings_dir = "/etc/dconf/db/local.d"
+    locks_dir = os.path.join(settings_dir, "locks")
+
+    settings_file_path = os.path.join(settings_dir, "00-ansible-gsettings_org_gnome_desktop_lockdown")
+    lock_file_path = os.path.join(locks_dir, "ansible-gsettings_org_gnome_desktop_lockdown")
+
+    schema_full_path = "/org/gnome/desktop/lockdown/"
+    config_section = schema_full_path.strip('/')
+
+    os.makedirs(settings_dir, exist_ok=True)
+    os.makedirs(locks_dir, exist_ok=True)
+
+    # Idempotency: Read current settings
+    current_settings = configparser.ConfigParser()
+    if os.path.exists(settings_file_path):
+        current_settings.read(settings_file_path)
+
+    # Idempotency: Read current locks from our dedicated lock file
+    current_locks = []
+    if os.path.exists(lock_file_path):
+        with open(lock_file_path, 'r') as f:
+            current_locks = [line.strip() for line in f if line.strip()]
+
+    # Prepare settings and locks based on module parameters
+    new_settings = configparser.ConfigParser()
+    new_settings.add_section(config_section)
+    new_locks = []
+
+    for key_name, spec in keys_spec.items():
+        param_value = module.params[key_name]
+        param_locked = module.params[f"{key_name}_locked"]
+
+        if spec['type'] == 'bool':
+            setting_value = str(param_value).lower()
+        elif spec['type'] == 'str':
+            setting_value = f"'{param_value}'"
+        else:
+            setting_value = str(param_value)
+
+        new_settings.set(config_section, key_name, setting_value)
+
+        if param_locked:
+            new_locks.append(f"{schema_full_path}{key_name}")
+
+    # Check for changes
+    settings_changed = False
+    if not current_settings.has_section(config_section) or \
+       (current_settings.has_section(config_section) and dict(current_settings.items(config_section)) != dict(new_settings.items(config_section))):
+        settings_changed = True
+
+    locks_changed = sorted(new_locks) != sorted(current_locks)
+
+    if settings_changed or locks_changed:
+        changed = True
+
+    if changed and not module.check_mode:
+        # Write settings file
+        with open(settings_file_path, 'w') as f:
+            new_settings.write(f, space_around_delimiters=False)
+
+        # Manage the dedicated lock file
+        if new_locks:
+            with open(lock_file_path, 'w') as f:
+                for lock_key in new_locks:
+                    f.write(f"{lock_key}\n")
+        elif os.path.exists(lock_file_path):
+            os.remove(lock_file_path)
+
+        # Update dconf database
+        module.run_command(["dconf", "update"], check_rc=True)
+
+    module.exit_json(changed=changed)
+
+if __name__ == '__main__':
+    main()

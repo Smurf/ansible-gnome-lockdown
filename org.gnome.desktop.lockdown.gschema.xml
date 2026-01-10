@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.desktop.lockdown" path="/org/gnome/desktop/lockdown/">
+    <key name="disable-lock-screen" type="b">
+      <default>false</default>
+      <summary>Disable lock screen functionality</summary>
+      <description>Set to true to prevent the user from locking the screen.</description>
+    </key>
+    <key name="disable-printing" type="b">
+      <default>false</default>
+      <summary>Disable printing functionality</summary>
+      <description>Set to true to prevent the user from printing.</description>
+    </key>
+    <key name="disable-save-to-disk" type="b">
+      <default>false</default>
+      <summary>Disable saving files to disk</summary>
+      <description>Set to true to prevent the user from saving files to disk.</description>
+    </key>
+    <key name="some-integer-setting" type="i">
+      <default>10</default>
+      <summary>An example integer setting</summary>
+      <description>This is an example of an integer setting.</description>
+    </key>
+    <key name="a-string-setting" type="s">
+      <default>'default-string'</default>
+      <summary>An example string setting</summary>
+      <description>This is an example of a string setting.</description>
+    </key>
+  </schema>
+</schemalist>
