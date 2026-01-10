@@ -97,7 +97,8 @@ options:
       - >
         The format to display numbers in
     type: str
-    default: "automatic"
+    default: >
+             automatic
   number-format_locked:
     description:
       - >
@@ -111,7 +112,8 @@ options:
       - >
         The angle units to use
     type: str
-    default: "degrees"
+    default: >
+             degrees
   angle-units_locked:
     description:
       - >
@@ -139,7 +141,8 @@ options:
       - >
         The button mode
     type: str
-    default: "basic"
+    default: >
+             basic
   button-mode_locked:
     description:
       - >
@@ -181,7 +184,8 @@ options:
       - >
         Units of the current calculation
     type: str
-    default: "degree"
+    default: >
+             degree
   source-units_locked:
     description:
       - >
@@ -195,7 +199,8 @@ options:
       - >
         Units to convert the current calculation into
     type: str
-    default: "radian"
+    default: >
+             radian
   target-units_locked:
     description:
       - >
@@ -223,7 +228,8 @@ options:
       - >
         Window position (x and y) of the last closed window.
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   window-position_locked:
     description:
       - >
@@ -251,7 +257,8 @@ options:
       - >
         Window size (width and height) of the last closed window.
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   window-size_locked:
     description:
       - >
@@ -398,7 +405,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

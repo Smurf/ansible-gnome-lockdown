@@ -164,7 +164,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

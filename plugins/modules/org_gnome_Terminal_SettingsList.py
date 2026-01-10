@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   list_locked:
     description:
       - >
@@ -53,7 +54,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.Terminal.SettingsList
   org_gnome_Terminal_SettingsList:
-    list: []
+    list: "[]"
     list_locked: true
     default: ""
     default_locked: true
@@ -73,7 +74,7 @@ def main():
     keys_spec = {
         'list': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'default': {
             'type': 'str',
@@ -128,7 +129,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

@@ -41,7 +41,8 @@ options:
       - >
         Sort list rows in ascending or descending order for the selected type
     type: str
-    default: "descending-time"
+    default: >
+             descending-time
   sort-order_locked:
     description:
       - >
@@ -128,7 +129,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

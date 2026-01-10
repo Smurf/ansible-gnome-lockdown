@@ -27,7 +27,8 @@ options:
       - >
         Decides when to group windows from the same application on the window list. Possible values are “never”, “auto” and “always”.
     type: str
-    default: "never"
+    default: >
+             never
   grouping-mode_locked:
     description:
       - >
@@ -164,7 +165,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

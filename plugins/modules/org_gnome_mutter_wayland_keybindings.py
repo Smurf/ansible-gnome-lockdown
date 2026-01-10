@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F1']"
+    default: >
+             ['<Primary><Alt>F1']
   switch-to-session-1_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F2']"
+    default: >
+             ['<Primary><Alt>F2']
   switch-to-session-2_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F3']"
+    default: >
+             ['<Primary><Alt>F3']
   switch-to-session-3_locked:
     description:
       - >
@@ -69,7 +72,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F4']"
+    default: >
+             ['<Primary><Alt>F4']
   switch-to-session-4_locked:
     description:
       - >
@@ -83,7 +87,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F5']"
+    default: >
+             ['<Primary><Alt>F5']
   switch-to-session-5_locked:
     description:
       - >
@@ -97,7 +102,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F6']"
+    default: >
+             ['<Primary><Alt>F6']
   switch-to-session-6_locked:
     description:
       - >
@@ -111,7 +117,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F7']"
+    default: >
+             ['<Primary><Alt>F7']
   switch-to-session-7_locked:
     description:
       - >
@@ -125,7 +132,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F8']"
+    default: >
+             ['<Primary><Alt>F8']
   switch-to-session-8_locked:
     description:
       - >
@@ -139,7 +147,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F9']"
+    default: >
+             ['<Primary><Alt>F9']
   switch-to-session-9_locked:
     description:
       - >
@@ -153,7 +162,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F10']"
+    default: >
+             ['<Primary><Alt>F10']
   switch-to-session-10_locked:
     description:
       - >
@@ -167,7 +177,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F11']"
+    default: >
+             ['<Primary><Alt>F11']
   switch-to-session-11_locked:
     description:
       - >
@@ -181,7 +192,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Primary><Alt>F12']"
+    default: >
+             ['<Primary><Alt>F12']
   switch-to-session-12_locked:
     description:
       - >
@@ -195,7 +207,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Escape']"
+    default: >
+             ['<Super>Escape']
   restore-shortcuts_locked:
     description:
       - >
@@ -326,7 +339,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

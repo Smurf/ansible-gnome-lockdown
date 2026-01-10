@@ -27,7 +27,8 @@ options:
       - >
         Select the proxy configuration mode. Supported values are “none”, “manual”, “auto”. If this is “none”, then proxies are not used. If it is “auto”, the autoconfiguration URL described by the “autoconfig-url” key is used. If it is “manual”, then the proxies described by “/system/proxy/http”, “/system/proxy/https”, “/system/proxy/ftp” and “/system/proxy/socks” will be used. Each of the 4 proxy types is enabled if its “host” key is non-empty and its “port” key is non-0. If an http proxy is configured, but an https proxy is not, then the http proxy is also used for https. If a SOCKS proxy is configured, it is used for all protocols, except that the http, https, and ftp proxy settings override it for those protocols only.
     type: str
-    default: "none"
+    default: >
+             none
   mode_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         This key contains a list of hosts which are connected to directly, rather than via the proxy (if it is active). The values can be hostnames, domains (using an initial wildcard like *.foo.com), IP host addresses (both IPv4 and IPv6) and network addresses with a netmask (something like 192.168.0.0/24).
     type: str
-    default: "[ 'localhost', '127.0.0.0/8', '::1' ]"
+    default: >
+             [ 'localhost', '127.0.0.0/8', '::1' ]
   ignore-hosts_locked:
     description:
       - >
@@ -164,7 +166,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

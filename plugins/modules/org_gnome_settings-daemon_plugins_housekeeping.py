@@ -27,7 +27,8 @@ options:
       - >
         Specify a list of mount paths to ignore when they run low on space.
     type: str
-    default: []
+    default: >
+             []
   ignore-paths_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Percentage free space threshold for initial warning of low disk space. If the percentage free space drops below this, a warning will be shown.
     type: str
-    default: "0.05"
+    default: >
+             0.05
   free-percent-notify_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Specify the percentage that the free disk space should reduce by before issuing a subsequent warning.
     type: str
-    default: "0.01"
+    default: >
+             0.01
   free-percent-notify-again_locked:
     description:
       - >
@@ -95,7 +98,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.settings-daemon.plugins.housekeeping
   org_gnome_settings-daemon_plugins_housekeeping:
-    ignore-paths: []
+    ignore-paths: "[]"
     ignore-paths_locked: true
     free-percent-notify: "0.05"
     free-percent-notify_locked: true
@@ -115,7 +118,7 @@ def main():
     keys_spec = {
         'ignore-paths': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'free-percent-notify': {
             'type': 'str',
@@ -182,7 +185,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

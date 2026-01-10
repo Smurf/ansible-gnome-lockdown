@@ -41,7 +41,8 @@ options:
       - >
         Set this to x1, y1 and x2, y2 of the area usable by the tools.
     type: str
-    default: "[-1, -1, -1, -1]"
+    default: >
+             [-1, -1, -1, -1]
   area_locked:
     description:
       - >
@@ -69,7 +70,8 @@ options:
       - >
         Set this to “none”, “cw” for 90 degree clockwise, “half” for 180 degree, and “ccw” for 90 degree counterclockwise.
     type: str
-    default: "none"
+    default: >
+             none
   rotation_locked:
     description:
       - >
@@ -182,7 +184,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

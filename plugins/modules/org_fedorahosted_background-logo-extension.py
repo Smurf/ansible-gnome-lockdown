@@ -27,7 +27,8 @@ options:
       - >
         The full logo file path
     type: str
-    default: "/usr/share/fedora-logos/fedora_lightbackground.svg"
+    default: >
+             /usr/share/fedora-logos/fedora_lightbackground.svg
   logo-file_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         The full logo file path for dark mode
     type: str
-    default: "/usr/share/fedora-logos/fedora_darkbackground.svg"
+    default: >
+             /usr/share/fedora-logos/fedora_darkbackground.svg
   logo-file-dark_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         The position logo of the logo; valid values are 'center', 'bottom-left', 'bottom-center', 'bottom-right', 'top-left', 'top-center' and 'top-right'
     type: str
-    default: "bottom-right"
+    default: >
+             bottom-right
   logo-position_locked:
     description:
       - >
@@ -69,7 +72,8 @@ options:
       - >
         The logo size in percent relative to the screen width
     type: str
-    default: "9.0"
+    default: >
+             9.0
   logo-size_locked:
     description:
       - >
@@ -83,7 +87,8 @@ options:
       - >
         The border around the logo
     type: str
-    default: 50
+    default: >
+             50
   logo-border_locked:
     description:
       - >
@@ -97,7 +102,8 @@ options:
       - >
         The opacity of the logo
     type: str
-    default: "255"
+    default: >
+             255
   logo-opacity_locked:
     description:
       - >
@@ -159,7 +165,7 @@ def main():
         },
         'logo-border': {
             'type': 'str',
-            'default': 50
+            'default': "50"
         },
         'logo-opacity': {
             'type': 'str',
@@ -218,7 +224,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

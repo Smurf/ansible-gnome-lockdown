@@ -27,7 +27,8 @@ options:
       - >
         Keybinding to open the applications menu.
     type: str
-    default: "["<Alt>F1"]"
+    default: >
+             ["<Alt>F1"]
   apps-menu-toggle-menu_locked:
     description:
       - >
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

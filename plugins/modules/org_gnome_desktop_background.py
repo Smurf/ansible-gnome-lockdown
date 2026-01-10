@@ -27,7 +27,8 @@ options:
       - >
         Determines how the image set by wallpaper_filename is rendered. Possible values are “none”, “wallpaper”, “centered”, “scaled”, “stretched”, “zoom”, “spanned”.
     type: str
-    default: "zoom"
+    default: >
+             zoom
   picture-options_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         URI to use for the background image. Note that the backend only supports local (file://) URIs.
     type: str
-    default: "file:///usr/share/backgrounds/gnome/adwaita-l.jpg"
+    default: >
+             file:///usr/share/backgrounds/gnome/adwaita-l.jpg
   picture-uri_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         URI to use for the background image. Note that the backend only supports local (file://) URIs.
     type: str
-    default: "file:///usr/share/backgrounds/gnome/adwaita-d.jpg"
+    default: >
+             file:///usr/share/backgrounds/gnome/adwaita-d.jpg
   picture-uri-dark_locked:
     description:
       - >
@@ -83,7 +86,8 @@ options:
       - >
         Left or Top color when drawing gradients, or the solid color.
     type: str
-    default: "#023c88"
+    default: >
+             #023c88
   primary-color_locked:
     description:
       - >
@@ -97,7 +101,8 @@ options:
       - >
         Right or Bottom color when drawing gradients, not used for solid color.
     type: str
-    default: "#5789ca"
+    default: >
+             #5789ca
   secondary-color_locked:
     description:
       - >
@@ -111,7 +116,8 @@ options:
       - >
         How to shade the background color. Possible values are “horizontal”, “vertical”, and “solid”.
     type: str
-    default: "solid"
+    default: >
+             solid
   color-shading-type_locked:
     description:
       - >
@@ -236,7 +242,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

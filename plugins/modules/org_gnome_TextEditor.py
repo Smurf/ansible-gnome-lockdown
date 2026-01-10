@@ -27,7 +27,8 @@ options:
       - >
         The delay in seconds to wait before auto-saving a draft.
     type: str
-    default: 3
+    default: >
+             3
   auto-save-delay_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Use the light or dark variant of the GTK theme and/or GtkSourceView style scheme.
     type: str
-    default: "follow"
+    default: >
+             follow
   style-variant_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Whether the editor should insert multiple spaces characters instead of tabs.
     type: str
-    default: "tab"
+    default: >
+             tab
   indent-style_locked:
     description:
       - >
@@ -83,7 +86,8 @@ options:
       - >
         The number of spaces represented by a tab.
     type: str
-    default: 8
+    default: >
+             8
   tab-width_locked:
     description:
       - >
@@ -139,7 +143,8 @@ options:
       - >
         The position in characters at which the right margin should be displayed.
     type: str
-    default: 80
+    default: >
+             80
   right-margin-position_locked:
     description:
       - >
@@ -223,7 +228,8 @@ options:
       - >
         A custom font to use in the editor.
     type: str
-    default: "Monospace 11"
+    default: >
+             Monospace 11
   custom-font_locked:
     description:
       - >
@@ -237,7 +243,8 @@ options:
       - >
         The style scheme to use by the editor. It may translate this into a dark format when available.
     type: str
-    default: "Adwaita"
+    default: >
+             Adwaita
   style-scheme_locked:
     description:
       - >
@@ -307,7 +314,8 @@ options:
       - >
         The keybindings to use within Text Editor.
     type: str
-    default: "default"
+    default: >
+             default
   keybindings_locked:
     description:
       - >
@@ -335,7 +343,8 @@ options:
       - >
         The various types of spaces to draw in the editor.
     type: str
-    default: []
+    default: >
+             []
   draw-spaces_locked:
     description:
       - >
@@ -363,7 +372,8 @@ options:
       - >
         The line height to use for the selected font.
     type: str
-    default: "1.2"
+    default: >
+             1.2
   line-height_locked:
     description:
       - >
@@ -389,7 +399,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.TextEditor
   org_gnome_TextEditor:
-    auto-save-delay: 3
+    auto-save-delay: "3"
     auto-save-delay_locked: true
     style-variant: "follow"
     style-variant_locked: true
@@ -409,7 +419,7 @@ def main():
     keys_spec = {
         'auto-save-delay': {
             'type': 'str',
-            'default': 3
+            'default': "3"
         },
         'style-variant': {
             'type': 'str',
@@ -425,7 +435,7 @@ def main():
         },
         'tab-width': {
             'type': 'str',
-            'default': 8
+            'default': "8"
         },
         'indent-width': {
             'type': 'int',
@@ -441,7 +451,7 @@ def main():
         },
         'right-margin-position': {
             'type': 'str',
-            'default': 80
+            'default': "80"
         },
         'show-map': {
             'type': 'bool',
@@ -497,7 +507,7 @@ def main():
         },
         'draw-spaces': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'enable-snippets': {
             'type': 'bool',
@@ -560,7 +570,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

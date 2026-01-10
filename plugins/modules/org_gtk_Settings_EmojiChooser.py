@@ -27,7 +27,8 @@ options:
       - >
         An array of Emoji definitions to show in the Emoji chooser. Each Emoji is specified as an array of codepoints, name and shortname. The extra integer after this pair is the code of the Fitzpatrick modifier to use in place of a 0 in the codepoint array.
     type: str
-    default: []
+    default: >
+             []
   recent-emoji_locked:
     description:
       - >
@@ -39,7 +40,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gtk.Settings.EmojiChooser
   org_gtk_Settings_EmojiChooser:
-    recent-emoji: []
+    recent-emoji: "[]"
     recent-emoji_locked: true
 '''
 
@@ -57,7 +58,7 @@ def main():
     keys_spec = {
         'recent-emoji': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

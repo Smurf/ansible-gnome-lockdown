@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Home']"
+    default: >
+             ['<Super>Home']
   switch-to-workspace-1_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-2_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-3_locked:
     description:
       - >
@@ -69,7 +72,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-4_locked:
     description:
       - >
@@ -83,7 +87,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-5_locked:
     description:
       - >
@@ -97,7 +102,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-6_locked:
     description:
       - >
@@ -111,7 +117,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-7_locked:
     description:
       - >
@@ -125,7 +132,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-8_locked:
     description:
       - >
@@ -139,7 +147,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-9_locked:
     description:
       - >
@@ -153,7 +162,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-10_locked:
     description:
       - >
@@ -167,7 +177,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-11_locked:
     description:
       - >
@@ -181,7 +192,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-to-workspace-12_locked:
     description:
       - >
@@ -195,7 +207,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Page_Up','<Super><Alt>Left','<Control><Alt>Left']"
+    default: >
+             ['<Super>Page_Up','<Super><Alt>Left','<Control><Alt>Left']
   switch-to-workspace-left_locked:
     description:
       - >
@@ -209,7 +222,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Page_Down','<Super><Alt>Right','<Control><Alt>Right']"
+    default: >
+             ['<Super>Page_Down','<Super><Alt>Right','<Control><Alt>Right']
   switch-to-workspace-right_locked:
     description:
       - >
@@ -223,7 +237,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Alt>Up']"
+    default: >
+             ['<Control><Alt>Up']
   switch-to-workspace-up_locked:
     description:
       - >
@@ -237,7 +252,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Alt>Down']"
+    default: >
+             ['<Control><Alt>Down']
   switch-to-workspace-down_locked:
     description:
       - >
@@ -251,7 +267,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>End']"
+    default: >
+             ['<Super>End']
   switch-to-workspace-last_locked:
     description:
       - >
@@ -265,7 +282,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Above_Tab','<Alt>Above_Tab']"
+    default: >
+             ['<Super>Above_Tab','<Alt>Above_Tab']
   switch-group_locked:
     description:
       - >
@@ -279,7 +297,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Super>Above_Tab','<Shift><Alt>Above_Tab']"
+    default: >
+             ['<Shift><Super>Above_Tab','<Shift><Alt>Above_Tab']
   switch-group-backward_locked:
     description:
       - >
@@ -293,7 +312,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Tab','<Alt>Tab']"
+    default: >
+             ['<Super>Tab','<Alt>Tab']
   switch-applications_locked:
     description:
       - >
@@ -307,7 +327,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Super>Tab','<Shift><Alt>Tab']"
+    default: >
+             ['<Shift><Super>Tab','<Shift><Alt>Tab']
   switch-applications-backward_locked:
     description:
       - >
@@ -321,7 +342,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-windows_locked:
     description:
       - >
@@ -335,7 +357,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   switch-windows-backward_locked:
     description:
       - >
@@ -349,7 +372,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Alt>Tab']"
+    default: >
+             ['<Control><Alt>Tab']
   switch-panels_locked:
     description:
       - >
@@ -363,7 +387,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Control><Alt>Tab']"
+    default: >
+             ['<Shift><Control><Alt>Tab']
   switch-panels-backward_locked:
     description:
       - >
@@ -377,7 +402,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F6']"
+    default: >
+             ['<Alt>F6']
   cycle-group_locked:
     description:
       - >
@@ -391,7 +417,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Alt>F6']"
+    default: >
+             ['<Shift><Alt>F6']
   cycle-group-backward_locked:
     description:
       - >
@@ -405,7 +432,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>Escape']"
+    default: >
+             ['<Alt>Escape']
   cycle-windows_locked:
     description:
       - >
@@ -419,7 +447,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Alt>Escape']"
+    default: >
+             ['<Shift><Alt>Escape']
   cycle-windows-backward_locked:
     description:
       - >
@@ -433,7 +462,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Alt>Escape']"
+    default: >
+             ['<Control><Alt>Escape']
   cycle-panels_locked:
     description:
       - >
@@ -447,7 +477,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Shift><Control><Alt>Escape']"
+    default: >
+             ['<Shift><Control><Alt>Escape']
   cycle-panels-backward_locked:
     description:
       - >
@@ -461,7 +492,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   show-desktop_locked:
     description:
       - >
@@ -475,7 +507,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   panel-main-menu_locked:
     description:
       - >
@@ -489,7 +522,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F2']"
+    default: >
+             ['<Alt>F2']
   panel-run-dialog_locked:
     description:
       - >
@@ -503,7 +537,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   set-spew-mark_locked:
     description:
       - >
@@ -517,7 +552,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>space']"
+    default: >
+             ['<Alt>space']
   activate-window-menu_locked:
     description:
       - >
@@ -531,7 +567,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   toggle-fullscreen_locked:
     description:
       - >
@@ -545,7 +582,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F10']"
+    default: >
+             ['<Alt>F10']
   toggle-maximized_locked:
     description:
       - >
@@ -559,7 +597,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   toggle-above_locked:
     description:
       - >
@@ -573,7 +612,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Up']"
+    default: >
+             ['<Super>Up']
   maximize_locked:
     description:
       - >
@@ -587,7 +627,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>Down','<Alt>F5']"
+    default: >
+             ['<Super>Down','<Alt>F5']
   unmaximize_locked:
     description:
       - >
@@ -601,7 +642,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super>h']"
+    default: >
+             ['<Super>h']
   minimize_locked:
     description:
       - >
@@ -615,7 +657,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F4']"
+    default: >
+             ['<Alt>F4']
   close_locked:
     description:
       - >
@@ -629,7 +672,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F7']"
+    default: >
+             ['<Alt>F7']
   begin-move_locked:
     description:
       - >
@@ -643,7 +687,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Alt>F8']"
+    default: >
+             ['<Alt>F8']
   begin-resize_locked:
     description:
       - >
@@ -657,7 +702,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   toggle-on-all-workspaces_locked:
     description:
       - >
@@ -671,7 +717,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Home']"
+    default: >
+             ['<Super><Shift>Home']
   move-to-workspace-1_locked:
     description:
       - >
@@ -685,7 +732,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-2_locked:
     description:
       - >
@@ -699,7 +747,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-3_locked:
     description:
       - >
@@ -713,7 +762,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-4_locked:
     description:
       - >
@@ -727,7 +777,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-5_locked:
     description:
       - >
@@ -741,7 +792,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-6_locked:
     description:
       - >
@@ -755,7 +807,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-7_locked:
     description:
       - >
@@ -769,7 +822,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-8_locked:
     description:
       - >
@@ -783,7 +837,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-9_locked:
     description:
       - >
@@ -797,7 +852,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-10_locked:
     description:
       - >
@@ -811,7 +867,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-11_locked:
     description:
       - >
@@ -825,7 +882,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-workspace-12_locked:
     description:
       - >
@@ -839,7 +897,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>End']"
+    default: >
+             ['<Super><Shift>End']
   move-to-workspace-last_locked:
     description:
       - >
@@ -853,7 +912,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Page_Up','<Super><Shift><Alt>Left','<Control><Shift><Alt>Left']"
+    default: >
+             ['<Super><Shift>Page_Up','<Super><Shift><Alt>Left','<Control><Shift><Alt>Left']
   move-to-workspace-left_locked:
     description:
       - >
@@ -867,7 +927,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Page_Down','<Super><Shift><Alt>Right','<Control><Shift><Alt>Right']"
+    default: >
+             ['<Super><Shift>Page_Down','<Super><Shift><Alt>Right','<Control><Shift><Alt>Right']
   move-to-workspace-right_locked:
     description:
       - >
@@ -881,7 +942,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Shift><Alt>Up']"
+    default: >
+             ['<Control><Shift><Alt>Up']
   move-to-workspace-up_locked:
     description:
       - >
@@ -895,7 +957,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Control><Shift><Alt>Down']"
+    default: >
+             ['<Control><Shift><Alt>Down']
   move-to-workspace-down_locked:
     description:
       - >
@@ -909,7 +972,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Left']"
+    default: >
+             ['<Super><Shift>Left']
   move-to-monitor-left_locked:
     description:
       - >
@@ -923,7 +987,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Right']"
+    default: >
+             ['<Super><Shift>Right']
   move-to-monitor-right_locked:
     description:
       - >
@@ -937,7 +1002,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Up']"
+    default: >
+             ['<Super><Shift>Up']
   move-to-monitor-up_locked:
     description:
       - >
@@ -951,7 +1017,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "['<Super><Shift>Down']"
+    default: >
+             ['<Super><Shift>Down']
   move-to-monitor-down_locked:
     description:
       - >
@@ -965,7 +1032,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   raise-or-lower_locked:
     description:
       - >
@@ -979,7 +1047,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   raise_locked:
     description:
       - >
@@ -993,7 +1062,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   lower_locked:
     description:
       - >
@@ -1007,7 +1077,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   maximize-vertically_locked:
     description:
       - >
@@ -1021,7 +1092,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   maximize-horizontally_locked:
     description:
       - >
@@ -1035,7 +1107,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-corner-nw_locked:
     description:
       - >
@@ -1049,7 +1122,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-corner-ne_locked:
     description:
       - >
@@ -1063,7 +1137,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-corner-sw_locked:
     description:
       - >
@@ -1077,7 +1152,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-corner-se_locked:
     description:
       - >
@@ -1091,7 +1167,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-side-n_locked:
     description:
       - >
@@ -1105,7 +1182,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-side-s_locked:
     description:
       - >
@@ -1119,7 +1197,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-side-e_locked:
     description:
       - >
@@ -1133,7 +1212,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-side-w_locked:
     description:
       - >
@@ -1147,7 +1227,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   move-to-center_locked:
     description:
       - >
@@ -1161,7 +1242,8 @@ options:
       - >
         Binding to select the next input source
     type: str
-    default: "['<Super>space','XF86Keyboard']"
+    default: >
+             ['<Super>space','XF86Keyboard']
   switch-input-source_locked:
     description:
       - >
@@ -1175,7 +1257,8 @@ options:
       - >
         Binding to select the previous input source
     type: str
-    default: "['<Shift><Super>space','<Shift>XF86Keyboard']"
+    default: >
+             ['<Shift><Super>space','<Shift>XF86Keyboard']
   switch-input-source-backward_locked:
     description:
       - >
@@ -1189,7 +1272,8 @@ options:
       - >
         Set or unset window to appear always on top
     type: str
-    default: []
+    default: >
+             []
   always-on-top_locked:
     description:
       - >
@@ -1203,7 +1287,7 @@ EXAMPLES = r'''
   org_gnome_desktop_wm_keybindings:
     switch-to-workspace-1: "['<Super>Home']"
     switch-to-workspace-1_locked: true
-    switch-to-workspace-2: []
+    switch-to-workspace-2: "[]"
     switch-to-workspace-2_locked: true
 '''
 
@@ -1225,47 +1309,47 @@ def main():
         },
         'switch-to-workspace-2': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-3': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-4': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-5': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-6': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-7': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-8': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-9': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-10': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-11': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-12': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-to-workspace-left': {
             'type': 'str',
@@ -1305,11 +1389,11 @@ def main():
         },
         'switch-windows': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-windows-backward': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-panels': {
             'type': 'str',
@@ -1345,11 +1429,11 @@ def main():
         },
         'show-desktop': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'panel-main-menu': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'panel-run-dialog': {
             'type': 'str',
@@ -1357,7 +1441,7 @@ def main():
         },
         'set-spew-mark': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'activate-window-menu': {
             'type': 'str',
@@ -1365,7 +1449,7 @@ def main():
         },
         'toggle-fullscreen': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'toggle-maximized': {
             'type': 'str',
@@ -1373,7 +1457,7 @@ def main():
         },
         'toggle-above': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'maximize': {
             'type': 'str',
@@ -1401,7 +1485,7 @@ def main():
         },
         'toggle-on-all-workspaces': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-1': {
             'type': 'str',
@@ -1409,47 +1493,47 @@ def main():
         },
         'move-to-workspace-2': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-3': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-4': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-5': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-6': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-7': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-8': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-9': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-10': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-11': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-12': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-workspace-last': {
             'type': 'str',
@@ -1489,59 +1573,59 @@ def main():
         },
         'raise-or-lower': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'raise': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'lower': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'maximize-vertically': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'maximize-horizontally': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-corner-nw': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-corner-ne': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-corner-sw': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-corner-se': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-side-n': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-side-s': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-side-e': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-side-w': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'move-to-center': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'switch-input-source': {
             'type': 'str',
@@ -1553,7 +1637,7 @@ def main():
         },
         'always-on-top': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -1604,7 +1688,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

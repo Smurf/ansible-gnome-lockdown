@@ -41,7 +41,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "0.0"
+    default: >
+             0.0
   icon-saturation_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "0.0"
+    default: >
+             0.0
   icon-brightness_locked:
     description:
       - >
@@ -69,7 +71,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "0.0"
+    default: >
+             0.0
   icon-contrast_locked:
     description:
       - >
@@ -125,7 +128,8 @@ options:
       - >
         Set where the Icon tray should appear in Gnome tray
     type: str
-    default: "right"
+    default: >
+             "right"
   tray-pos_locked:
     description:
       - >
@@ -153,7 +157,8 @@ options:
       - >
         Replace any icons with custom icons from themes
     type: str
-    default: []
+    default: >
+             []
   custom-icons_locked:
     description:
       - >
@@ -221,7 +226,7 @@ def main():
         },
         'custom-icons': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -272,7 +277,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

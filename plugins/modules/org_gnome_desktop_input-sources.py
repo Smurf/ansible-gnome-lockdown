@@ -27,7 +27,8 @@ options:
       - >
         The zero-based index into the input sources list specifying the current one in effect. The value is automatically capped to remain in the range [0, sources_length) as long as the sources list isn’t empty. DEPRECATED: This key is deprecated and ignored.
     type: str
-    default: 0
+    default: >
+             0
   current_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         List of input source identifiers available. Each source is specified as a tuple of 2 strings. The first string is the type and can be one of “xkb” or “ibus”. For “xkb” sources the second string is “xkb_layout+xkb_variant” or just “xkb_layout” if a XKB variant isn’t needed. For “ibus” sources the second string is the IBus engine name. An empty list means that the X server’s current XKB layout and variant won’t be touched and IBus won’t be used.
     type: str
-    default: []
+    default: >
+             []
   sources_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         List of most recently used input sources. The value is in the same format as the available sources list.
     type: str
-    default: []
+    default: >
+             []
   mru-sources_locked:
     description:
       - >
@@ -69,7 +72,8 @@ options:
       - >
         List of XKB options. Each option is an XKB option string as defined by xkeyboard-config’s rules files.
     type: str
-    default: []
+    default: >
+             []
   xkb-options_locked:
     description:
       - >
@@ -83,7 +87,8 @@ options:
       - >
         The XKB model to use. The value is the same identifier as defined by xkeyboard-config’s geometry files.
     type: str
-    default: "pc105+inet"
+    default: >
+             pc105+inet
   xkb-model_locked:
     description:
       - >
@@ -123,9 +128,9 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.desktop.input-sources
   org_gnome_desktop_input-sources:
-    current: 0
+    current: "0"
     current_locked: true
-    sources: []
+    sources: "[]"
     sources_locked: true
 '''
 
@@ -143,19 +148,19 @@ def main():
     keys_spec = {
         'current': {
             'type': 'str',
-            'default': 0
+            'default': "0"
         },
         'sources': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'mru-sources': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'xkb-options': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'xkb-model': {
             'type': 'str',
@@ -218,7 +223,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

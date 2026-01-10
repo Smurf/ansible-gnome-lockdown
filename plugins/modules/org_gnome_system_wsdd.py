@@ -27,7 +27,8 @@ options:
       - >
         How WSDD devices are displayed in the "network:///" location. Possible values are "merged", "separate" (the WSDD Network folder) and "disabled".
     type: str
-    default: "merged"
+    default: >
+             merged
   display-mode_locked:
     description:
       - >
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

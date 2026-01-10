@@ -27,7 +27,8 @@ options:
       - >
         A list of strings representing the providers that are allowed to be loaded (default: 'all'). This is only evaluated on startup. Deprecated: use goa.conf in the system config directory instead, with a key [providers] enable=all instead. The key is comma-separated list of the provider names.
     type: str
-    default: "['all']"
+    default: >
+             ['all']
   whitelisted-providers_locked:
     description:
       - >
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

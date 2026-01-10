@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "night"
+    default: >
+             night
   theme_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "1.0"
+    default: >
+             1.0
   font-scale_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: ""
+    default: >
+             ""
   custom-font_locked:
     description:
       - >
@@ -83,7 +86,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   shell_locked:
     description:
       - >
@@ -111,7 +115,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "10000"
+    default: >
+             10000
   scrollback-lines_locked:
     description:
       - >
@@ -125,7 +130,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   last-window-size_locked:
     description:
       - >
@@ -223,7 +229,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "9f1374fd-f199-429f-bae6-9cf1260f6e3e"
+    default: >
+             "9f1374fd-f199-429f-bae6-9cf1260f6e3e"
   livery_locked:
     description:
       - >
@@ -237,7 +244,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: {}
+    default: >
+             {}
   custom-liveries_locked:
     description:
       - >
@@ -277,7 +285,7 @@ def main():
         },
         'custom-font': {
             'type': 'str',
-            'default': ""
+            'default': ''
         },
         'use-system-font': {
             'type': 'bool',
@@ -285,7 +293,7 @@ def main():
         },
         'shell': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'ignore-scrollback-limit': {
             'type': 'bool',
@@ -329,7 +337,7 @@ def main():
         },
         'custom-liveries': {
             'type': 'str',
-            'default': {}
+            'default': "{}"
         },
     }
 
@@ -380,7 +388,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

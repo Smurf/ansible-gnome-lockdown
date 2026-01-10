@@ -69,7 +69,8 @@ options:
       - >
         The type of sleeping that should be performed when the computer is inactive.
     type: str
-    default: "suspend"
+    default: >
+             suspend
   sleep-inactive-ac-type_locked:
     description:
       - >
@@ -97,7 +98,8 @@ options:
       - >
         The type of sleeping that should be performed when the computer is inactive.
     type: str
-    default: "suspend"
+    default: >
+             suspend
   sleep-inactive-battery-type_locked:
     description:
       - >
@@ -125,7 +127,8 @@ options:
       - >
         The action to take when the system power button is pressed. Virtual machines only honor the 'nothing' action, and will shutdown otherwise. Tablets always suspend, ignoring all the other action options.
     type: str
-    default: "suspend"
+    default: >
+             suspend
   power-button-action_locked:
     description:
       - >
@@ -254,7 +257,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

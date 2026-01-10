@@ -27,7 +27,8 @@ options:
       - >
         Binding to launch the calculator.
     type: str
-    default: "XF86Calculator"
+    default: >
+             XF86Calculator
   calculator_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Binding to launch GNOME Settings.
     type: str
-    default: "XF86Tools"
+    default: >
+             XF86Tools
   control-center_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         Binding to launch the email client.
     type: str
-    default: "XF86Mail"
+    default: >
+             XF86Mail
   email_locked:
     description:
       - >
@@ -69,7 +72,8 @@ options:
       - >
         Binding to eject an optical disc.
     type: str
-    default: "XF86Eject"
+    default: >
+             XF86Eject
   eject_locked:
     description:
       - >
@@ -97,7 +101,8 @@ options:
       - >
         Binding to open the Home folder.
     type: str
-    default: "XF86Explorer"
+    default: >
+             XF86Explorer
   home_locked:
     description:
       - >
@@ -111,7 +116,8 @@ options:
       - >
         Binding to launch the media player.
     type: str
-    default: "XF86AudioMedia"
+    default: >
+             XF86AudioMedia
   media_locked:
     description:
       - >
@@ -125,7 +131,8 @@ options:
       - >
         Binding to skip to next track.
     type: str
-    default: "XF86AudioNext"
+    default: >
+             XF86AudioNext
   next_locked:
     description:
       - >
@@ -139,7 +146,8 @@ options:
       - >
         Binding to pause playback.
     type: str
-    default: "XF86AudioPause"
+    default: >
+             XF86AudioPause
   pause_locked:
     description:
       - >
@@ -153,7 +161,8 @@ options:
       - >
         Binding to start playback (or toggle play/pause).
     type: str
-    default: "XF86AudioPlay"
+    default: >
+             XF86AudioPlay
   play_locked:
     description:
       - >
@@ -167,7 +176,8 @@ options:
       - >
         Binding to log out.
     type: str
-    default: "<Control><Alt>Delete"
+    default: >
+             <Control><Alt>Delete
   logout_locked:
     description:
       - >
@@ -181,7 +191,8 @@ options:
       - >
         Binding to skip to previous track.
     type: str
-    default: "XF86AudioPrev"
+    default: >
+             XF86AudioPrev
   previous_locked:
     description:
       - >
@@ -195,7 +206,8 @@ options:
       - >
         Binding to lock the screen.
     type: str
-    default: "<Super>l"
+    default: >
+             <Super>l
   screensaver_locked:
     description:
       - >
@@ -209,7 +221,8 @@ options:
       - >
         Binding to launch the search tool.
     type: str
-    default: "XF86Search"
+    default: >
+             XF86Search
   search_locked:
     description:
       - >
@@ -223,7 +236,8 @@ options:
       - >
         Binding to stop playback.
     type: str
-    default: "XF86AudioStop"
+    default: >
+             XF86AudioStop
   stop_locked:
     description:
       - >
@@ -237,7 +251,8 @@ options:
       - >
         Binding to lower the volume.
     type: str
-    default: "XF86AudioLowerVolume"
+    default: >
+             XF86AudioLowerVolume
   volume-down_locked:
     description:
       - >
@@ -251,7 +266,8 @@ options:
       - >
         Binding to mute/unmute the volume.
     type: str
-    default: "XF86AudioMute"
+    default: >
+             XF86AudioMute
   volume-mute_locked:
     description:
       - >
@@ -265,7 +281,8 @@ options:
       - >
         Binding to raise the volume.
     type: str
-    default: "XF86AudioRaiseVolume"
+    default: >
+             XF86AudioRaiseVolume
   volume-up_locked:
     description:
       - >
@@ -279,7 +296,8 @@ options:
       - >
         Binding to mute/unmute the microphone.
     type: str
-    default: "XF86AudioMicMute"
+    default: >
+             XF86AudioMicMute
   mic-mute_locked:
     description:
       - >
@@ -293,7 +311,8 @@ options:
       - >
         Binding to launch the web browser.
     type: str
-    default: "XF86WWW"
+    default: >
+             XF86WWW
   www_locked:
     description:
       - >
@@ -307,7 +326,8 @@ options:
       - >
         Binding to show the screen magnifier
     type: str
-    default: "<Alt><Super>8"
+    default: >
+             <Alt><Super>8
   magnifier_locked:
     description:
       - >
@@ -321,7 +341,8 @@ options:
       - >
         Binding to start the screen reader
     type: str
-    default: "<Alt><Super>s"
+    default: >
+             <Alt><Super>s
   screenreader_locked:
     description:
       - >
@@ -391,7 +412,8 @@ options:
       - >
         Binding for the magnifier to zoom in
     type: str
-    default: "<Alt><Super>equal"
+    default: >
+             <Alt><Super>equal
   magnifier-zoom-in_locked:
     description:
       - >
@@ -405,7 +427,8 @@ options:
       - >
         Binding for the magnifier to zoom out
     type: str
-    default: "<Alt><Super>minus"
+    default: >
+             <Alt><Super>minus
   magnifier-zoom-out_locked:
     description:
       - >
@@ -596,7 +619,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

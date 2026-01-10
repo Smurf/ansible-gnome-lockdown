@@ -41,7 +41,8 @@ options:
       - >
         Configures the maximum level of location accuracy applications are allowed to see. Valid options are “country”, “city”, “neighborhood”, “street”, and “exact” (typically requires GPS receiver). Please keep in mind that this only controls what GeoClue will allow applications to see and they can find user’s location on their own using network resources (albeit with street-level accuracy at best).
     type: str
-    default: "exact"
+    default: >
+             exact
   max-accuracy-level_locked:
     description:
       - >
@@ -128,7 +129,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

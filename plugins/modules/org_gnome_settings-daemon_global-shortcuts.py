@@ -27,7 +27,8 @@ options:
       - >
         Applications that have defined global shortcuts
     type: str
-    default: []
+    default: >
+             []
   applications_locked:
     description:
       - >
@@ -39,7 +40,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.settings-daemon.global-shortcuts
   org_gnome_settings-daemon_global-shortcuts:
-    applications: []
+    applications: "[]"
     applications_locked: true
 '''
 
@@ -57,7 +58,7 @@ def main():
     keys_spec = {
         'applications': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

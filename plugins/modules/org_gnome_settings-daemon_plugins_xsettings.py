@@ -27,7 +27,8 @@ options:
       - >
         A list of strings representing the GTK+ modules that will not be loaded, even if enabled by default in their configuration.
     type: str
-    default: []
+    default: >
+             []
   disabled-gtk-modules_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         A list of strings representing the GTK+ modules that will be loaded, usually in addition to conditional and forcibly disabled ones.
     type: str
-    default: []
+    default: >
+             []
   enabled-gtk-modules_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         This dictionary maps XSETTINGS names to overrides values. The values must be either strings, signed int32s or (in the case of colors), 4-tuples of uint16 (red, green, blue, alpha; 65535 is fully opaque).
     type: str
-    default: {}
+    default: >
+             {}
   overrides_locked:
     description:
       - >
@@ -67,9 +70,9 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.settings-daemon.plugins.xsettings
   org_gnome_settings-daemon_plugins_xsettings:
-    disabled-gtk-modules: []
+    disabled-gtk-modules: "[]"
     disabled-gtk-modules_locked: true
-    enabled-gtk-modules: []
+    enabled-gtk-modules: "[]"
     enabled-gtk-modules_locked: true
 '''
 
@@ -87,15 +90,15 @@ def main():
     keys_spec = {
         'disabled-gtk-modules': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'enabled-gtk-modules': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'overrides': {
             'type': 'str',
-            'default': {}
+            'default': "{}"
         },
     }
 
@@ -146,7 +149,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

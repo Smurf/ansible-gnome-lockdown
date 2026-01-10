@@ -209,7 +209,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "user"
+    default: >
+             user
   show-whose-processes_locked:
     description:
       - >
@@ -223,7 +224,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "resources"
+    default: >
+             resources
   current-tab_locked:
     description:
       - >
@@ -293,7 +295,8 @@ options:
       - >
         Each entry is in the format (CPU#, Hexadecimal color value)
     type: str
-    default: "[ (0, '#e01b24'), (1, '#ff7800'), (2, '#f6d32d'), (3, '#33d17a'), (4, '#26a269'), (5, '#62a0ea'), (6, '#1c71d8'), (7, '#613583'), (8, '#9141ac'), (9, '#c061cb'), (10,'#ffbe6f'), (11,'#f9f06b'), (12,'#8ff0a4'), (13,'#2ec27e'), (14,'#1a5fb4'), (15,'#c061cb') ]"
+    default: >
+             [ (0, '#e01b24'), (1, '#ff7800'), (2, '#f6d32d'), (3, '#33d17a'), (4, '#26a269'), (5, '#62a0ea'), (6, '#1c71d8'), (7, '#613583'), (8, '#9141ac'), (9, '#c061cb'), (10,'#ffbe6f'), (11,'#f9f06b'), (12,'#8ff0a4'), (13,'#2ec27e'), (14,'#1a5fb4'), (15,'#c061cb') ]
   cpu-colors_locked:
     description:
       - >
@@ -307,7 +310,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#e01b24'"
+    default: >
+             #e01b24'
   mem-color_locked:
     description:
       - >
@@ -321,7 +325,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#33d17a'"
+    default: >
+             #33d17a'
   swap-color_locked:
     description:
       - >
@@ -335,7 +340,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#3584e4'"
+    default: >
+             #3584e4'
   net-in-color_locked:
     description:
       - >
@@ -349,7 +355,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#e66100'"
+    default: >
+             #e66100'
   net-out-color_locked:
     description:
       - >
@@ -363,7 +370,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#3584e4'"
+    default: >
+             #3584e4'
   disk-read-color_locked:
     description:
       - >
@@ -377,7 +385,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "#e66100'"
+    default: >
+             #e66100'
   disk-write-color_locked:
     description:
       - >
@@ -668,7 +677,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

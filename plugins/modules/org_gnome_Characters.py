@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   recent-characters_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "100"
+    default: >
+             100
   max-recent-characters_locked:
     description:
       - >
@@ -53,7 +55,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.Characters
   org_gnome_Characters:
-    recent-characters: []
+    recent-characters: "[]"
     recent-characters_locked: true
     max-recent-characters: "100"
     max-recent-characters_locked: true
@@ -73,7 +75,7 @@ def main():
     keys_spec = {
         'recent-characters': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'max-recent-characters': {
             'type': 'str',
@@ -128,7 +130,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

@@ -55,7 +55,8 @@ options:
       - >
         The limit on the amount of daily screen time the user is allowed, in seconds.
     type: str
-    default: "28800"
+    default: >
+             28800
   daily-limit-seconds_locked:
     description:
       - >
@@ -164,7 +165,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

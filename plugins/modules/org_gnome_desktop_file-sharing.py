@@ -27,7 +27,8 @@ options:
       - >
         When to ask for passwords. Possible values are "never", "on_write", and "always".
     type: str
-    default: "never"
+    default: >
+             never
   require-password_locked:
     description:
       - >
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

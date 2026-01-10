@@ -125,7 +125,8 @@ options:
       - >
         The source of the text banner message on the login screen.
     type: str
-    default: "settings"
+    default: >
+             "settings"
   banner-message-source_locked:
     description:
       - >
@@ -308,7 +309,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

@@ -27,7 +27,8 @@ options:
       - >
         A list of strings representing the plugins that are allowed to be loaded (default: “all”). This is only evaluated on startup.
     type: str
-    default: "['all']"
+    default: >
+             ['all']
   whitelisted-plugins_locked:
     description:
       - >
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

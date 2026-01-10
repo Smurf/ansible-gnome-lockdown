@@ -27,7 +27,8 @@ options:
       - >
         List of world clocks to show.
     type: str
-    default: []
+    default: >
+             []
   world-clocks_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         List of alarms set.
     type: str
-    default: []
+    default: >
+             []
   alarms_locked:
     description:
       - >
@@ -55,7 +57,8 @@ options:
       - >
         List of timers set.
     type: str
-    default: []
+    default: >
+             []
   timers_locked:
     description:
       - >
@@ -81,9 +84,9 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.clocks
   org_gnome_clocks:
-    world-clocks: []
+    world-clocks: "[]"
     world-clocks_locked: true
-    alarms: []
+    alarms: "[]"
     alarms_locked: true
 '''
 
@@ -101,15 +104,15 @@ def main():
     keys_spec = {
         'world-clocks': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'alarms': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'timers': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'geolocation': {
             'type': 'bool',
@@ -164,7 +167,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

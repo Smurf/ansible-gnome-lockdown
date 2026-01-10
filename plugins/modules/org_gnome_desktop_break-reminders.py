@@ -27,7 +27,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   selected-breaks_locked:
     description:
       - >
@@ -39,7 +40,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.desktop.break-reminders
   org_gnome_desktop_break-reminders:
-    selected-breaks: []
+    selected-breaks: "[]"
     selected-breaks_locked: true
 '''
 
@@ -57,7 +58,7 @@ def main():
     keys_spec = {
         'selected-breaks': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

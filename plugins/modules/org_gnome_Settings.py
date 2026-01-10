@@ -55,7 +55,8 @@ options:
       - >
         A tuple containing the initial width, height and maximized state of the app window.
     type: str
-    default: "(-1, -1, false)"
+    default: >
+             (-1, -1, false)
   window-state_locked:
     description:
       - >
@@ -146,7 +147,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

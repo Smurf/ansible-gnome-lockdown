@@ -27,7 +27,8 @@ options:
       - >
         Clicking a window while holding down this modifier key will move the window (left click), resize the window (middle click), or show the window menu (right click). The middle and right click operations may be swapped using the “resize-with-right-button” key. Modifier is expressed as “<Alt>” or “<Super>” for example.
     type: str
-    default: "<Super>"
+    default: >
+             <Super>
   mouse-button-modifier_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         Arrangement of buttons on the titlebar. The value should be a string, such as “menu:minimize,maximize,spacer,close”; the colon separates the left corner of the window from the right corner, and the button names are comma-separated. Duplicate buttons are not allowed. Unknown button names are silently ignored so that buttons can be added in future metacity versions without breaking older versions. A special spacer tag can be used to insert some space between two adjacent buttons.
     type: str
-    default: "appmenu:close"
+    default: >
+             appmenu:close
   button-layout_locked:
     description:
       - >
@@ -69,7 +71,8 @@ options:
       - >
         The window focus mode indicates how windows are activated. It has three possible values; “click” means windows must be clicked in order to focus them, “sloppy” means windows are focused when the mouse enters the window, and “mouse” means windows are focused when the mouse enters the window and unfocused when the mouse leaves the window.
     type: str
-    default: "click"
+    default: >
+             click
   focus-mode_locked:
     description:
       - >
@@ -83,7 +86,8 @@ options:
       - >
         This option provides additional control over how newly created windows get focus. It has two possible values; “smart” applies the user’s normal focus mode, and “strict” results in new windows not being given focus automatically.
     type: str
-    default: "smart"
+    default: >
+             smart
   focus-new-windows_locked:
     description:
       - >
@@ -111,7 +115,8 @@ options:
       - >
         This option determines the effects of double-clicking on the title bar. Current valid options are “toggle-maximize” which will maximize/unmaximize the window, “toggle-maximize-horizontally” and “toggle-maximize-vertically” which will maximize/unmaximize the window in that direction only, “minimize” which will minimize the window, “menu” which will display the window menu, “lower” which will put the window behind all the others, and “none” which will not do anything.
     type: str
-    default: "toggle-maximize"
+    default: >
+             toggle-maximize
   action-double-click-titlebar_locked:
     description:
       - >
@@ -125,7 +130,8 @@ options:
       - >
         This option determines the effects of middle-clicking on the title bar. Current valid options are “toggle-maximize” which will maximize/unmaximize the window, “toggle-maximize-horizontally” and “toggle-maximize-vertically” which will maximize/unmaximize the window in that direction only, “minimize” which will minimize the window, “menu” which will display the window menu, “lower” which will put the window behind all the others, and “none” which will not do anything.
     type: str
-    default: "none"
+    default: >
+             none
   action-middle-click-titlebar_locked:
     description:
       - >
@@ -139,7 +145,8 @@ options:
       - >
         This option determines the effects of right-clicking on the title bar. Current valid options are “toggle-maximize” which will maximize/unmaximize the window, “toggle-maximize-horizontally” and “toggle-maximize-vertically” which will maximize/unmaximize the window in that direction only, “minimize” which will minimize the window, “menu” which will display the window menu, “lower” which will put the window behind all the others, and “none” which will not do anything.
     type: str
-    default: "menu"
+    default: >
+             menu
   action-right-click-titlebar_locked:
     description:
       - >
@@ -181,7 +188,8 @@ options:
       - >
         The theme determines the appearance of window borders, titlebar, and so forth. DEPRECATED: This key is deprecated and ignored.
     type: str
-    default: "Adwaita"
+    default: >
+             Adwaita
   theme_locked:
     description:
       - >
@@ -209,7 +217,8 @@ options:
       - >
         A font description string describing a font for window titlebars. The size from the description will only be used if the titlebar-font-size option is set to 0. Also, this option is disabled if the titlebar-uses-desktop-font option is set to true.
     type: str
-    default: "Adwaita Sans Bold 11"
+    default: >
+             Adwaita Sans Bold 11
   titlebar-font_locked:
     description:
       - >
@@ -265,7 +274,8 @@ options:
       - >
         Tells the WM how to implement the visual indication that the system bell or another application “bell” indicator has been rung. Currently there are two valid values, “fullscreen-flash”, which causes a fullscreen white-black flash, and “frame-flash” which causes the titlebar of the application which sent the bell signal to flash. If the application which sent the bell is unknown (as is usually the case for the default “system beep”), the currently focused window’s titlebar is flashed.
     type: str
-    default: "fullscreen-flash"
+    default: >
+             fullscreen-flash
   visual-bell-type_locked:
     description:
       - >
@@ -293,7 +303,8 @@ options:
       - >
         Defines the names that should be assigned to workspaces. If the list is too long for the current number of workspaces, names in excess will be ignored. If the list is too short, or includes empty names, missing values will be replaced with the default (“Workspace N”).
     type: str
-    default: []
+    default: >
+             []
   workspace-names_locked:
     description:
       - >
@@ -401,7 +412,7 @@ def main():
         },
         'workspace-names': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -452,7 +463,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

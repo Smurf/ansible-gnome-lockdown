@@ -27,7 +27,8 @@ options:
       - >
         VM window dimensions
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   vm-window-size_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         Username for graphical password
     type: str
-    default: ""
+    default: >
+             ""
   console-username_locked:
     description:
       - >
@@ -123,7 +125,7 @@ def main():
         },
         'console-username': {
             'type': 'str',
-            'default': ""
+            'default': ''
         },
         'resize-guest': {
             'type': 'int',
@@ -182,7 +184,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

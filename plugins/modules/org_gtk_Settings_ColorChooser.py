@@ -27,7 +27,8 @@ options:
       - >
         An array of custom colors to show in the color chooser. Each color is specified as a tuple of four doubles, specifying RGBA values between 0 and 1.
     type: str
-    default: []
+    default: >
+             []
   custom-colors_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         The selected color, described as a tuple whose first member is a boolean that is true if a color was selected, and the remaining four members are four doubles, specifying RGBA values between 0 and 1.
     type: str
-    default: "(false,1.0,1.0,1.0,1.0)"
+    default: >
+             (false,1.0,1.0,1.0,1.0)
   selected-color_locked:
     description:
       - >
@@ -53,7 +55,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gtk.Settings.ColorChooser
   org_gtk_Settings_ColorChooser:
-    custom-colors: []
+    custom-colors: "[]"
     custom-colors_locked: true
     selected-color: "(false,1.0,1.0,1.0,1.0)"
     selected-color_locked: true
@@ -73,7 +75,7 @@ def main():
     keys_spec = {
         'custom-colors': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'selected-color': {
             'type': 'str',
@@ -128,7 +130,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

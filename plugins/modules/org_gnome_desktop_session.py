@@ -27,7 +27,8 @@ options:
       - >
         The number of seconds of inactivity before the session is considered idle.
     type: str
-    default: "300"
+    default: >
+             300
   idle-delay_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         The name of the session to use. Known value is “gnome”.
     type: str
-    default: "gnome"
+    default: >
+             "gnome"
   session-name_locked:
     description:
       - >
@@ -55,7 +57,7 @@ EXAMPLES = r'''
   org_gnome_desktop_session:
     idle-delay: "300"
     idle-delay_locked: true
-    session-name: "gnome"
+    session-name: ""gnome""
     session-name_locked: true
 '''
 
@@ -128,7 +130,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

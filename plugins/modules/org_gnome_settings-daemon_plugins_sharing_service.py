@@ -27,7 +27,8 @@ options:
       - >
         The list of NetworkManager connections (each one represented with its UUID) on which this service is enabled and started.
     type: str
-    default: []
+    default: >
+             []
   enabled-connections_locked:
     description:
       - >
@@ -39,7 +40,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.settings-daemon.plugins.sharing.service
   org_gnome_settings-daemon_plugins_sharing_service:
-    enabled-connections: []
+    enabled-connections: "[]"
     enabled-connections_locked: true
 '''
 
@@ -57,7 +58,7 @@ def main():
     keys_spec = {
         'enabled-connections': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

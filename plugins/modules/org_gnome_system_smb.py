@@ -27,7 +27,8 @@ options:
       - >
         How SMB devices are displayed in the "network:///" location. Possible values are "merged", "separate" (the Windows Network folder) and "disabled".
     type: str
-    default: "disabled"
+    default: >
+             disabled
   display-mode_locked:
     description:
       - >
@@ -128,7 +129,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

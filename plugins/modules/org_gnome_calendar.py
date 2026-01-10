@@ -41,7 +41,8 @@ options:
       - >
         Window size (width and height).
     type: str
-    default: "(768, 600)"
+    default: >
+             (768, 600)
   window-size_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         Type of the active window view, default value is: monthly view
     type: str
-    default: "month"
+    default: >
+             month
   active-view_locked:
     description:
       - >
@@ -69,7 +71,8 @@ options:
       - >
         Whether weather reports are shown, automatic locations are used and a location-name
     type: str
-    default: "(true, true, '', nothing)"
+    default: >
+             (true, true, '', nothing)
   weather-settings_locked:
     description:
       - >
@@ -83,7 +86,8 @@ options:
       - >
         The current zoom level of the week grid
     type: str
-    default: "1.0"
+    default: >
+             1.0
   week-view-zoom-level_locked:
     description:
       - >
@@ -182,7 +186,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

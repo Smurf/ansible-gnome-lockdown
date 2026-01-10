@@ -83,7 +83,8 @@ options:
       - >
         Toolbar Style. Valid values are “both”, “both-horiz”, “icons”, and “text”.
     type: str
-    default: "both-horiz"
+    default: >
+             both-horiz
   toolbar-style_locked:
     description:
       - >
@@ -125,7 +126,8 @@ options:
       - >
         Size of icons in toolbars, either “small” or “large”.
     type: str
-    default: "large"
+    default: >
+             large
   toolbar-icons-size_locked:
     description:
       - >
@@ -181,7 +183,8 @@ options:
       - >
         Icon theme to use for the panel, nautilus etc.
     type: str
-    default: "Adwaita"
+    default: >
+             Adwaita
   icon-theme_locked:
     description:
       - >
@@ -195,7 +198,8 @@ options:
       - >
         Basename of the default theme used by gtk+.
     type: str
-    default: "Adwaita"
+    default: >
+             Adwaita
   gtk-theme_locked:
     description:
       - >
@@ -209,7 +213,8 @@ options:
       - >
         Basename of the default keybinding theme used by gtk+.
     type: str
-    default: "Default"
+    default: >
+             Default
   gtk-key-theme_locked:
     description:
       - >
@@ -223,7 +228,8 @@ options:
       - >
         Name of the default font used by gtk+.
     type: str
-    default: "Adwaita Sans 11"
+    default: >
+             Adwaita Sans 11
   font-name_locked:
     description:
       - >
@@ -237,7 +243,8 @@ options:
       - >
         Directories to override the default avatar faces installed by gnome-control-center.
     type: str
-    default: []
+    default: >
+             []
   avatar-directories_locked:
     description:
       - >
@@ -251,7 +258,8 @@ options:
       - >
         Factor used to enlarge or reduce text display, without changing font size.
     type: str
-    default: "1.0"
+    default: >
+             1.0
   text-scaling-factor_locked:
     description:
       - >
@@ -265,7 +273,8 @@ options:
       - >
         Integer factor used to scale windows by. For use on high-dpi screens. 0 means pick automatically based on monitor.
     type: str
-    default: 0
+    default: >
+             0
   scaling-factor_locked:
     description:
       - >
@@ -279,7 +288,8 @@ options:
       - >
         Name of the GTK+ input method Preedit Style used by gtk+.
     type: str
-    default: "callback"
+    default: >
+             callback
   gtk-im-preedit-style_locked:
     description:
       - >
@@ -293,7 +303,8 @@ options:
       - >
         Name of the GTK+ input method Status Style used by gtk+.
     type: str
-    default: "callback"
+    default: >
+             callback
   gtk-im-status-style_locked:
     description:
       - >
@@ -321,7 +332,8 @@ options:
       - >
         Name of the default font used for reading documents.
     type: str
-    default: "Adwaita Sans 11"
+    default: >
+             Adwaita Sans 11
   document-font-name_locked:
     description:
       - >
@@ -335,7 +347,8 @@ options:
       - >
         Name of a monospaced (fixed-width) font for use in locations like terminals.
     type: str
-    default: "Adwaita Mono 11"
+    default: >
+             Adwaita Mono 11
   monospace-font-name_locked:
     description:
       - >
@@ -349,7 +362,8 @@ options:
       - >
         Keyboard shortcut to open the menu bars.
     type: str
-    default: "F10"
+    default: >
+             F10
   menubar-accel_locked:
     description:
       - >
@@ -363,7 +377,8 @@ options:
       - >
         Cursor theme name. Used only by Xservers that support the Xcursor extension.
     type: str
-    default: "Adwaita"
+    default: >
+             Adwaita
   cursor-theme_locked:
     description:
       - >
@@ -419,7 +434,8 @@ options:
       - >
         Palette used in the color selector as defined by the “gtk-color-palette” setting
     type: str
-    default: "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
+    default: >
+             black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90
   gtk-color-palette_locked:
     description:
       - >
@@ -447,7 +463,8 @@ options:
       - >
         Whether the clock displays in 24h or 12h format
     type: str
-    default: "24h"
+    default: >
+             24h
   clock-format_locked:
     description:
       - >
@@ -573,7 +590,8 @@ options:
       - >
         The type of antialiasing to use when rendering fonts. Possible values are: “none” for no antialiasing, “grayscale” for standard grayscale antialiasing, and “rgba” for subpixel antialiasing (LCD screens only).
     type: str
-    default: "grayscale"
+    default: >
+             grayscale
   font-antialiasing_locked:
     description:
       - >
@@ -587,7 +605,8 @@ options:
       - >
         The type of hinting to use when rendering fonts. Possible values are: “none” for no hinting and “slight” for fitting only to the Y-axis like Microsoft’s ClearType, DirectWrite and Adobe’s proprietary font rendering engine. Ignores native hinting within the font, generates hints algorithmically. Used on Ubuntu by default. Recommended. The meaning of “medium” and “full” depends on the font format (.ttf, .otf, .pfa/.pfb) and the installed version of FreeType. They usually try to fit glyphs to both the X and the Y axis (except for .otf: Y-only). This can lead to distortion and/or inconsistent rendering depending on the quality of the font, the font format and the state of FreeType’s font engines.
     type: str
-    default: "slight"
+    default: >
+             slight
   font-hinting_locked:
     description:
       - >
@@ -601,7 +620,8 @@ options:
       - >
         The order of subpixel elements on an LCD screen; only used when antialiasing is set to “rgba”. Possible values are: “rgb” for red on left (most common), “bgr” for blue on left, “vrgb” for red on top, “vbgr” for red on bottom.
     type: str
-    default: "rgb"
+    default: >
+             rgb
   font-rgba-order_locked:
     description:
       - >
@@ -615,7 +635,8 @@ options:
       - >
         The preferred color scheme for the user interface. Valid values are “default”, “prefer-dark”, “prefer-light”.
     type: str
-    default: "default"
+    default: >
+             default
   color-scheme_locked:
     description:
       - >
@@ -629,7 +650,8 @@ options:
       - >
         Preference to indicate whether font rendering should follow the low-level `font-hinting` and `font-antialiasing` and `font-rgba-order` settings, or take environmental factors such as screen resolution and scaling into account. Possible values are: "manual" for respecting the low-level settings, or "automatic" for letting the toolkit make its own decisions.
     type: str
-    default: "automatic"
+    default: >
+             automatic
   font-rendering_locked:
     description:
       - >
@@ -643,7 +665,8 @@ options:
       - >
         The preferred accent color for the user interface. Valid values are "blue", "teal", "green", "yellow", "orange", "red", "pink", "purple", "slate".
     type: str
-    default: "blue"
+    default: >
+             blue
   accent-color_locked:
     description:
       - >
@@ -735,7 +758,7 @@ def main():
         },
         'avatar-directories': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'text-scaling-factor': {
             'type': 'str',
@@ -743,7 +766,7 @@ def main():
         },
         'scaling-factor': {
             'type': 'str',
-            'default': 0
+            'default': "0"
         },
         'gtk-im-preedit-style': {
             'type': 'str',
@@ -902,7 +925,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

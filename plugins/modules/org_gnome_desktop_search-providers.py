@@ -42,7 +42,8 @@ options:
       - >
         Results for applications contained in this list will not be displayed when searching.
     type: str
-    default: []
+    default: >
+             []
   disabled_locked:
     description:
       - >
@@ -57,7 +58,8 @@ options:
       - >
         Results for applications contained in this list will be displayed when searching.
     type: str
-    default: []
+    default: >
+             []
   enabled_locked:
     description:
       - >
@@ -71,7 +73,8 @@ options:
       - >
         Results for applications contained in this list will be displayed in the specified order. Results for applications not specified in this list will be displayed last, sorted alphabetically.
     type: str
-    default: "['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']"
+    default: >
+             ['org.gnome.Settings.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Nautilus.desktop']
   sort-order_locked:
     description:
       - >
@@ -85,7 +88,7 @@ EXAMPLES = r'''
   org_gnome_desktop_search-providers:
     disable-external: false
     disable-external_locked: true
-    disabled: []
+    disabled: "[]"
     disabled_locked: true
 '''
 
@@ -107,11 +110,11 @@ def main():
         },
         'disabled': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'enabled': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'sort-order': {
             'type': 'str',
@@ -166,7 +169,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

@@ -83,7 +83,8 @@ options:
       - >
         Consider trash and temporary files old after this many days.
     type: str
-    default: 30
+    default: >
+             30
   old-files-age_locked:
     description:
       - >
@@ -223,7 +224,8 @@ options:
       - >
         If set to “lockscreen”, only when the lock screen is present new USB devices will be rejected; if set to “always”, all new USB devices will always be rejected.
     type: str
-    default: "lockscreen"
+    default: >
+             lockscreen
   usb-protection-level_locked:
     description:
       - >
@@ -285,7 +287,7 @@ def main():
         },
         'old-files-age': {
             'type': 'str',
-            'default': 30
+            'default': "30"
         },
         'remember-recent-files': {
             'type': 'bool',
@@ -380,7 +382,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

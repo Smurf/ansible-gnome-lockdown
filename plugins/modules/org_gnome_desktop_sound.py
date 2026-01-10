@@ -41,7 +41,8 @@ options:
       - >
         The XDG sound theme to use for event sounds.
     type: str
-    default: "freedesktop"
+    default: >
+             freedesktop
   theme-name_locked:
     description:
       - >
@@ -164,7 +165,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

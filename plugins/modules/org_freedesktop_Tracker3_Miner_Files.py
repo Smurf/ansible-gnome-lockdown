@@ -167,7 +167,8 @@ options:
       - >
         List of directories to index recursively, Special values include: ‘&DESKTOP’, ‘&DOCUMENTS’, ‘&DOWNLOAD’, ‘&MUSIC’, ‘&PICTURES’, ‘&PUBLIC_SHARE’, ‘&TEMPLATES’, ‘&VIDEOS’. See /etc/xdg/user-dirs.defaults and $HOME/.config/user-dirs.default
     type: str
-    default: "[ '&DESKTOP', '&DOCUMENTS', '&MUSIC', '&PICTURES', '&VIDEOS' ]"
+    default: >
+             [ '&DESKTOP', '&DOCUMENTS', '&MUSIC', '&PICTURES', '&VIDEOS' ]
   index-recursive-directories_locked:
     description:
       - >
@@ -181,7 +182,8 @@ options:
       - >
         List of directories to index without inspecting subfolders, Special values include: ‘&DESKTOP’, ‘&DOCUMENTS’, ‘&DOWNLOAD’, ‘&MUSIC’, ‘&PICTURES’, ‘&PUBLIC_SHARE’, ‘&TEMPLATES’, ‘&VIDEOS’. See /etc/xdg/user-dirs.defaults and $HOME/.config/user-dirs.default
     type: str
-    default: "[ '$HOME', '&DOWNLOAD' ]"
+    default: >
+             [ '$HOME', '&DOWNLOAD' ]
   index-single-directories_locked:
     description:
       - >
@@ -195,7 +197,8 @@ options:
       - >
         List of file patterns to avoid
     type: str
-    default: "[ '*~', '*.o', '*.la', '*.lo' , '*.loT', '*.in', '*.m4', '*.rej', '*.gmo', '*.orig', '*.pc', '*.omf', '*.aux', '*.tmp', '*.vmdk', '*.vm*', '*.nvram', '*.part', '*.rcore', '*.lzo', 'autom4te', 'conftest', 'confstat', 'Makefile', 'SCCS', 'ltmain.sh', 'libtool', 'config.status', 'confdefs.h', 'configure', '#*#', '~$*.doc?', '~$*.dot?', '~$*.xls?', '~$*.xlt?', '~$*.xlam', '~$*.ppt?', '~$*.pot?', '~$*.ppam', '~$*.ppsm', '~$*.ppsx', '~$*.vsd?', '~$*.vss?', '~$*.vst?', '*.directory' ]"
+    default: >
+             [ '*~', '*.o', '*.la', '*.lo' , '*.loT', '*.in', '*.m4', '*.rej', '*.gmo', '*.orig', '*.pc', '*.omf', '*.aux', '*.tmp', '*.vmdk', '*.vm*', '*.nvram', '*.part', '*.rcore', '*.lzo', 'autom4te', 'conftest', 'confstat', 'Makefile', 'SCCS', 'ltmain.sh', 'libtool', 'config.status', 'confdefs.h', 'configure', '#*#', '~$*.doc?', '~$*.dot?', '~$*.xls?', '~$*.xlt?', '~$*.xlam', '~$*.ppt?', '~$*.pot?', '~$*.ppam', '~$*.ppsm', '~$*.ppsx', '~$*.vsd?', '~$*.vss?', '~$*.vst?', '*.directory' ]
   ignored-files_locked:
     description:
       - >
@@ -209,7 +212,8 @@ options:
       - >
         List of directories to avoid
     type: str
-    default: "[ 'po', 'CVS', 'core-dumps', 'lost+found' ]"
+    default: >
+             [ 'po', 'CVS', 'core-dumps', 'lost+found' ]
   ignored-directories_locked:
     description:
       - >
@@ -223,7 +227,8 @@ options:
       - >
         Avoid any directory containing a file blocklisted here
     type: str
-    default: "[ '.trackerignore', '.git', '.hg', '.nomedia' ]"
+    default: >
+             [ '.trackerignore', '.git', '.hg', '.nomedia' ]
   ignored-directories-with-content_locked:
     description:
       - >
@@ -362,7 +367,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

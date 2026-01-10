@@ -27,7 +27,8 @@ options:
       - >
         Controls whether the file chooser shows just a path bar, or a visible entry for the filename as well, for the benefit of typing-oriented users. The possible values for these modes are "path-bar" and "filename-entry".
     type: str
-    default: "path-bar"
+    default: >
+             path-bar
   location-mode_locked:
     description:
       - >
@@ -111,7 +112,8 @@ options:
       - >
         Can be one of "name", "modified", or "size". It controls which of the columns in the file chooser is used for sorting the list of files.
     type: str
-    default: "name"
+    default: >
+             name
   sort-column_locked:
     description:
       - >
@@ -125,7 +127,8 @@ options:
       - >
         Can be one of the strings "ascending" or "descending".
     type: str
-    default: "ascending"
+    default: >
+             ascending
   sort-order_locked:
     description:
       - >
@@ -139,7 +142,8 @@ options:
       - >
         This key is ignored.
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   window-position_locked:
     description:
       - >
@@ -153,7 +157,8 @@ options:
       - >
         The size (width, height) of the GtkFileChooserDialog's window, in pixels.
     type: str
-    default: "(-1, -1)"
+    default: >
+             (-1, -1)
   window-size_locked:
     description:
       - >
@@ -167,7 +172,8 @@ options:
       - >
         Either "recent" or "cwd"; controls whether the file chooser starts up showing the list of recently-used files, or the contents of the current working directory.
     type: str
-    default: "recent"
+    default: >
+             recent
   startup-mode_locked:
     description:
       - >
@@ -195,7 +201,8 @@ options:
       - >
         Whether the time is shown in 24h or 12h format.
     type: str
-    default: "24h"
+    default: >
+             24h
   clock-format_locked:
     description:
       - >
@@ -209,7 +216,8 @@ options:
       - >
         The amount of detail to show in the Modified column.
     type: str
-    default: "regular"
+    default: >
+             regular
   date-format_locked:
     description:
       - >
@@ -223,7 +231,8 @@ options:
       - >
         Different ways to show the 'Type' column information. Example outputs for a video mp4 file: 'mime' -> 'video/mp4' 'description' -> 'MPEG-4 video' 'category' -> 'Video'
     type: str
-    default: "category"
+    default: >
+             category
   type-format_locked:
     description:
       - >
@@ -237,7 +246,8 @@ options:
       - >
         Whether the files are shown in a list or in a grid.
     type: str
-    default: "list"
+    default: >
+             list
   view-type_locked:
     description:
       - >
@@ -380,7 +390,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

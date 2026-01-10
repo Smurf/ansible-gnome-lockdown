@@ -41,7 +41,8 @@ options:
       - >
         Type of document being scanned. This setting decides on the scan resolution, colors and post-processing.
     type: str
-    default: "photo"
+    default: >
+             photo
   document-type_locked:
     description:
       - >
@@ -139,7 +140,8 @@ options:
       - >
         The page side to scan.
     type: str
-    default: "both"
+    default: >
+             both
   page-side_locked:
     description:
       - >
@@ -167,7 +169,8 @@ options:
       - >
         MIME type that is used for saving image files. Examples of supported MIME types: image/jpeg, image/png, application/pdf
     type: str
-    default: "application/pdf"
+    default: >
+             application/pdf
   save-format_locked:
     description:
       - >
@@ -398,7 +401,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

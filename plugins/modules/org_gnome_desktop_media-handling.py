@@ -69,7 +69,8 @@ options:
       - >
         List of x-content/* types for which the user have chosen to start an application in the preference capplet. The preferred application for the given type will be started on insertion on media matching these types.
     type: str
-    default: "[ 'x-content/unix-software', 'x-content/ostree-repository' ]"
+    default: >
+             [ 'x-content/unix-software', 'x-content/ostree-repository' ]
   autorun-x-content-start-app_locked:
     description:
       - >
@@ -83,7 +84,8 @@ options:
       - >
         List of x-content/* types for which the user have chosen “Do Nothing” in the preference capplet. No prompt will be shown nor will any matching application be started on insertion of media matching these types.
     type: str
-    default: []
+    default: >
+             []
   autorun-x-content-ignore_locked:
     description:
       - >
@@ -97,7 +99,8 @@ options:
       - >
         List of x-content/* types for which the user have chosen “Open Folder” in the preferences capplet. A folder window will be opened on insertion of media matching these types.
     type: str
-    default: []
+    default: >
+             []
   autorun-x-content-open-folder_locked:
     description:
       - >
@@ -145,11 +148,11 @@ def main():
         },
         'autorun-x-content-ignore': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'autorun-x-content-open-folder': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -200,7 +203,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

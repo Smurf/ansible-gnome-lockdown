@@ -27,7 +27,8 @@ options:
       - >
         List of relative settings paths at which app-folders are stored. Each folder uses the org.gnome.desktop.app-folders.folder schema.
     type: str
-    default: []
+    default: >
+             []
   folder-children_locked:
     description:
       - >
@@ -39,7 +40,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.desktop.app-folders
   org_gnome_desktop_app-folders:
-    folder-children: []
+    folder-children: "[]"
     folder-children_locked: true
 '''
 
@@ -57,7 +58,7 @@ def main():
     keys_spec = {
         'folder-children': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -108,7 +109,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

@@ -27,7 +27,8 @@ options:
       - >
         This is the number of days after which the display color profile is considered invalid.
     type: str
-    default: 0
+    default: >
+             0
   recalibrate-display-threshold_locked:
     description:
       - >
@@ -41,7 +42,8 @@ options:
       - >
         This is the number of days after which the printer color profile is considered invalid.
     type: str
-    default: 0
+    default: >
+             0
   recalibrate-printer-threshold_locked:
     description:
       - >
@@ -69,7 +71,8 @@ options:
       - >
         This temperature in Kelvin is used to modify the screen tones when night light mode is enabled. Higher values are bluer, lower redder.
     type: str
-    default: "2700"
+    default: >
+             2700
   night-light-temperature_locked:
     description:
       - >
@@ -97,7 +100,8 @@ options:
       - >
         When “night-light-schedule-automatic” is disabled, use this start time in hours from midnight.
     type: str
-    default: "20.00"
+    default: >
+             20.00
   night-light-schedule-from_locked:
     description:
       - >
@@ -111,7 +115,8 @@ options:
       - >
         When “night-light-schedule-automatic” is disabled, use this end time in hours from midnight.
     type: str
-    default: "6.00"
+    default: >
+             6.00
   night-light-schedule-to_locked:
     description:
       - >
@@ -125,7 +130,8 @@ options:
       - >
         When location services are available this represents the last detected location. The default value is an invalid value to ensure it is always updated at startup.
     type: str
-    default: "(91,181)"
+    default: >
+             (91,181)
   night-light-last-coordinates_locked:
     description:
       - >
@@ -137,9 +143,9 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.settings-daemon.plugins.color
   org_gnome_settings-daemon_plugins_color:
-    recalibrate-display-threshold: 0
+    recalibrate-display-threshold: "0"
     recalibrate-display-threshold_locked: true
-    recalibrate-printer-threshold: 0
+    recalibrate-printer-threshold: "0"
     recalibrate-printer-threshold_locked: true
 '''
 
@@ -157,11 +163,11 @@ def main():
     keys_spec = {
         'recalibrate-display-threshold': {
             'type': 'str',
-            'default': 0
+            'default': "0"
         },
         'recalibrate-printer-threshold': {
             'type': 'str',
-            'default': 0
+            'default': "0"
         },
         'night-light-enabled': {
             'type': 'bool',
@@ -236,7 +242,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

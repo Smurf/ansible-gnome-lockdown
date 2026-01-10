@@ -41,7 +41,8 @@ options:
       - >
         GNOME Shell extensions have a UUID property; this key lists extensions which should be loaded. Any extension that wants to be loaded needs to be in this list. You can also manipulate this list with the EnableExtension and DisableExtension D-Bus methods on org.gnome.Shell.
     type: str
-    default: []
+    default: >
+             []
   enabled-extensions_locked:
     description:
       - >
@@ -55,7 +56,8 @@ options:
       - >
         GNOME Shell extensions have a UUID property; this key lists extensions which should be disabled, even if loaded as part of the current mode. You can also manipulate this list with the EnableExtension and DisableExtension D-Bus methods on org.gnome.Shell. This key takes precedence over the “enabled-extensions” setting.
     type: str
-    default: []
+    default: >
+             []
   disabled-extensions_locked:
     description:
       - >
@@ -111,7 +113,8 @@ options:
       - >
         The applications corresponding to these identifiers will be displayed in the favorites area.
     type: str
-    default: "[ 'org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calculator.desktop' ]"
+    default: >
+             [ 'org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calculator.desktop' ]
   favorite-apps_locked:
     description:
       - >
@@ -125,7 +128,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   command-history_locked:
     description:
       - >
@@ -139,7 +143,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: []
+    default: >
+             []
   looking-glass-history_locked:
     description:
       - >
@@ -181,7 +186,8 @@ options:
       - >
         Some systems support more than two power profiles. In order to still support toggling between two profiles, this key records the last selected non-default profile.
     type: str
-    default: "power-saver"
+    default: >
+             "power-saver"
   last-selected-power-profile_locked:
     description:
       - >
@@ -209,7 +215,8 @@ options:
       - >
         Layout of the app picker. Each entry in the array is a page. Pages are stored in the order they appear in GNOME Shell. Each page contains an “application id” → 'data' pair. Currently, the following values are stored as 'data': • “position”: the position of the application icon in the page
     type: str
-    default: "[{ 'org.gnome.Geary.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'org.gnome.Music.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'org.gnome.Boxes.desktop': <{'position': <8>}>, 'org.gnome.Totem.desktop': <{'position': <9>}>, 'org.gnome.Snapshot.desktop': <{'position': <10>}>, 'org.gnome.Characters.desktop': <{'position': <11>}>, 'Utilities': <{'position': <12>}>, 'System': <{'position': <13>}>, 'org.gnome.Console.desktop': <{'position': <14>}>, 'org.gnome.Tour.desktop': <{'position': <15>}>, 'yelp.desktop': <{'position': <16>}> }]"
+    default: >
+             [{ 'org.gnome.Geary.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'org.gnome.Music.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'org.gnome.Boxes.desktop': <{'position': <8>}>, 'org.gnome.Totem.desktop': <{'position': <9>}>, 'org.gnome.Snapshot.desktop': <{'position': <10>}>, 'org.gnome.Characters.desktop': <{'position': <11>}>, 'Utilities': <{'position': <12>}>, 'System': <{'position': <13>}>, 'org.gnome.Console.desktop': <{'position': <14>}>, 'org.gnome.Tour.desktop': <{'position': <15>}>, 'yelp.desktop': <{'position': <16>}> }]
   app-picker-layout_locked:
     description:
       - >
@@ -223,7 +230,7 @@ EXAMPLES = r'''
   org_gnome_shell:
     development-tools: true
     development-tools_locked: true
-    enabled-extensions: []
+    enabled-extensions: "[]"
     enabled-extensions_locked: true
 '''
 
@@ -245,11 +252,11 @@ def main():
         },
         'enabled-extensions': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'disabled-extensions': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'disable-user-extensions': {
             'type': 'bool',
@@ -269,11 +276,11 @@ def main():
         },
         'command-history': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'looking-glass-history': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'always-show-log-out': {
             'type': 'bool',
@@ -344,7 +351,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

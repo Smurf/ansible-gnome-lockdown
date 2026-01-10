@@ -55,7 +55,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "nothing"
+    default: >
+             nothing
   document-directory_locked:
     description:
       - >
@@ -69,7 +70,8 @@ options:
       - >
         Description - Schema Blank
     type: str
-    default: "nothing"
+    default: >
+             nothing
   pictures-directory_locked:
     description:
       - >
@@ -83,7 +85,8 @@ options:
       - >
         The maximum size that will be used to cache rendered pages, limits maximum zoom level.
     type: str
-    default: 50
+    default: >
+             50
   page-cache-size_locked:
     description:
       - >
@@ -159,7 +162,7 @@ def main():
         },
         'page-cache-size': {
             'type': 'str',
-            'default': 50
+            'default': "50"
         },
         'show-caret-navigation-message': {
             'type': 'bool',
@@ -218,7 +221,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

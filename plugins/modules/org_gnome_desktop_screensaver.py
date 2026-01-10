@@ -55,7 +55,8 @@ options:
       - >
         The number of seconds after screensaver activation before locking the screen.
     type: str
-    default: 0
+    default: >
+             0
   lock-delay_locked:
     description:
       - >
@@ -125,7 +126,8 @@ options:
       - >
         The number of seconds after the screensaver activation before a logout option will appear in the unlock dialog. This key has effect only if the “logout_enable” key is set to TRUE. DEPRECATED: This key is deprecated and ignored
     type: str
-    default: "7200"
+    default: >
+             7200
   logout-delay_locked:
     description:
       - >
@@ -181,7 +183,8 @@ options:
       - >
         Determines how the image set by wallpaper_filename is rendered. Possible values are “none”, “wallpaper”, “centered”, “scaled”, “stretched”, “zoom”, “spanned”.
     type: str
-    default: "zoom"
+    default: >
+             zoom
   picture-options_locked:
     description:
       - >
@@ -195,7 +198,8 @@ options:
       - >
         URI to use for the background image. Note that the backend only supports local (file://) URIs.
     type: str
-    default: "file:///usr/share/backgrounds/gnome/adwaita-timed.xml"
+    default: >
+             file:///usr/share/backgrounds/gnome/adwaita-timed.xml
   picture-uri_locked:
     description:
       - >
@@ -223,7 +227,8 @@ options:
       - >
         Left or Top color when drawing gradients, or the solid color.
     type: str
-    default: "#023c88"
+    default: >
+             #023c88
   primary-color_locked:
     description:
       - >
@@ -237,7 +242,8 @@ options:
       - >
         Right or Bottom color when drawing gradients, not used for solid color.
     type: str
-    default: "#5789ca"
+    default: >
+             #5789ca
   secondary-color_locked:
     description:
       - >
@@ -251,7 +257,8 @@ options:
       - >
         How to shade the background color. Possible values are “horizontal”, “vertical”, and “solid”.
     type: str
-    default: "solid"
+    default: >
+             solid
   color-shading-type_locked:
     description:
       - >
@@ -291,7 +298,7 @@ def main():
         },
         'lock-delay': {
             'type': 'str',
-            'default': 0
+            'default': "0"
         },
         'show-full-name-in-top-bar': {
             'type': 'bool',
@@ -398,7 +405,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 

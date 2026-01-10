@@ -29,7 +29,8 @@ options:
         {{ key.description }}
     type: {{ key.ansible_type }}
     {% if key.ansible_type == 'str' and key.default != '' %}
-    default: {{ key.default }}
+    default: >
+             {{ key.default }}
     {% elif key.default == '' %}
     default: "{{ key.default }}"
     {% else %}

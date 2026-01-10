@@ -27,7 +27,8 @@ options:
       - >
         This key will initiate the “overlay”, which is a combination window overview and application launching system. The default is intended to be the “Windows key” on PC hardware. It’s expected that this binding either the default or set to the empty string.
     type: str
-    default: "Super"
+    default: >
+             Super
   overlay-key_locked:
     description:
       - >
@@ -153,7 +154,8 @@ options:
       - >
         To enable experimental features, add the feature keyword to the list. Whether the feature requires restarting the compositor depends on the given feature. Any experimental feature is not required to still be available, or configurable. Don’t expect adding anything in this setting to be future proof. Currently possible keywords: • “scale-monitor-framebuffer” — makes mutter default to layout logical monitors in a logical pixel coordinate space, while scaling monitor framebuffers instead of window content, to manage HiDPI monitors. Does not require a restart. • “kms-modifiers” — makes mutter always allocate scanout buffers with explicit modifiers, if supported by the driver. Requires a restart. • “autoclose-xwayland” — automatically terminates Xwayland if all relevant X11 clients are gone. Requires a restart. • “variable-refresh-rate” — makes mutter dynamically adjust the refresh rate of the monitor when applicable if supported by the monitor, GPU and DRM driver. Configurable in Settings. Requires a restart. • “xwayland-native-scaling” — lets Xwayland clients use their native scaling support. If scaling is not supported by client, the client will be unscaled. Setting only takes effect when “scale-monitor-framebuffer” is enabled as well.
     type: str
-    default: []
+    default: >
+             []
   experimental-features_locked:
     description:
       - >
@@ -167,7 +169,8 @@ options:
       - >
         This key will initiate the “locate pointer” action.
     type: str
-    default: "Control_L"
+    default: >
+             Control_L
   locate-pointer-key_locked:
     description:
       - >
@@ -181,7 +184,8 @@ options:
       - >
         Number of milliseconds a client has to respond to a ping request in order to not be detected as frozen. Using 0 will disable the alive check completely.
     type: str
-    default: "5000"
+    default: >
+             5000
   check-alive-timeout_locked:
     description:
       - >
@@ -195,7 +199,8 @@ options:
       - >
         Per output and color mode luminance setting. Each entry consists of a tuple with connector, vendor, product, serial, and a color mode, as well as an associated floating point value representing the output luminance in percent (%). The default when not specified is 100%.
     type: str
-    default: []
+    default: >
+             []
   output-luminance_locked:
     description:
       - >
@@ -263,7 +268,7 @@ def main():
         },
         'experimental-features': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
         'locate-pointer-key': {
             'type': 'str',
@@ -275,7 +280,7 @@ def main():
         },
         'output-luminance': {
             'type': 'str',
-            'default': []
+            'default': "[]"
         },
     }
 
@@ -326,7 +331,7 @@ def main():
         if spec['type'] == 'bool':
             setting_value = str(param_value).lower()
         elif spec['type'] == 'str':
-            setting_value = f"'{param_value}'"
+            setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
 
