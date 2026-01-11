@@ -2,7 +2,6 @@
 /usr/share/glib-2.0/schemas/org.freedesktop.Tracker3.Extract.gschema.xml
 /usr/share/glib-2.0/schemas/org.freedesktop.Tracker3.FTS.gschema.xml
 /usr/share/glib-2.0/schemas/org.freedesktop.Tracker3.Miner.Files.gschema.xml
-/usr/share/glib-2.0/schemas/org.gnome.baobab.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.calculator.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.calendar.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.Characters.gschema.xml
@@ -22,7 +21,6 @@
 /usr/share/glib-2.0/schemas/org.gnome.desktop.lockdown.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.desktop.media-handling.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.desktop.notifications.gschema.xml
-/usr/share/glib-2.0/schemas/org.gnome.desktop.peripherals.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.desktop.privacy.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.desktop.screensaver.gschema.xml
@@ -35,14 +33,12 @@
 /usr/share/glib-2.0/schemas/org.gnome.Disks.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.Extensions.gschema.xml
-/usr/share/glib-2.0/schemas/org.gnome.FileRoller.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.gnome-system-monitor.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.login-screen.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.Logs.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.Loupe.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.mutter.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.mutter.wayland.gschema.xml
-/usr/share/glib-2.0/schemas/org.gnome.nautilus.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.nm-applet.eap.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.online-accounts.gschema.xml
 /usr/share/glib-2.0/schemas/org.gnome.SessionManager.gschema.xml
@@ -82,4 +78,3 @@
 /usr/share/glib-2.0/schemas/org.gtk.Settings.EmojiChooser.gschema.xml
 /usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
 /usr/share/glib-2.0/schemas/org.virt-manager.virt-manager.gschema.xml
-/usr/share/glib-2.0/schemas/xdg-desktop-portal-gnome.gschema.xml

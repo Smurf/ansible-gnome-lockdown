@@ -4,6 +4,7 @@ import os
 import argparse
 import subprocess
 import tempfile
+from pygvariant import GVariantValueConverter, GVariantParser, to_gschema
 
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
@@ -14,8 +15,29 @@ def gsettings_to_ansible_type(gsettings_type):
     elif gsettings_type == 's':
         return 'str'
     else:
+        print("UNKNOWN TYPE")
+        print(gsettings_type)
         # Default to string for unknown types
         return 'str'
+
+# Ugh the schema is all over the place, normalize to the spec default
+def to_spec_default(key_default, key_type):
+
+    if (key_default == "true" or key_default == "false") and key_type == "bool":
+        return bool(key_default)
+
+    if (key_type == "str" and key_default == '""'):
+        return ""
+    
+    # Sometimes schemas have strings of "" for some reason which aren't actually emtpy
+    if (key_type == "str" and key_default.startswith('"')):
+        return key_default[1:-1] #Trim first and last char
+    
+    if (key_type == "str" and key_default.startswith("[")):
+        list_elems = key_default[1:-1].split(",")
+        return list_elems
+
+    return key_default
 
 def parse_schema(xml_file):
     """Parses a GSettings XML schema and extracts relevant information."""
@@ -33,28 +55,36 @@ def parse_schema(xml_file):
     for key_node in schema_node.findall('key'):
         key_name = key_node.get('name')
         key_type = key_node.get('type')
-
+        key_type = gsettings_to_ansible_type(key_type)
         default_node = key_node.find('default')
+
         # Defaults for strings are in quotes, so strip them
-        key_default = default_node.text.strip("'") if default_node is not None else ''
+        # Strip and join too cause multiline strings are a PITA
+        key_default = " ".join(default_node.text.strip("'").split()) if default_node is not None else 'None defined'
 
         # Convert boolean defaults to Python booleans for Jinja2
-        if key_type == 'b':
-            key_default = key_default.lower() in ['true']
+        if key_type == 'bool':
+            key_default = key_default.lower()
+        
+        # Schemas are all over the place, double check just in case
+        if key_default == "true" or key_default == "false":
+            key_type = "bool"
 
         summary_node = key_node.find('summary')
-        key_summary = summary_node.text if summary_node is not None else ''
+        key_summary = summary_node.text.strip() if summary_node is not None else 'Summary - Schema Blank'
 
         description_node = key_node.find('description')
-        key_description = description_node.text if description_node is not None else ''
-
-        keys.append({
-            'name': key_name,
-            'ansible_type': gsettings_to_ansible_type(key_type),
+        key_description = " ".join(description_node.text.strip().split()) if description_node is not None else 'Description - Schema Blank'
+        new_key = {
+            'name': key_name.strip(),
+            'ansible_type': key_type,
             'default': key_default,
+            'spec_default': to_spec_default(key_default, key_type),
             'summary': key_summary,
             'description': key_description
-        })
+        }
+        print(new_key)
+        keys.append(new_key)
 
     return schema_id, schema_path, keys
 
@@ -63,7 +93,8 @@ def generate_module(schema_file, template_file, output_dir):
     schema_id, schema_path, keys = parse_schema(schema_file)
 
     # Module name from schema id
-    module_name = schema_id.replace('.', '_')
+    raw_module_name = schema_id
+    module_name = schema_id.replace('.', '_').lower()
 
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader(os.path.dirname(template_file)), trim_blocks=True, lstrip_blocks=True)
@@ -72,13 +103,14 @@ def generate_module(schema_file, template_file, output_dir):
     # Render the template
     module_content = template.render(
         module_name=module_name,
+        raw_module_name=raw_module_name,
         schema_id=schema_id,
         schema_path=schema_path,
         keys=keys
     )
 
     # Write the output file
-    output_path = os.path.join(output_dir, module_name + ".py")
+    output_path = os.path.join(output_dir, module_name.replace("-","_") + ".py")
     os.makedirs(output_dir, exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(module_content)
