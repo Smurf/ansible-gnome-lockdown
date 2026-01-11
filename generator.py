@@ -82,78 +82,88 @@ def parse_schema(xml_file):
     """Parses a GSettings XML schema and extracts relevant information."""
     tree = ET.parse(xml_file)
     root = tree.getroot()
-    schema_node = root.find("schema")
-    if schema_node is None:
-        raise ValueError("No schema found in XML file")
+    schemas = []
 
-    schema_id = schema_node.get("id")
-    schema_path = schema_node.get("path")
+    # Check if the root is a schemalist or a single schema
+    if root.tag == "schemalist":
+        schema_nodes = root.findall("schema")
+    else:
+        schema_nodes = [root]
 
-    keys = []
-    schema_entries = []
-    schema_examples = []
-    for key_node in schema_node.findall("key"):
-        key_name = key_node.get("name")
-        key_type = key_node.get("type") or "s"
-        ansible_type = gsettings_to_ansible_type(key_type)
-        default_node = key_node.find("default")
+    for schema_node in schema_nodes:
+        schema_id = schema_node.get("id")
+        if not schema_id:
+            continue  # Skip if no ID
 
-        # Defaults for strings are in quotes, so strip them
-        # Strip and join too cause multiline strings are a PITA
-        key_default = (
-            " ".join(default_node.text.strip("'").split())
-            if default_node is not None
-            else "None defined"
+        schema_path = schema_node.get("path")
+        schema_entries = []
+        schema_examples = []
+
+        for key_node in schema_node.findall("key"):
+            key_name = key_node.get("name")
+            key_type = key_node.get("type") or "s"
+            ansible_type = gsettings_to_ansible_type(key_type)
+            default_node = key_node.find("default")
+
+            key_default = (
+                " ".join(default_node.text.strip("'").split())
+                if default_node is not None and default_node.text is not None
+                else "''"
+            )
+
+            if ansible_type == "bool":
+                key_default = key_default.lower()
+
+            if key_default in ["true", "false"]:
+                ansible_type = "bool"
+
+            summary_node = key_node.find("summary")
+            key_summary = (
+                summary_node.text.strip()
+                if summary_node is not None and summary_node.text is not None
+                else "Summary - Schema Blank"
+            )
+
+            description_node = key_node.find("description")
+            key_description = (
+                " ".join(description_node.text.strip().split())
+                if description_node is not None and description_node.text is not None
+                else "Description - Schema Blank"
+            )
+
+            converter = GVariantValueConverter()
+            entry_options = SchemaOption(
+                [key_summary, key_description],
+                ansible_type,
+                converter.parse_value_string(key_default, key_type),
+            )
+            entry = SchemaEntry(key_name, key_type, entry_options, ansible_type)
+            schema_entries.append(entry)
+
+            example = {f"{key_name}": converter.parse_value_string(key_default, key_type)}
+            schema_examples.append(example)
+
+        schemas.append(
+            {
+                "id": schema_id,
+                "path": schema_path,
+                "entries": schema_entries,
+                "examples": schema_examples,
+            }
         )
-
-        # Convert boolean defaults to Python booleans for Jinja2
-        if ansible_type == "bool":
-            key_default = key_default.lower()
-
-        # Schemas are all over the place, double check just in case
-        if key_default == "true" or key_default == "false":
-            ansible_type = "bool"
-
-        summary_node = key_node.find("summary")
-        key_summary = (
-            summary_node.text.strip()
-            if summary_node is not None
-            else "Summary - Schema Blank"
-        )
-
-        description_node = key_node.find("description")
-        key_description = (
-            " ".join(description_node.text.strip().split())
-            if description_node is not None
-            else "Description - Schema Blank"
-        )
-
-        converter = GVariantValueConverter()
-        entry_options = SchemaOption(
-            [key_summary, key_description],
-            ansible_type,
-            converter.parse_value_string(key_default, key_type),
-        )
-        entry = SchemaEntry(key_name, key_type, entry_options, ansible_type)
-        schema_entries.append(entry)
-
-        example = {
-                f"{key_name}": converter.parse_value_string(key_default, key_type) 
-                }
-        schema_examples.append(example)
-        # print(yaml.dump(entry.__dict__, sort_keys=False))
-        # print(yaml.dump(entry.options.__dict__, sort_keys=False))
-
-    return schema_id, schema_path, schema_entries, schema_examples
+    return schemas
 
 
 def to_yaml(data):
     return yaml.dump(data, sort_keys=False)
 
 
-def generate_module(schema_file, template_file, output_dir):
-    """Generates an Ansible module from a schema and a Jinja2 template."""
-    schema_id, schema_path, entries, examples = parse_schema(schema_file)
+def generate_module(schema_data, template_file, output_dir):
+    """Generates an Ansible module from schema data and a Jinja2 template."""
+    schema_id = schema_data["id"]
+    schema_path = schema_data["path"]
+    entries = schema_data["entries"]
+    examples = schema_data["examples"]
 
     # Module name from schema id
     raw_module_name = schema_id
@@ -264,15 +274,18 @@ if __name__ == "__main__":
             schema_file_to_process = schema_location
 
         try:
-            print(f"Processing schema: {schema_file_to_process}")
-            generate_module(schema_file_to_process, args.template, args.output_dir)
+            print(f"Processing schema file: {schema_file_to_process}")
+            schemas = parse_schema(schema_file_to_process)
+            for schema_data in schemas:
+                print(f"  Generating module for schema: {schema_data['id']}")
+                generate_module(schema_data, args.template, args.output_dir)
         except FileNotFoundError:
             print(
                 f"Warning: Schema file not found at '{schema_file_to_process}', skipping."
             )
         except Exception as e:
             print(
-                f"Warning: Failed to process schema '{schema_file_to_process}': {e}, skipping."
+                f"Warning: Failed to process schema file '{schema_file_to_process}': {e}, skipping."
             )
         finally:
             # Clean up the temporary file if one was created
