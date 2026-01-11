@@ -52,15 +52,15 @@ def main():
     """Main function for the Ansible module."""
 
     keys_spec = {
-    {% for key in keys %}
-        '{{ key.name }}': {
-            'type': '{{ key.ansible_type }}',
-            {% if key.ansible_type == 'str' and key.spec_default != "" and key.spec_default != '""' %}
-            'default': "{{ key.spec_default }}"
-            {% elif key.spec_default == "" %}
+    {% for entry in entries %}
+        '{{ entry.name }}': {
+            'type': '{{ entry.ansible_type }}',
+            {% if entry.ansible_type == 'str' %}
+            'default': "{{ entry.options.default }}"
+            {% elif entry.options.default == "" %}
             'default': ''
             {% else %}
-            'default': {{ key.spec_default }}
+            'default': {{ entry.options.default }}
             {% endif %}
         },
     {% endfor %}
