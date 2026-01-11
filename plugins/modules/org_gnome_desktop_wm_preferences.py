@@ -412,7 +412,7 @@ def main():
         },
         'workspace-names': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
     }
 
@@ -431,8 +431,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_desktop_wm_preferences")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_desktop_wm_preferences")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.desktop.wm.preferences")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.desktop.wm.preferences")
 
     schema_full_path = "/org/gnome/desktop/wm/preferences/"
     config_section = schema_full_path.strip('/')

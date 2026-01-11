@@ -252,11 +252,11 @@ def main():
         },
         'enabled-extensions': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'disabled-extensions': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'disable-user-extensions': {
             'type': 'bool',
@@ -272,15 +272,15 @@ def main():
         },
         'favorite-apps': {
             'type': 'str',
-            'default': "[ 'org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calculator.desktop' ]"
+            'default': "[" 'org.mozilla.firefox.desktop'", " 'org.gnome.Calendar.desktop'", " 'org.gnome.Nautilus.desktop'", " 'org.gnome.Software.desktop'", " 'org.gnome.TextEditor.desktop'", " 'org.gnome.Calculator.desktop' "]"
         },
         'command-history': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'looking-glass-history': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'always-show-log-out': {
             'type': 'bool',
@@ -300,7 +300,7 @@ def main():
         },
         'app-picker-layout': {
             'type': 'str',
-            'default': "[{ 'org.gnome.Geary.desktop': <{'position': <0>}>, 'org.gnome.Contacts.desktop': <{'position': <1>}>, 'org.gnome.Weather.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Maps.desktop': <{'position': <4>}>, 'org.gnome.Music.desktop': <{'position': <5>}>, 'simple-scan.desktop': <{'position': <6>}>, 'org.gnome.Settings.desktop': <{'position': <7>}>, 'org.gnome.Boxes.desktop': <{'position': <8>}>, 'org.gnome.Totem.desktop': <{'position': <9>}>, 'org.gnome.Snapshot.desktop': <{'position': <10>}>, 'org.gnome.Characters.desktop': <{'position': <11>}>, 'Utilities': <{'position': <12>}>, 'System': <{'position': <13>}>, 'org.gnome.Console.desktop': <{'position': <14>}>, 'org.gnome.Tour.desktop': <{'position': <15>}>, 'yelp.desktop': <{'position': <16>}> }]"
+            'default': "["{ 'org.gnome.Geary.desktop': <{'position': <0>}>", " 'org.gnome.Contacts.desktop': <{'position': <1>}>", " 'org.gnome.Weather.desktop': <{'position': <2>}>", " 'org.gnome.clocks.desktop': <{'position': <3>}>", " 'org.gnome.Maps.desktop': <{'position': <4>}>", " 'org.gnome.Music.desktop': <{'position': <5>}>", " 'simple-scan.desktop': <{'position': <6>}>", " 'org.gnome.Settings.desktop': <{'position': <7>}>", " 'org.gnome.Boxes.desktop': <{'position': <8>}>", " 'org.gnome.Totem.desktop': <{'position': <9>}>", " 'org.gnome.Snapshot.desktop': <{'position': <10>}>", " 'org.gnome.Characters.desktop': <{'position': <11>}>", " 'Utilities': <{'position': <12>}>", " 'System': <{'position': <13>}>", " 'org.gnome.Console.desktop': <{'position': <14>}>", " 'org.gnome.Tour.desktop': <{'position': <15>}>", " 'yelp.desktop': <{'position': <16>}> }"]"
         },
     }
 
@@ -319,8 +319,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_shell")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_shell")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.shell")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.shell")
 
     schema_full_path = "/org/gnome/shell/"
     config_section = schema_full_path.strip('/')

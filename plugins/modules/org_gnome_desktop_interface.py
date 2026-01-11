@@ -758,7 +758,7 @@ def main():
         },
         'avatar-directories': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'text-scaling-factor': {
             'type': 'str',
@@ -893,8 +893,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_desktop_interface")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_desktop_interface")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.desktop.interface")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.desktop.interface")
 
     schema_full_path = "/org/gnome/desktop/interface/"
     config_section = schema_full_path.strip('/')

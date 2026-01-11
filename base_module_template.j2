@@ -101,8 +101,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-{{ module_name }}")
-    lock_file_path = os.path.join(locks_dir, "ansible-{{ module_name }}")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-{{ schema_id }}")
+    lock_file_path = os.path.join(locks_dir, "ansible-{{ schema_id }}")
 
     schema_full_path = "{{ schema_path }}"
     config_section = schema_full_path.strip('/')

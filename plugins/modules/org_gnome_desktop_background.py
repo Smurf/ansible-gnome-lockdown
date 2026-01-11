@@ -210,8 +210,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_desktop_background")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_desktop_background")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.desktop.background")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.desktop.background")
 
     schema_full_path = "/org/gnome/desktop/background/"
     config_section = schema_full_path.strip('/')

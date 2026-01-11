@@ -240,55 +240,55 @@ def main():
     keys_spec = {
         'switch-to-session-1': {
             'type': 'str',
-            'default': "['<Primary><Alt>F1']"
+            'default': "["'<Primary><Alt>F1'"]"
         },
         'switch-to-session-2': {
             'type': 'str',
-            'default': "['<Primary><Alt>F2']"
+            'default': "["'<Primary><Alt>F2'"]"
         },
         'switch-to-session-3': {
             'type': 'str',
-            'default': "['<Primary><Alt>F3']"
+            'default': "["'<Primary><Alt>F3'"]"
         },
         'switch-to-session-4': {
             'type': 'str',
-            'default': "['<Primary><Alt>F4']"
+            'default': "["'<Primary><Alt>F4'"]"
         },
         'switch-to-session-5': {
             'type': 'str',
-            'default': "['<Primary><Alt>F5']"
+            'default': "["'<Primary><Alt>F5'"]"
         },
         'switch-to-session-6': {
             'type': 'str',
-            'default': "['<Primary><Alt>F6']"
+            'default': "["'<Primary><Alt>F6'"]"
         },
         'switch-to-session-7': {
             'type': 'str',
-            'default': "['<Primary><Alt>F7']"
+            'default': "["'<Primary><Alt>F7'"]"
         },
         'switch-to-session-8': {
             'type': 'str',
-            'default': "['<Primary><Alt>F8']"
+            'default': "["'<Primary><Alt>F8'"]"
         },
         'switch-to-session-9': {
             'type': 'str',
-            'default': "['<Primary><Alt>F9']"
+            'default': "["'<Primary><Alt>F9'"]"
         },
         'switch-to-session-10': {
             'type': 'str',
-            'default': "['<Primary><Alt>F10']"
+            'default': "["'<Primary><Alt>F10'"]"
         },
         'switch-to-session-11': {
             'type': 'str',
-            'default': "['<Primary><Alt>F11']"
+            'default': "["'<Primary><Alt>F11'"]"
         },
         'switch-to-session-12': {
             'type': 'str',
-            'default': "['<Primary><Alt>F12']"
+            'default': "["'<Primary><Alt>F12'"]"
         },
         'restore-shortcuts': {
             'type': 'str',
-            'default': "['<Super>Escape']"
+            'default': "["'<Super>Escape'"]"
         },
     }
 
@@ -307,8 +307,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_mutter_wayland_keybindings")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_mutter_wayland_keybindings")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.mutter.wayland.keybindings")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.mutter.wayland.keybindings")
 
     schema_full_path = "/org/gnome/mutter/wayland/keybindings/"
     config_section = schema_full_path.strip('/')

@@ -226,7 +226,7 @@ def main():
         },
         'custom-icons': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
     }
 
@@ -245,8 +245,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_shell_extensions_appindicator")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_shell_extensions_appindicator")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.shell.extensions.appindicator")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.shell.extensions.appindicator")
 
     schema_full_path = "/org/gnome/shell/extensions/appindicator/"
     config_section = schema_full_path.strip('/')

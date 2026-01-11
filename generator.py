@@ -4,6 +4,7 @@ import os
 import argparse
 import subprocess
 import tempfile
+from pygvariant import GVariantValueConverter, GVariantParser, to_gschema
 
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
@@ -14,6 +15,8 @@ def gsettings_to_ansible_type(gsettings_type):
     elif gsettings_type == 's':
         return 'str'
     else:
+        print("UNKNOWN TYPE")
+        print(gsettings_type)
         # Default to string for unknown types
         return 'str'
 
@@ -29,6 +32,10 @@ def to_spec_default(key_default, key_type):
     # Sometimes schemas have strings of "" for some reason which aren't actually emtpy
     if (key_type == "str" and key_default.startswith('"')):
         return key_default[1:-1] #Trim first and last char
+    
+    if (key_type == "str" and key_default.startswith("[")):
+        list_elems = key_default[1:-1].split(",")
+        return list_elems
 
     return key_default
 
@@ -86,7 +93,8 @@ def generate_module(schema_file, template_file, output_dir):
     schema_id, schema_path, keys = parse_schema(schema_file)
 
     # Module name from schema id
-    module_name = schema_id.replace('.', '_')
+    raw_module_name = schema_id
+    module_name = schema_id.replace('.', '_').lower()
 
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader(os.path.dirname(template_file)), trim_blocks=True, lstrip_blocks=True)
@@ -95,13 +103,14 @@ def generate_module(schema_file, template_file, output_dir):
     # Render the template
     module_content = template.render(
         module_name=module_name,
+        raw_module_name=raw_module_name,
         schema_id=schema_id,
         schema_path=schema_path,
         keys=keys
     )
 
     # Write the output file
-    output_path = os.path.join(output_dir, module_name + ".py")
+    output_path = os.path.join(output_dir, module_name.replace("-","_") + ".py")
     os.makedirs(output_dir, exist_ok=True)
     with open(output_path, 'w') as f:
         f.write(module_content)

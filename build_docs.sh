@@ -5,6 +5,7 @@ fi
 
 source .venv/bin/activate
 rm -rf docs/build
+rm -rf docs/rst
 antsibull-docs sphinx-init --use-current --dest-dir docs smurf.gnome_lockdown
 cd docs
 pip install -r requirements.txt

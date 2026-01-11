@@ -76,8 +76,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_tweaks")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_tweaks")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.tweaks")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.tweaks")
 
     schema_full_path = "/org/gnome/tweaks/"
     config_section = schema_full_path.strip('/')

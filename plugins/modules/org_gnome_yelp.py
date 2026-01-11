@@ -96,8 +96,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_yelp")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_yelp")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.yelp")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.yelp")
 
     schema_full_path = "/org/gnome/yelp/"
     config_section = schema_full_path.strip('/')

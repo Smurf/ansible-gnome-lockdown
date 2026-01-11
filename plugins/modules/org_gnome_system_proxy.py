@@ -111,7 +111,7 @@ def main():
         },
         'ignore-hosts': {
             'type': 'str',
-            'default': "[ 'localhost', '127.0.0.0/8', '::1' ]"
+            'default': "[" 'localhost'", " '127.0.0.0/8'", " '::1' "]"
         },
         'use-same-proxy': {
             'type': 'bool',
@@ -134,8 +134,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_system_proxy")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_system_proxy")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.system.proxy")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.system.proxy")
 
     schema_full_path = "/system/proxy/"
     config_section = schema_full_path.strip('/')

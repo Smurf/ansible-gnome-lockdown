@@ -268,7 +268,7 @@ def main():
         },
         'experimental-features': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'locate-pointer-key': {
             'type': 'str',
@@ -280,7 +280,7 @@ def main():
         },
         'output-luminance': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
     }
 
@@ -299,8 +299,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_mutter")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_mutter")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.mutter")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.mutter")
 
     schema_full_path = "/org/gnome/mutter/"
     config_section = schema_full_path.strip('/')

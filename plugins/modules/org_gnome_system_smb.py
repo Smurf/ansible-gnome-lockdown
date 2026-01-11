@@ -97,8 +97,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_system_smb")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_system_smb")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.system.smb")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.system.smb")
 
     schema_full_path = "/org/gnome/system/smb/"
     config_section = schema_full_path.strip('/')

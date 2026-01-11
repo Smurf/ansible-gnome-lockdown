@@ -104,15 +104,15 @@ def main():
     keys_spec = {
         'world-clocks': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'alarms': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'timers': {
             'type': 'str',
-            'default': "[]"
+            'default': "['']"
         },
         'geolocation': {
             'type': 'bool',
@@ -135,8 +135,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_clocks")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_clocks")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.clocks")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.clocks")
 
     schema_full_path = "/org/gnome/clocks/"
     config_section = schema_full_path.strip('/')

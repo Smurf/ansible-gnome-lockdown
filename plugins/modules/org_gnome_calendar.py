@@ -154,8 +154,8 @@ def main():
     settings_dir = "/etc/dconf/db/local.d"
     locks_dir = os.path.join(settings_dir, "locks")
 
-    settings_file_path = os.path.join(settings_dir, "00-ansible-org_gnome_calendar")
-    lock_file_path = os.path.join(locks_dir, "ansible-org_gnome_calendar")
+    settings_file_path = os.path.join(settings_dir, "00-ansible-org.gnome.calendar")
+    lock_file_path = os.path.join(locks_dir, "ansible-org.gnome.calendar")
 
     schema_full_path = "/org/gnome/calendar/"
     config_section = schema_full_path.strip('/')
