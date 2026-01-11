@@ -36,7 +36,7 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for {{ schema_id }}
   {{ module_name }}:
 {% for example in examples %}
-    {{ example | to_yaml }}
+{{ example | to_yaml | indent(4, first=True) }}
 {% endfor %}
 '''
 
@@ -54,14 +54,16 @@ def main():
     keys_spec = {
     {% for entry in entries %}
         '{{ entry.name }}': {
-            'type': '{{ entry.ansible_type }}',
-            {% if entry.ansible_type == 'str' %}
-            'default': "{{ entry.options.default }}"
-            {% elif entry.options.default == "" %}
-            'default': ''
+            {% if entry.ansible_type == "bool" %}
+            {% if entry.options.default == "True" %}
+            'default': True,
             {% else %}
-            'default': {{ entry.options.default }}
+            'default': False,
             {% endif %}
+            {% else %}
+            'default': "{{ entry.options.default }}",
+            {% endif %}
+            'type': '{{ entry.ansible_type }}',
         },
     {% endfor %}
     }
