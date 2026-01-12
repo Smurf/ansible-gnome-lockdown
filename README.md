@@ -1,3 +1,3 @@
-# Ansible Collection - local.ansible_gnome_lockdown
+# Ansible Collection - smurf.gnome_lockdown
 
-Documentation for the collection.
+This ansible collection uses auto generated python modules to allow administrators to manage settings within the Gnome desktop environment using ansible.
