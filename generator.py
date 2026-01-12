@@ -5,8 +5,8 @@ import argparse
 import subprocess
 import tempfile
 from pygvariant import GVariantValueConverter, GVariantParser, to_gschema
-from dataclasses import dataclass, field
-from typing import Any
+from dataclasses import asdict, dataclass, field, is_dataclass
+from typing import Any, Tuple
 import yaml
 
 MODULE_VERSION = "1.1.0"
@@ -42,41 +42,51 @@ class SchemaModule:
     version_added: str = MODULE_VERSION
     options: list[SchemaOption] = field(default_factory=list)
 
-
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
-    if gsettings_type == "b":
-        return "bool"
-    elif gsettings_type == "i":
-        return "int"
-    elif gsettings_type == "s":
-        return "str"
-    else:
-        print("UNKNOWN TYPE")
-        print(gsettings_type)
-        # Default to string for unknown types
-        return "str"
+    mapping = {"b": "bool", "i": "int", "s": "str", "a": "list", "d": "float"}
+    return mapping.get(gsettings_type, "str")
 
+def sanitize_description(desc:str)-> str:
+    
+    clean_description = desc.strip()
 
-# Ugh the schema is all over the place, normalize to the spec default
-def to_spec_default(key_default, key_type):
+    to_replace = {
+            "''" : "'",
+            '\u201C': '"',
+            '\u201D': '"',
+            '\u2019': '"',
+            '"': "'"}
 
-    if (key_default == "true" or key_default == "false") and key_type == "bool":
-        return bool(key_default)
+    for old, new in to_replace.items():
 
-    if key_type == "str" and key_default == '""':
-        return ""
+        clean_description = clean_description.replace(old,new) 
 
-    # Sometimes schemas have strings of "" for some reason which aren't actually emtpy
-    if key_type == "str" and key_default.startswith('"'):
-        return key_default[1:-1]  # Trim first and last char
+    clean_description = clean_description.removeprefix("'").removesuffix("'").removeprefix('"').removesuffix('"')
 
-    if key_type == "str" and key_default.startswith("["):
-        list_elems = key_default[1:-1].split(",")
-        return list_elems
+    return clean_description
 
-    return key_default
+def sanitize_default(parsed_default):
+    
+    # if it's a native str make sure we strip quotes.
+    if isinstance(parsed_default, str):
+        parsed_default = parsed_default.replace("'", "")
 
+    # Check if it's a flat tuple, turn it into a str
+    if isinstance(parsed_default, Tuple):
+        parsed_default = str(parsed_default)
+    
+    # Check if it's a list and it contains tuples. Tuples in yaml aren't really supported natively.
+    if isinstance(parsed_default, list) and any(isinstance(element, tuple) for element in parsed_default):
+        new_default = []
+        for elem in parsed_default:
+            if isinstance(elem, Tuple):
+                new_default.append(str(elem))
+            else:
+                new_default.append(elem)
+        parsed_default = new_default
+    
+    return parsed_default
 
 def parse_schema(xml_file):
     """Parses a GSettings XML schema and extracts relevant information."""
@@ -105,11 +115,10 @@ def parse_schema(xml_file):
             ansible_type = gsettings_to_ansible_type(key_type)
             default_node = key_node.find("default")
 
-            key_default = (
-                " ".join(default_node.text.strip("'").split())
-                if default_node is not None and default_node.text is not None
-                else "''"
-            )
+            if default_node is not None and default_node.text is not None:
+                key_default = " ".join(default_node.text.strip("'").split())
+            else:
+                key_default = "''"
 
             if ansible_type == "bool":
                 key_default = key_default.lower()
@@ -118,29 +127,40 @@ def parse_schema(xml_file):
                 ansible_type = "bool"
 
             summary_node = key_node.find("summary")
-            key_summary = (
-                summary_node.text.strip()
-                if summary_node is not None and summary_node.text is not None
-                else "Summary - Schema Blank"
-            )
+
+            if summary_node is not None and summary_node.text is not None:
+                key_summary = summary_node.text.strip()
+            else:
+                key_summary = "Summary - Schema Blank"
 
             description_node = key_node.find("description")
-            key_description = (
-                " ".join(description_node.text.strip().split())
-                if description_node is not None and description_node.text is not None
-                else "Description - Schema Blank"
-            )
+            if description_node is not None and description_node.text is not None:
+                key_description = sanitize_description(description_node.text)
+            else:
+                key_description = "Description - Schema Blank"
 
             converter = GVariantValueConverter()
+            parsed_default = converter.parse_value_string(key_default, key_type)
+            
+            parsed_default = sanitize_default(parsed_default)
+
+            if key_type == "a(us)":
+                print("FOUND A(US)")
+                print(f"Parsed: {parsed_default}")
+                print(f"Raw: {key_default}")
+                print(f"Is instance tuple? {isinstance(parsed_default, Tuple)}")
+                print(f"Pyyaml: {yaml.dump(parsed_default)}")
+            # Create the actual entry
+            print(type(parsed_default))
             entry_options = SchemaOption(
                 [key_summary, key_description],
                 ansible_type,
-                converter.parse_value_string(key_default, key_type),
+                parsed_default,
             )
             entry = SchemaEntry(key_name, key_type, entry_options, ansible_type)
             schema_entries.append(entry)
 
-            example = {f"{key_name}": converter.parse_value_string(key_default, key_type)}
+            example = {f"{key_name}": parsed_default}
             schema_examples.append(example)
 
         schemas.append(
@@ -155,7 +175,7 @@ def parse_schema(xml_file):
 
 
 def to_yaml(data):
-    return yaml.dump(data, sort_keys=False)
+    return yaml.safe_dump(data, sort_keys=False, default_flow_style=False)
 
 
 def generate_module(schema_data, template_file, output_dir):
@@ -164,10 +184,9 @@ def generate_module(schema_data, template_file, output_dir):
     schema_path = schema_data["path"]
     entries = schema_data["entries"]
     examples = schema_data["examples"]
-
     # Module name from schema id
     raw_module_name = schema_id
-    module_name = schema_id.replace(".", "_").lower()
+    module_name = schema_id.replace(".", "_").replace("-", "_").lower()
     # Set up Jinja2 environment
     env = Environment(
         loader=FileSystemLoader(os.path.dirname(template_file)),
@@ -175,18 +194,19 @@ def generate_module(schema_data, template_file, output_dir):
         lstrip_blocks=True,
     )
     env.filters["to_yaml"] = to_yaml
+    env.filters["repr"] = repr
     template = env.get_template(os.path.basename(template_file))
 
     # Render the template
     module_content = template.render(
-        module_name=module_name,
+        module_name=module_name.replace('-', '_'),
         raw_module_name=raw_module_name,
         schema_id=schema_id,
         schema_path=schema_path,
         entries=entries,
         examples=examples
     )
-    print(module_content)
+    #print(module_content)
     # Write the output file
     output_path = os.path.join(output_dir, module_name.replace("-", "_") + ".py")
     os.makedirs(output_dir, exist_ok=True)
@@ -278,7 +298,14 @@ if __name__ == "__main__":
             schemas = parse_schema(schema_file_to_process)
             for schema_data in schemas:
                 print(f"  Generating module for schema: {schema_data['id']}")
-                generate_module(schema_data, args.template, args.output_dir)
+                if len(schema_data['entries']) < 1:
+                    print(f"No schema entries found for {schema_data['id']}. Skipping.")
+                    continue
+                if "deprecated" not in schema_data['id']:
+                    generate_module(schema_data, args.template, args.output_dir)
+                else:
+                    print(f"Depreciated schema {schema_data['id']} found. Skipping.")
+                    continue
         except FileNotFoundError:
             print(
                 f"Warning: Schema file not found at '{schema_file_to_process}', skipping."

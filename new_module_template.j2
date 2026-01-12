@@ -50,7 +50,7 @@ import configparser
 
 def main():
     """Main function for the Ansible module."""
-
+    # We have to do gross stuff with the bools here.
     keys_spec = {
     {% for entry in entries %}
         '{{ entry.name }}': {
@@ -61,9 +61,10 @@ def main():
             'default': False,
             {% endif %}
             {% else %}
-            'default': "{{ entry.options.default }}",
+            'default': {{ entry.options.default | repr }},
             {% endif %}
-            'type': '{{ entry.ansible_type }}',
+            'type': {{ entry.ansible_type | repr }},
+            'gtype':{{ entry.gtype | repr }},
         },
     {% endfor %}
     }
