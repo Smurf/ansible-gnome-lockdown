@@ -188,6 +188,34 @@ options:
       If set to true, locks the 'logout' key to prevent user modification.
     type: bool
     default: false
+  reboot:
+    description:
+    - Reboot
+    - Binding to reboot.
+    type: str
+    default:
+    - ''
+
+  reboot_locked:
+    description:
+    - >
+      If set to true, locks the 'reboot' key to prevent user modification.
+    type: bool
+    default: false
+  shutdown:
+    description:
+    - Shut down
+    - Binding to shut down.
+    type: str
+    default:
+    - ''
+
+  shutdown_locked:
+    description:
+    - >
+      If set to true, locks the 'shutdown' key to prevent user modification.
+    type: bool
+    default: false
   previous:
     description:
     - Previous track
@@ -1446,6 +1474,12 @@ EXAMPLES = r'''
     logout:
     - <Control><Alt>Delete
 
+    reboot:
+    - ''
+
+    shutdown:
+    - ''
+
     previous:
     - ''
 
@@ -1788,6 +1822,16 @@ def main():
         },
         'logout': {
             'default': ['<Control><Alt>Delete'],
+            'type': 'str',
+            'gtype':'as',
+        },
+        'reboot': {
+            'default': [''],
+            'type': 'str',
+            'gtype':'as',
+        },
+        'shutdown': {
+            'default': [''],
             'type': 'str',
             'gtype':'as',
         },

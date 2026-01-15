@@ -217,6 +217,58 @@ options:
       If set to true, locks the 'current-tab' key to prevent user modification.
     type: bool
     default: false
+  resources-cpu-expanded:
+    description:
+    - Expand CPU section on startup
+    - Whether to expand the CPU section in the resources tab on startup.
+    type: bool
+    default: true
+
+  resources-cpu-expanded_locked:
+    description:
+    - >
+      If set to true, locks the 'resources-cpu-expanded' key to prevent user modification.
+    type: bool
+    default: false
+  resources-mem-expanded:
+    description:
+    - Expand memory section on startup
+    - Whether to expand the memory section in the resources tab on startup.
+    type: bool
+    default: true
+
+  resources-mem-expanded_locked:
+    description:
+    - >
+      If set to true, locks the 'resources-mem-expanded' key to prevent user modification.
+    type: bool
+    default: false
+  resources-net-expanded:
+    description:
+    - Expand network section on startup
+    - Whether to expand the network section in the resources tab on startup.
+    type: bool
+    default: true
+
+  resources-net-expanded_locked:
+    description:
+    - >
+      If set to true, locks the 'resources-net-expanded' key to prevent user modification.
+    type: bool
+    default: false
+  resources-disk-expanded:
+    description:
+    - Expand disks section on startup
+    - Description - Schema Blank
+    type: bool
+    default: true
+
+  resources-disk-expanded_locked:
+    description:
+    - >
+      If set to true, locks the 'resources-disk-expanded' key to prevent user modification.
+    type: bool
+    default: false
   cpu-colors:
     description:
     - CPU colors
@@ -440,6 +492,14 @@ EXAMPLES = r'''
 
     current-tab: resources
 
+    resources-cpu-expanded: true
+
+    resources-mem-expanded: true
+
+    resources-net-expanded: true
+
+    resources-disk-expanded: true
+
     cpu-colors:
     - (0, '#e01b24')
     - (1, '#ff7800')
@@ -570,6 +630,26 @@ def main():
             'default': 'resources',
             'type': 'str',
             'gtype':'s',
+        },
+        'resources-cpu-expanded': {
+            'default': False,
+            'type': 'bool',
+            'gtype':'b',
+        },
+        'resources-mem-expanded': {
+            'default': False,
+            'type': 'bool',
+            'gtype':'b',
+        },
+        'resources-net-expanded': {
+            'default': False,
+            'type': 'bool',
+            'gtype':'b',
+        },
+        'resources-disk-expanded': {
+            'default': False,
+            'type': 'bool',
+            'gtype':'b',
         },
         'cpu-colors': {
             'default': ["(0, '#e01b24')", "(1, '#ff7800')", "(2, '#f6d32d')", "(3, '#33d17a')", "(4, '#26a269')", "(5, '#62a0ea')", "(6, '#1c71d8')", "(7, '#613583')", "(8, '#9141ac')", "(9, '#c061cb')", "(10, '#ffbe6f')", "(11, '#f9f06b')", "(12, '#8ff0a4')", "(13, '#2ec27e')", "(14, '#1a5fb4')", "(15, '#c061cb')"],

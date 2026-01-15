@@ -209,7 +209,7 @@ options:
     - Default font
     - Name of the default font used by gtk+.
     type: str
-    default: Cantarell 11
+    default: Adwaita Sans 11
 
   font-name_locked:
     description:
@@ -301,7 +301,7 @@ options:
     - Document font
     - Name of the default font used for reading documents.
     type: str
-    default: Cantarell 11
+    default: Adwaita Sans 11
 
   document-font-name_locked:
     description:
@@ -314,7 +314,7 @@ options:
     - Monospace font
     - "Name of a monospaced (fixed-width) font for use in locations like\n        terminals."
     type: str
-    default: Source Code Pro 10
+    default: Adwaita Mono 11
 
   monospace-font-name_locked:
     description:
@@ -664,7 +664,7 @@ EXAMPLES = r'''
 
     gtk-key-theme: Default
 
-    font-name: Cantarell 11
+    font-name: Adwaita Sans 11
 
     avatar-directories: []
 
@@ -678,9 +678,9 @@ EXAMPLES = r'''
 
     gtk-im-module: ''
 
-    document-font-name: Cantarell 11
+    document-font-name: Adwaita Sans 11
 
-    monospace-font-name: Source Code Pro 10
+    monospace-font-name: Adwaita Mono 11
 
     menubar-accel: F10
 
@@ -812,7 +812,7 @@ def main():
             'gtype':'s',
         },
         'font-name': {
-            'default': 'Cantarell 11',
+            'default': 'Adwaita Sans 11',
             'type': 'str',
             'gtype':'s',
         },
@@ -847,12 +847,12 @@ def main():
             'gtype':'s',
         },
         'document-font-name': {
-            'default': 'Cantarell 11',
+            'default': 'Adwaita Sans 11',
             'type': 'str',
             'gtype':'s',
         },
         'monospace-font-name': {
-            'default': 'Source Code Pro 10',
+            'default': 'Adwaita Mono 11',
             'type': 'str',
             'gtype':'s',
         },
