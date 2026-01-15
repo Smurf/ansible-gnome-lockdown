@@ -244,7 +244,7 @@ options:
       \ option is set to 0. Also, this option is disabled\n        if the titlebar-uses-desktop-font\
       \ option is set to true."
     type: str
-    default: Cantarell Bold 11
+    default: Adwaita Sans Bold 11
 
   titlebar-font_locked:
     description:
@@ -378,7 +378,7 @@ EXAMPLES = r'''
 
     titlebar-uses-system-font: true
 
-    titlebar-font: Cantarell Bold 11
+    titlebar-font: Adwaita Sans Bold 11
 
     num-workspaces: 4
 
@@ -472,7 +472,7 @@ def main():
             'gtype':'b',
         },
         'titlebar-font': {
-            'default': 'Cantarell Bold 11',
+            'default': 'Adwaita Sans Bold 11',
             'type': 'str',
             'gtype':'s',
         },

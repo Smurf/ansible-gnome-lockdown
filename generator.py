@@ -8,7 +8,7 @@ from pygvariant import GVariantValueConverter, GVariantParser, to_gschema
 from dataclasses import asdict, dataclass, field, is_dataclass
 from typing import Any, Tuple
 import yaml
-
+import traceback
 MODULE_VERSION = "1.1.0"
 
 
@@ -42,51 +42,54 @@ class SchemaModule:
     version_added: str = MODULE_VERSION
     options: list[SchemaOption] = field(default_factory=list)
 
+
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
     mapping = {"b": "bool", "i": "int", "s": "str", "a": "list", "d": "float"}
     return mapping.get(gsettings_type, "str")
 
-def sanitize_description(desc:str)-> str:
-    
+
+def sanitize_description(desc: str) -> str:
+
     clean_description = desc.strip()
 
-    to_replace = {
-            "''" : "'",
-            '\u201C': '"',
-            '\u201D': '"',
-            '\u2019': '"',
-            '"': "'"}
-
+    to_replace = {"''": "'", "\u201c": '"', "\u201d": '"', "\u2019": '"', '"': "'"}
     for old, new in to_replace.items():
 
-        clean_description = clean_description.replace(old,new) 
+        clean_description = clean_description.replace(old, new)
 
-    clean_description = clean_description.removeprefix("'").removesuffix("'").removeprefix('"').removesuffix('"')
-
+    clean_description = (
+        clean_description.removeprefix("'")
+        .removesuffix("'")
+        .removeprefix('"')
+        .removesuffix('"')
+    )
     return clean_description
 
 def sanitize_default(parsed_default):
-    
+
     # if it's a native str make sure we strip quotes.
     if isinstance(parsed_default, str):
-        parsed_default = parsed_default.replace("'", "")
+        parsed_default = parsed_default.replace("'", "").strip()
 
     # Check if it's a flat tuple, turn it into a str
     if isinstance(parsed_default, Tuple):
-        parsed_default = str(parsed_default)
-    
+        parsed_default = str(parsed_default).strip()
+
     # Check if it's a list and it contains tuples. Tuples in yaml aren't really supported natively.
-    if isinstance(parsed_default, list) and any(isinstance(element, tuple) for element in parsed_default):
+    if isinstance(parsed_default, list) and any(
+        isinstance(element, tuple) for element in parsed_default
+    ):
         new_default = []
         for elem in parsed_default:
             if isinstance(elem, Tuple):
-                new_default.append(str(elem))
+                new_default.append(str(elem).strip())
             else:
                 new_default.append(elem)
         parsed_default = new_default
-    
+
     return parsed_default
+
 
 def parse_schema(xml_file):
     """Parses a GSettings XML schema and extracts relevant information."""
@@ -140,18 +143,12 @@ def parse_schema(xml_file):
                 key_description = "Description - Schema Blank"
 
             converter = GVariantValueConverter()
+            print(f"Default {key_default}")
             parsed_default = converter.parse_value_string(key_default, key_type)
-            
+
             parsed_default = sanitize_default(parsed_default)
 
-            if key_type == "a(us)":
-                print("FOUND A(US)")
-                print(f"Parsed: {parsed_default}")
-                print(f"Raw: {key_default}")
-                print(f"Is instance tuple? {isinstance(parsed_default, Tuple)}")
-                print(f"Pyyaml: {yaml.dump(parsed_default)}")
             # Create the actual entry
-            print(type(parsed_default))
             entry_options = SchemaOption(
                 [key_summary, key_description],
                 ansible_type,
@@ -199,14 +196,14 @@ def generate_module(schema_data, template_file, output_dir):
 
     # Render the template
     module_content = template.render(
-        module_name=module_name.replace('-', '_'),
+        module_name=module_name.replace("-", "_"),
         raw_module_name=raw_module_name,
         schema_id=schema_id,
         schema_path=schema_path,
         entries=entries,
-        examples=examples
+        examples=examples,
     )
-    #print(module_content)
+    # print(module_content)
     # Write the output file
     output_path = os.path.join(output_dir, module_name.replace("-", "_") + ".py")
     os.makedirs(output_dir, exist_ok=True)
@@ -298,10 +295,10 @@ if __name__ == "__main__":
             schemas = parse_schema(schema_file_to_process)
             for schema_data in schemas:
                 print(f"  Generating module for schema: {schema_data['id']}")
-                if len(schema_data['entries']) < 1:
+                if len(schema_data["entries"]) < 1:
                     print(f"No schema entries found for {schema_data['id']}. Skipping.")
                     continue
-                if "deprecated" not in schema_data['id']:
+                if "deprecated" not in schema_data["id"]:
                     generate_module(schema_data, args.template, args.output_dir)
                 else:
                     print(f"Depreciated schema {schema_data['id']} found. Skipping.")
@@ -312,7 +309,7 @@ if __name__ == "__main__":
             )
         except Exception as e:
             print(
-                f"Warning: Failed to process schema file '{schema_file_to_process}': {e}, skipping."
+                f"Warning: Failed to process schema file '{schema_file_to_process}': {traceback.print_exc()}, skipping."
             )
         finally:
             # Clean up the temporary file if one was created
