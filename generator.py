@@ -44,7 +44,7 @@ class SchemaModule:
 
 def gsettings_to_ansible_type(gsettings_type):
     """Maps GSettings type to Ansible type."""
-    mapping = {"b": "bool", "i": "int", "s": "str", "a": "list", "d": "float"}
+    mapping = {"b": "bool", "i": "int", "s": "str", "a": "list", "d": "float", "u": "int"}
     return mapping.get(gsettings_type, "str")
 
 def sanitize_description(desc:str)-> str:
