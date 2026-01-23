@@ -41,7 +41,7 @@ options:
     - "URI to use for the background image. Note that the backend only supports\n    \
       \    local (file://) URIs."
     type: str
-    default: file:///usr/share/backgrounds/gnome/adwaita-l.jxl
+    default: file:///usr/share/backgrounds/gnome/adwaita-l.jpg
 
   picture-uri_locked:
     description:
@@ -55,7 +55,7 @@ options:
     - "URI to use for the background image. Note that the backend only supports\n    \
       \    local (file://) URIs."
     type: str
-    default: file:///usr/share/backgrounds/gnome/adwaita-d.jxl
+    default: file:///usr/share/backgrounds/gnome/adwaita-d.jpg
 
   picture-uri-dark_locked:
     description:
@@ -136,9 +136,9 @@ EXAMPLES = r'''
   org_gnome_desktop_background:
     picture-options: zoom
 
-    picture-uri: file:///usr/share/backgrounds/gnome/adwaita-l.jxl
+    picture-uri: file:///usr/share/backgrounds/gnome/adwaita-l.jpg
 
-    picture-uri-dark: file:///usr/share/backgrounds/gnome/adwaita-d.jxl
+    picture-uri-dark: file:///usr/share/backgrounds/gnome/adwaita-d.jpg
 
     picture-opacity: 100
 
@@ -170,12 +170,12 @@ def main():
             'gtype':'s',
         },
         'picture-uri': {
-            'default': 'file:///usr/share/backgrounds/gnome/adwaita-l.jxl',
+            'default': 'file:///usr/share/backgrounds/gnome/adwaita-l.jpg',
             'type': 'str',
             'gtype':'s',
         },
         'picture-uri-dark': {
-            'default': 'file:///usr/share/backgrounds/gnome/adwaita-d.jxl',
+            'default': 'file:///usr/share/backgrounds/gnome/adwaita-d.jpg',
             'type': 'str',
             'gtype':'s',
         },

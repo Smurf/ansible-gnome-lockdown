@@ -64,7 +64,7 @@ options:
     - Weather Service Configuration
     - Whether weather reports are shown, automatic locations are used and a location-name
     type: str
-    default: (True, True, 'r', 'u', 'e')
+    default: (True, True, 'r', 'u')
 
   weather-settings_locked:
     description:
@@ -96,7 +96,7 @@ EXAMPLES = r'''
 
     active-view: month
 
-    weather-settings: (True, True, 'r', 'u', 'e')
+    weather-settings: (True, True, 'r', 'u')
 
     week-view-zoom-level: 1.0
 
@@ -130,7 +130,7 @@ def main():
             'gtype':'s',
         },
         'weather-settings': {
-            'default': "(True, True, 'r', 'u', 'e')",
+            'default': "(True, True, 'r', 'u')",
             'type': 'str',
             'gtype':'(bbsmv)',
         },

@@ -28,7 +28,7 @@ options:
       \ 'Windows key' on PC hardware.\n\n        It's expected that this binding either\
       \ the default or set to\n        the empty string."
     type: str
-    default: Super_L
+    default: Super
 
   overlay-key_locked:
     description:
@@ -144,7 +144,7 @@ options:
     - "When true, the new windows will always be put in the center of the\n        active\
       \ screen of the monitor."
     type: bool
-    default: false
+    default: true
 
   center-new-windows_locked:
     description:
@@ -184,7 +184,7 @@ options:
       \                                        when 'scale-monitor-framebuffer' is\n \
       \                                       enabled as well."
     type: str
-    default: '[scale-monitor-framebuffer, xwayland-native-scaling]'
+    default: '[]'
 
   experimental-features_locked:
     description:
@@ -219,12 +219,28 @@ options:
       If set to true, locks the 'check-alive-timeout' key to prevent user modification.
     type: bool
     default: false
+  output-luminance:
+    description:
+    - Per output luminance settings
+    - "Per output and color mode luminance setting. Each entry consists of a\n       \
+      \ tuple with connector, vendor, product, serial, and a color mode, as well\n   \
+      \     as an associated floating point value representing the output luminance\n\
+      \        in percent (%). The default when not specified is 100%."
+    type: str
+    default: []
+
+  output-luminance_locked:
+    description:
+    - >
+      If set to true, locks the 'output-luminance' key to prevent user modification.
+    type: bool
+    default: false
 '''
 
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.mutter
   org_gnome_mutter:
-    overlay-key: Super_L
+    overlay-key: Super
 
     attach-modal-dialogs: false
 
@@ -240,13 +256,15 @@ EXAMPLES = r'''
 
     auto-maximize: true
 
-    center-new-windows: false
+    center-new-windows: true
 
-    experimental-features: '[scale-monitor-framebuffer, xwayland-native-scaling]'
+    experimental-features: '[]'
 
     locate-pointer-key: Control_L
 
     check-alive-timeout: 5000
+
+    output-luminance: []
 
 '''
 
@@ -263,7 +281,7 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'overlay-key': {
-            'default': 'Super_L',
+            'default': 'Super',
             'type': 'str',
             'gtype':'s',
         },
@@ -308,7 +326,7 @@ def main():
             'gtype':'b',
         },
         'experimental-features': {
-            'default': '[scale-monitor-framebuffer, xwayland-native-scaling]',
+            'default': '[]',
             'type': 'str',
             'gtype':'s',
         },
@@ -321,6 +339,11 @@ def main():
             'default': 5000,
             'type': 'str',
             'gtype':'u',
+        },
+        'output-luminance': {
+            'default': [],
+            'type': 'str',
+            'gtype':'a(ssssud)',
         },
     }
 
