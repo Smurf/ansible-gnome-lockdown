@@ -4,6 +4,7 @@
 # Copyright (c) 2023, Jules
 # All rights reserved.
 
+from pygvariant import GVariantSerializer, GVariantValueConverter
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
@@ -308,7 +309,7 @@ def main():
     new_settings = configparser.ConfigParser()
     new_settings.add_section(config_section)
     new_locks = []
-
+    gvariant_converter = GVariantValueConverter()
     for key_name, spec in keys_spec.items():
         param_value = module.params[key_name]
         param_locked = module.params[f"{key_name}_locked"]
@@ -319,8 +320,9 @@ def main():
             setting_value = f'{param_value}'
         else:
             setting_value = str(param_value)
-
-        new_settings.set(config_section, key_name, setting_value)
+        
+        new_value = gvariant_converter.parse_value_string(setting_value, spec['gtype'])
+        new_settings.set(config_section, key_name, new_value)
 
         if param_locked:
             new_locks.append(f"{schema_full_path}{key_name}")
