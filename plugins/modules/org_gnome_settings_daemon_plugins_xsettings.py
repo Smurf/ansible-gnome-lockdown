@@ -55,7 +55,7 @@ options:
       strings, signed int32s or (in the case of colors), 4-tuples of uint16 (red, green,
       blue, alpha; 65535 is fully opaque).
     type: str
-    default: []
+    default: {}
 
   overrides_locked:
     description:
@@ -72,7 +72,7 @@ EXAMPLES = r'''
 
     enabled-gtk-modules: []
 
-    overrides: []
+    overrides: {}
 
 '''
 
@@ -99,7 +99,7 @@ def main():
             'gtype':'as',
         },
         'overrides': {
-            'default': [],
+            'default': {},
             'type': 'str',
             'gtype':'a{sv}',
         },

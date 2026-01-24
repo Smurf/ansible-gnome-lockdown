@@ -24,7 +24,7 @@ options:
     description:
     - The duration a display profile is valid
     - This is the number of days after which the display color profile is considered invalid.
-    type: str
+    type: int
     default: 0
 
   recalibrate-display-threshold_locked:
@@ -37,7 +37,7 @@ options:
     description:
     - The duration a printer profile is valid
     - This is the number of days after which the printer color profile is considered invalid.
-    type: str
+    type: int
     default: 0
 
   recalibrate-printer-threshold_locked:
@@ -65,7 +65,7 @@ options:
     - Temperature of the display when enabled
     - This temperature in Kelvin is used to modify the screen tones when night light mode
       is enabled. Higher values are bluer, lower redder.
-    type: str
+    type: int
     default: 2700
 
   night-light-temperature_locked:
@@ -166,12 +166,12 @@ def main():
     keys_spec = {
         'recalibrate-display-threshold': {
             'default': 0,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'recalibrate-printer-threshold': {
             'default': 0,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'night-light-enabled': {
@@ -181,7 +181,7 @@ def main():
         },
         'night-light-temperature': {
             'default': 2700,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'night-light-schedule-automatic': {

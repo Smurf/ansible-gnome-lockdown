@@ -117,19 +117,6 @@ options:
       If set to true, locks the 'banner-message-enable' key to prevent user modification.
     type: bool
     default: false
-  banner-message-source:
-    description:
-    - Banner message source
-    - The source of the text banner message on the login screen.
-    type: str
-    default: settings
-
-  banner-message-source_locked:
-    description:
-    - >
-      If set to true, locks the 'banner-message-source' key to prevent user modification.
-    type: bool
-    default: false
   banner-message-text:
     description:
     - Banner message text
@@ -141,19 +128,6 @@ options:
     description:
     - >
       If set to true, locks the 'banner-message-text' key to prevent user modification.
-    type: bool
-    default: false
-  banner-message-path:
-    description:
-    - Banner message path
-    - Path to text file with banner message to show in the login window.
-    type: str
-    default: ''
-
-  banner-message-path_locked:
-    description:
-    - >
-      If set to true, locks the 'banner-message-path' key to prevent user modification.
     type: bool
     default: false
   disable-restart-buttons:
@@ -202,11 +176,7 @@ EXAMPLES = r'''
 
     banner-message-enable: false
 
-    banner-message-source: settings
-
     banner-message-text: ''
-
-    banner-message-path: ''
 
     disable-restart-buttons: false
 
@@ -261,17 +231,7 @@ def main():
             'type': 'bool',
             'gtype':'b',
         },
-        'banner-message-source': {
-            'default': 'settings',
-            'type': 'str',
-            'gtype':'s',
-        },
         'banner-message-text': {
-            'default': '',
-            'type': 'str',
-            'gtype':'s',
-        },
-        'banner-message-path': {
             'default': '',
             'type': 'str',
             'gtype':'s',

@@ -29,7 +29,7 @@ options:
       \ using the 'resize-with-right-button' key. Modifier is\n        expressed as '<Alt>'\
       \ or '<Super>' for example."
     type: str
-    default: <Super>
+    default: Super
 
   mouse-button-modifier_locked:
     description:
@@ -244,7 +244,7 @@ options:
       \ option is set to 0. Also, this option is disabled\n        if the titlebar-uses-desktop-font\
       \ option is set to true."
     type: str
-    default: Adwaita Sans Bold 11
+    default: Cantarell Bold 11
 
   titlebar-font_locked:
     description:
@@ -352,7 +352,7 @@ options:
 EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.desktop.wm.preferences
   org_gnome_desktop_wm_preferences:
-    mouse-button-modifier: <Super>
+    mouse-button-modifier: Super
 
     resize-with-right-button: false
 
@@ -378,7 +378,7 @@ EXAMPLES = r'''
 
     titlebar-uses-system-font: true
 
-    titlebar-font: Adwaita Sans Bold 11
+    titlebar-font: Cantarell Bold 11
 
     num-workspaces: 4
 
@@ -407,7 +407,7 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'mouse-button-modifier': {
-            'default': '<Super>',
+            'default': 'Super',
             'type': 'str',
             'gtype':'s',
         },
@@ -472,7 +472,7 @@ def main():
             'gtype':'b',
         },
         'titlebar-font': {
-            'default': 'Adwaita Sans Bold 11',
+            'default': 'Cantarell Bold 11',
             'type': 'str',
             'gtype':'s',
         },

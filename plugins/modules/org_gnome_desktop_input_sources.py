@@ -27,7 +27,7 @@ options:
       \ one in effect. The value is automatically capped\n        to remain in the range\
       \ [0, sources_length) as long as the\n        sources list isn't empty.\n\n    \
       \    DEPRECATED: This key is deprecated and ignored."
-    type: str
+    type: int
     default: 0
 
   current_locked:
@@ -159,7 +159,7 @@ def main():
     keys_spec = {
         'current': {
             'default': 0,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'sources': {

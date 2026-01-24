@@ -209,7 +209,7 @@ options:
     - Default font
     - Name of the default font used by gtk+.
     type: str
-    default: Adwaita Sans 11
+    default: Cantarell 11
 
   font-name_locked:
     description:
@@ -248,7 +248,7 @@ options:
     - Window scaling factor
     - "Integer factor used to scale windows by. For use on high-dpi screens.\n       \
       \ 0 means pick automatically based on monitor."
-    type: str
+    type: int
     default: 0
 
   scaling-factor_locked:
@@ -301,7 +301,7 @@ options:
     - Document font
     - Name of the default font used for reading documents.
     type: str
-    default: Adwaita Sans 11
+    default: Cantarell 11
 
   document-font-name_locked:
     description:
@@ -314,7 +314,7 @@ options:
     - Monospace font
     - "Name of a monospaced (fixed-width) font for use in locations like\n        terminals."
     type: str
-    default: Adwaita Mono 11
+    default: Source Code Pro 10
 
   monospace-font-name_locked:
     description:
@@ -664,7 +664,7 @@ EXAMPLES = r'''
 
     gtk-key-theme: Default
 
-    font-name: Adwaita Sans 11
+    font-name: Cantarell 11
 
     avatar-directories: []
 
@@ -678,9 +678,9 @@ EXAMPLES = r'''
 
     gtk-im-module: ''
 
-    document-font-name: Adwaita Sans 11
+    document-font-name: Cantarell 11
 
-    monospace-font-name: Adwaita Mono 11
+    monospace-font-name: Source Code Pro 10
 
     menubar-accel: F10
 
@@ -812,7 +812,7 @@ def main():
             'gtype':'s',
         },
         'font-name': {
-            'default': 'Adwaita Sans 11',
+            'default': 'Cantarell 11',
             'type': 'str',
             'gtype':'s',
         },
@@ -828,7 +828,7 @@ def main():
         },
         'scaling-factor': {
             'default': 0,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'gtk-im-preedit-style': {
@@ -847,12 +847,12 @@ def main():
             'gtype':'s',
         },
         'document-font-name': {
-            'default': 'Adwaita Sans 11',
+            'default': 'Cantarell 11',
             'type': 'str',
             'gtype':'s',
         },
         'monospace-font-name': {
-            'default': 'Adwaita Mono 11',
+            'default': 'Source Code Pro 10',
             'type': 'str',
             'gtype':'s',
         },

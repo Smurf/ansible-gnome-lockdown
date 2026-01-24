@@ -26,7 +26,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Left
+    - SuperLeft
 
   toggle-tiled-left_locked:
     description:
@@ -40,7 +40,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Right
+    - SuperRight
 
   toggle-tiled-right_locked:
     description:
@@ -54,7 +54,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>p
+    - Superp
     - XF86Display
 
   switch-monitor_locked:
@@ -83,7 +83,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Escape
+    - SuperShiftEscape
 
   cancel-input-capture_locked:
     description:
@@ -97,20 +97,20 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.mutter.keybindings
   org_gnome_mutter_keybindings:
     toggle-tiled-left:
-    - <Super>Left
+    - SuperLeft
 
     toggle-tiled-right:
-    - <Super>Right
+    - SuperRight
 
     switch-monitor:
-    - <Super>p
+    - Superp
     - XF86Display
 
     rotate-monitor:
     - XF86RotateWindows
 
     cancel-input-capture:
-    - <Super><Shift>Escape
+    - SuperShiftEscape
 
 '''
 
@@ -127,17 +127,17 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'toggle-tiled-left': {
-            'default': ['<Super>Left'],
+            'default': ['SuperLeft'],
             'type': 'str',
             'gtype':'as',
         },
         'toggle-tiled-right': {
-            'default': ['<Super>Right'],
+            'default': ['SuperRight'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-monitor': {
-            'default': ['<Super>p', 'XF86Display'],
+            'default': ['Superp', 'XF86Display'],
             'type': 'str',
             'gtype':'as',
         },
@@ -147,7 +147,7 @@ def main():
             'gtype':'as',
         },
         'cancel-input-capture': {
-            'default': ['<Super><Shift>Escape'],
+            'default': ['SuperShiftEscape'],
             'type': 'str',
             'gtype':'as',
         },

@@ -79,7 +79,7 @@ options:
     description:
     - Number of days to keep trash and temporary files
     - "Consider trash and temporary files old after\n      this many days."
-    type: str
+    type: int
     default: 30
 
   old-files-age_locked:
@@ -310,7 +310,7 @@ def main():
         },
         'old-files-age': {
             'default': 30,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'remember-recent-files': {

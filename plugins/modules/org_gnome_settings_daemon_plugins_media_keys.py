@@ -96,7 +96,7 @@ options:
     type: str
     default:
     - ''
-    - <Super>F1
+    - SuperF1
 
   help_locked:
     description:
@@ -180,40 +180,12 @@ options:
     - Binding to log out.
     type: str
     default:
-    - <Control><Alt>Delete
+    - ControlAltDelete
 
   logout_locked:
     description:
     - >
       If set to true, locks the 'logout' key to prevent user modification.
-    type: bool
-    default: false
-  reboot:
-    description:
-    - Reboot
-    - Binding to reboot.
-    type: str
-    default:
-    - ''
-
-  reboot_locked:
-    description:
-    - >
-      If set to true, locks the 'reboot' key to prevent user modification.
-    type: bool
-    default: false
-  shutdown:
-    description:
-    - Shut down
-    - Binding to shut down.
-    type: str
-    default:
-    - ''
-
-  shutdown_locked:
-    description:
-    - >
-      If set to true, locks the 'shutdown' key to prevent user modification.
     type: bool
     default: false
   previous:
@@ -236,7 +208,7 @@ options:
     - Binding to lock the screen.
     type: str
     default:
-    - <Super>l
+    - Superl
 
   screensaver_locked:
     description:
@@ -431,7 +403,7 @@ options:
     - Binding to start the screen reader
     type: str
     default:
-    - <Alt><Super>s
+    - AltSupers
 
   screenreader_locked:
     description:
@@ -501,7 +473,7 @@ options:
     - Binding to show the screen magnifier
     type: str
     default:
-    - <Alt><Super>8
+    - AltSuper8
 
   magnifier_locked:
     description:
@@ -515,7 +487,7 @@ options:
     - Binding for the magnifier to zoom in
     type: str
     default:
-    - <Alt><Super>equal
+    - AltSuperequal
 
   magnifier-zoom-in_locked:
     description:
@@ -529,7 +501,7 @@ options:
     - Binding for the magnifier to zoom out
     type: str
     default:
-    - <Alt><Super>minus
+    - AltSuperminus
 
   magnifier-zoom-out_locked:
     description:
@@ -908,7 +880,7 @@ options:
     type: str
     default:
     - XF86AudioNext
-    - <Ctrl>XF86AudioNext
+    - CtrlXF86AudioNext
 
   next-static_locked:
     description:
@@ -937,7 +909,7 @@ options:
     type: str
     default:
     - XF86AudioPlay
-    - <Ctrl>XF86AudioPlay
+    - CtrlXF86AudioPlay
 
   play-static_locked:
     description:
@@ -952,7 +924,7 @@ options:
     type: str
     default:
     - XF86AudioPrev
-    - <Ctrl>XF86AudioPrev
+    - CtrlXF86AudioPrev
 
   previous-static_locked:
     description:
@@ -1009,7 +981,7 @@ options:
     type: str
     default:
     - XF86AudioLowerVolume
-    - <Ctrl>XF86AudioLowerVolume
+    - CtrlXF86AudioLowerVolume
 
   volume-down-static_locked:
     description:
@@ -1038,7 +1010,7 @@ options:
     type: str
     default:
     - XF86AudioRaiseVolume
-    - <Ctrl>XF86AudioRaiseVolume
+    - CtrlXF86AudioRaiseVolume
 
   volume-up-static_locked:
     description:
@@ -1052,8 +1024,8 @@ options:
     - Static binding to lower the volume without emitting a sound effect.
     type: str
     default:
-    - <Alt>XF86AudioLowerVolume
-    - <Alt><Ctrl>XF86AudioLowerVolume
+    - AltXF86AudioLowerVolume
+    - AltCtrlXF86AudioLowerVolume
 
   volume-down-quiet-static_locked:
     description:
@@ -1067,7 +1039,7 @@ options:
     - Static binding to mute/unmute the volume.
     type: str
     default:
-    - <Alt>XF86AudioMute
+    - AltXF86AudioMute
 
   volume-mute-quiet-static_locked:
     description:
@@ -1081,8 +1053,8 @@ options:
     - Static binding to raise the volume without emitting a sound effect.
     type: str
     default:
-    - <Alt>XF86AudioRaiseVolume
-    - <Alt><Ctrl>XF86AudioRaiseVolume
+    - AltXF86AudioRaiseVolume
+    - AltCtrlXF86AudioRaiseVolume
 
   volume-up-quiet-static_locked:
     description:
@@ -1096,8 +1068,8 @@ options:
     - Static binding to lower the volume with higher precision.
     type: str
     default:
-    - <Shift>XF86AudioLowerVolume
-    - <Ctrl><Shift>XF86AudioLowerVolume
+    - ShiftXF86AudioLowerVolume
+    - CtrlShiftXF86AudioLowerVolume
 
   volume-down-precise-static_locked:
     description:
@@ -1111,8 +1083,8 @@ options:
     - Static binding to raise the volume with higher precision.
     type: str
     default:
-    - <Shift>XF86AudioRaiseVolume
-    - <Ctrl><Shift>XF86AudioRaiseVolume
+    - ShiftXF86AudioRaiseVolume
+    - CtrlShiftXF86AudioRaiseVolume
 
   volume-up-precise-static_locked:
     description:
@@ -1155,7 +1127,7 @@ options:
     type: str
     default:
     - XF86TouchpadToggle
-    - <Ctrl><Super>XF86TouchpadToggle
+    - CtrlSuperXF86TouchpadToggle
 
   touchpad-toggle-static_locked:
     description:
@@ -1253,7 +1225,7 @@ options:
     - Static binding to toggle automatic screen orientation.
     type: str
     default:
-    - <Super>o
+    - Supero
     - XF86RotationLockToggle
 
   rotate-video-lock-static_locked:
@@ -1454,7 +1426,7 @@ EXAMPLES = r'''
 
     help:
     - ''
-    - <Super>F1
+    - SuperF1
 
     home:
     - ''
@@ -1472,19 +1444,13 @@ EXAMPLES = r'''
     - ''
 
     logout:
-    - <Control><Alt>Delete
-
-    reboot:
-    - ''
-
-    shutdown:
-    - ''
+    - ControlAltDelete
 
     previous:
     - ''
 
     screensaver:
-    - <Super>l
+    - Superl
 
     search:
     - ''
@@ -1525,7 +1491,7 @@ EXAMPLES = r'''
     - ''
 
     screenreader:
-    - <Alt><Super>s
+    - AltSupers
 
     on-screen-keyboard:
     - ''
@@ -1540,13 +1506,13 @@ EXAMPLES = r'''
     - ''
 
     magnifier:
-    - <Alt><Super>8
+    - AltSuper8
 
     magnifier-zoom-in:
-    - <Alt><Super>equal
+    - AltSuperequal
 
     magnifier-zoom-out:
-    - <Alt><Super>minus
+    - AltSuperminus
 
     touchpad-toggle:
     - ''
@@ -1628,18 +1594,18 @@ EXAMPLES = r'''
 
     next-static:
     - XF86AudioNext
-    - <Ctrl>XF86AudioNext
+    - CtrlXF86AudioNext
 
     pause-static:
     - XF86AudioPause
 
     play-static:
     - XF86AudioPlay
-    - <Ctrl>XF86AudioPlay
+    - CtrlXF86AudioPlay
 
     previous-static:
     - XF86AudioPrev
-    - <Ctrl>XF86AudioPrev
+    - CtrlXF86AudioPrev
 
     screensaver-static:
     - XF86ScreenSaver
@@ -1652,33 +1618,33 @@ EXAMPLES = r'''
 
     volume-down-static:
     - XF86AudioLowerVolume
-    - <Ctrl>XF86AudioLowerVolume
+    - CtrlXF86AudioLowerVolume
 
     volume-mute-static:
     - XF86AudioMute
 
     volume-up-static:
     - XF86AudioRaiseVolume
-    - <Ctrl>XF86AudioRaiseVolume
+    - CtrlXF86AudioRaiseVolume
 
     volume-down-quiet-static:
-    - <Alt>XF86AudioLowerVolume
-    - <Alt><Ctrl>XF86AudioLowerVolume
+    - AltXF86AudioLowerVolume
+    - AltCtrlXF86AudioLowerVolume
 
     volume-mute-quiet-static:
-    - <Alt>XF86AudioMute
+    - AltXF86AudioMute
 
     volume-up-quiet-static:
-    - <Alt>XF86AudioRaiseVolume
-    - <Alt><Ctrl>XF86AudioRaiseVolume
+    - AltXF86AudioRaiseVolume
+    - AltCtrlXF86AudioRaiseVolume
 
     volume-down-precise-static:
-    - <Shift>XF86AudioLowerVolume
-    - <Ctrl><Shift>XF86AudioLowerVolume
+    - ShiftXF86AudioLowerVolume
+    - CtrlShiftXF86AudioLowerVolume
 
     volume-up-precise-static:
-    - <Shift>XF86AudioRaiseVolume
-    - <Ctrl><Shift>XF86AudioRaiseVolume
+    - ShiftXF86AudioRaiseVolume
+    - CtrlShiftXF86AudioRaiseVolume
 
     mic-mute-static:
     - XF86AudioMicMute
@@ -1688,7 +1654,7 @@ EXAMPLES = r'''
 
     touchpad-toggle-static:
     - XF86TouchpadToggle
-    - <Ctrl><Super>XF86TouchpadToggle
+    - CtrlSuperXF86TouchpadToggle
 
     touchpad-on-static:
     - XF86TouchpadOn
@@ -1709,7 +1675,7 @@ EXAMPLES = r'''
     - XF86AudioRandomPlay
 
     rotate-video-lock-static:
-    - <Super>o
+    - Supero
     - XF86RotationLockToggle
 
     power-static:
@@ -1791,7 +1757,7 @@ def main():
             'gtype':'as',
         },
         'help': {
-            'default': ['', '<Super>F1'],
+            'default': ['', 'SuperF1'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1821,17 +1787,7 @@ def main():
             'gtype':'as',
         },
         'logout': {
-            'default': ['<Control><Alt>Delete'],
-            'type': 'str',
-            'gtype':'as',
-        },
-        'reboot': {
-            'default': [''],
-            'type': 'str',
-            'gtype':'as',
-        },
-        'shutdown': {
-            'default': [''],
+            'default': ['ControlAltDelete'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1841,7 +1797,7 @@ def main():
             'gtype':'as',
         },
         'screensaver': {
-            'default': ['<Super>l'],
+            'default': ['Superl'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1911,7 +1867,7 @@ def main():
             'gtype':'as',
         },
         'screenreader': {
-            'default': ['<Alt><Super>s'],
+            'default': ['AltSupers'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1936,17 +1892,17 @@ def main():
             'gtype':'as',
         },
         'magnifier': {
-            'default': ['<Alt><Super>8'],
+            'default': ['AltSuper8'],
             'type': 'str',
             'gtype':'as',
         },
         'magnifier-zoom-in': {
-            'default': ['<Alt><Super>equal'],
+            'default': ['AltSuperequal'],
             'type': 'str',
             'gtype':'as',
         },
         'magnifier-zoom-out': {
-            'default': ['<Alt><Super>minus'],
+            'default': ['AltSuperminus'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2081,7 +2037,7 @@ def main():
             'gtype':'as',
         },
         'next-static': {
-            'default': ['XF86AudioNext', '<Ctrl>XF86AudioNext'],
+            'default': ['XF86AudioNext', 'CtrlXF86AudioNext'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2091,12 +2047,12 @@ def main():
             'gtype':'as',
         },
         'play-static': {
-            'default': ['XF86AudioPlay', '<Ctrl>XF86AudioPlay'],
+            'default': ['XF86AudioPlay', 'CtrlXF86AudioPlay'],
             'type': 'str',
             'gtype':'as',
         },
         'previous-static': {
-            'default': ['XF86AudioPrev', '<Ctrl>XF86AudioPrev'],
+            'default': ['XF86AudioPrev', 'CtrlXF86AudioPrev'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2116,7 +2072,7 @@ def main():
             'gtype':'as',
         },
         'volume-down-static': {
-            'default': ['XF86AudioLowerVolume', '<Ctrl>XF86AudioLowerVolume'],
+            'default': ['XF86AudioLowerVolume', 'CtrlXF86AudioLowerVolume'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2126,32 +2082,32 @@ def main():
             'gtype':'as',
         },
         'volume-up-static': {
-            'default': ['XF86AudioRaiseVolume', '<Ctrl>XF86AudioRaiseVolume'],
+            'default': ['XF86AudioRaiseVolume', 'CtrlXF86AudioRaiseVolume'],
             'type': 'str',
             'gtype':'as',
         },
         'volume-down-quiet-static': {
-            'default': ['<Alt>XF86AudioLowerVolume', '<Alt><Ctrl>XF86AudioLowerVolume'],
+            'default': ['AltXF86AudioLowerVolume', 'AltCtrlXF86AudioLowerVolume'],
             'type': 'str',
             'gtype':'as',
         },
         'volume-mute-quiet-static': {
-            'default': ['<Alt>XF86AudioMute'],
+            'default': ['AltXF86AudioMute'],
             'type': 'str',
             'gtype':'as',
         },
         'volume-up-quiet-static': {
-            'default': ['<Alt>XF86AudioRaiseVolume', '<Alt><Ctrl>XF86AudioRaiseVolume'],
+            'default': ['AltXF86AudioRaiseVolume', 'AltCtrlXF86AudioRaiseVolume'],
             'type': 'str',
             'gtype':'as',
         },
         'volume-down-precise-static': {
-            'default': ['<Shift>XF86AudioLowerVolume', '<Ctrl><Shift>XF86AudioLowerVolume'],
+            'default': ['ShiftXF86AudioLowerVolume', 'CtrlShiftXF86AudioLowerVolume'],
             'type': 'str',
             'gtype':'as',
         },
         'volume-up-precise-static': {
-            'default': ['<Shift>XF86AudioRaiseVolume', '<Ctrl><Shift>XF86AudioRaiseVolume'],
+            'default': ['ShiftXF86AudioRaiseVolume', 'CtrlShiftXF86AudioRaiseVolume'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2166,7 +2122,7 @@ def main():
             'gtype':'as',
         },
         'touchpad-toggle-static': {
-            'default': ['XF86TouchpadToggle', '<Ctrl><Super>XF86TouchpadToggle'],
+            'default': ['XF86TouchpadToggle', 'CtrlSuperXF86TouchpadToggle'],
             'type': 'str',
             'gtype':'as',
         },
@@ -2201,7 +2157,7 @@ def main():
             'gtype':'as',
         },
         'rotate-video-lock-static': {
-            'default': ['<Super>o', 'XF86RotationLockToggle'],
+            'default': ['Supero', 'XF86RotationLockToggle'],
             'type': 'str',
             'gtype':'as',
         },

@@ -77,7 +77,7 @@ options:
     description:
     - Logo border
     - The border around the logo
-    type: str
+    type: int
     default: 50
 
   logo-border_locked:
@@ -90,7 +90,7 @@ options:
     description:
     - Logo opacity
     - The opacity of the logo
-    type: str
+    type: int
     default: 255
 
   logo-opacity_locked:
@@ -167,12 +167,12 @@ def main():
         },
         'logo-border': {
             'default': 50,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'logo-opacity': {
             'default': 255,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'logo-always-visible': {

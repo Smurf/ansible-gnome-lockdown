@@ -26,7 +26,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F1
+    - PrimaryAltF1
 
   switch-to-session-1_locked:
     description:
@@ -40,7 +40,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F2
+    - PrimaryAltF2
 
   switch-to-session-2_locked:
     description:
@@ -54,7 +54,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F3
+    - PrimaryAltF3
 
   switch-to-session-3_locked:
     description:
@@ -68,7 +68,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F4
+    - PrimaryAltF4
 
   switch-to-session-4_locked:
     description:
@@ -82,7 +82,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F5
+    - PrimaryAltF5
 
   switch-to-session-5_locked:
     description:
@@ -96,7 +96,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F6
+    - PrimaryAltF6
 
   switch-to-session-6_locked:
     description:
@@ -110,7 +110,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F7
+    - PrimaryAltF7
 
   switch-to-session-7_locked:
     description:
@@ -124,7 +124,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F8
+    - PrimaryAltF8
 
   switch-to-session-8_locked:
     description:
@@ -138,7 +138,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F9
+    - PrimaryAltF9
 
   switch-to-session-9_locked:
     description:
@@ -152,7 +152,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F10
+    - PrimaryAltF10
 
   switch-to-session-10_locked:
     description:
@@ -166,7 +166,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F11
+    - PrimaryAltF11
 
   switch-to-session-11_locked:
     description:
@@ -180,7 +180,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Primary><Alt>F12
+    - PrimaryAltF12
 
   switch-to-session-12_locked:
     description:
@@ -194,7 +194,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Escape
+    - SuperEscape
 
   restore-shortcuts_locked:
     description:
@@ -208,43 +208,43 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.mutter.wayland.keybindings
   org_gnome_mutter_wayland_keybindings:
     switch-to-session-1:
-    - <Primary><Alt>F1
+    - PrimaryAltF1
 
     switch-to-session-2:
-    - <Primary><Alt>F2
+    - PrimaryAltF2
 
     switch-to-session-3:
-    - <Primary><Alt>F3
+    - PrimaryAltF3
 
     switch-to-session-4:
-    - <Primary><Alt>F4
+    - PrimaryAltF4
 
     switch-to-session-5:
-    - <Primary><Alt>F5
+    - PrimaryAltF5
 
     switch-to-session-6:
-    - <Primary><Alt>F6
+    - PrimaryAltF6
 
     switch-to-session-7:
-    - <Primary><Alt>F7
+    - PrimaryAltF7
 
     switch-to-session-8:
-    - <Primary><Alt>F8
+    - PrimaryAltF8
 
     switch-to-session-9:
-    - <Primary><Alt>F9
+    - PrimaryAltF9
 
     switch-to-session-10:
-    - <Primary><Alt>F10
+    - PrimaryAltF10
 
     switch-to-session-11:
-    - <Primary><Alt>F11
+    - PrimaryAltF11
 
     switch-to-session-12:
-    - <Primary><Alt>F12
+    - PrimaryAltF12
 
     restore-shortcuts:
-    - <Super>Escape
+    - SuperEscape
 
 '''
 
@@ -261,67 +261,67 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'switch-to-session-1': {
-            'default': ['<Primary><Alt>F1'],
+            'default': ['PrimaryAltF1'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-2': {
-            'default': ['<Primary><Alt>F2'],
+            'default': ['PrimaryAltF2'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-3': {
-            'default': ['<Primary><Alt>F3'],
+            'default': ['PrimaryAltF3'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-4': {
-            'default': ['<Primary><Alt>F4'],
+            'default': ['PrimaryAltF4'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-5': {
-            'default': ['<Primary><Alt>F5'],
+            'default': ['PrimaryAltF5'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-6': {
-            'default': ['<Primary><Alt>F6'],
+            'default': ['PrimaryAltF6'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-7': {
-            'default': ['<Primary><Alt>F7'],
+            'default': ['PrimaryAltF7'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-8': {
-            'default': ['<Primary><Alt>F8'],
+            'default': ['PrimaryAltF8'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-9': {
-            'default': ['<Primary><Alt>F9'],
+            'default': ['PrimaryAltF9'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-10': {
-            'default': ['<Primary><Alt>F10'],
+            'default': ['PrimaryAltF10'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-11': {
-            'default': ['<Primary><Alt>F11'],
+            'default': ['PrimaryAltF11'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-session-12': {
-            'default': ['<Primary><Alt>F12'],
+            'default': ['PrimaryAltF12'],
             'type': 'str',
             'gtype':'as',
         },
         'restore-shortcuts': {
-            'default': ['<Super>Escape'],
+            'default': ['SuperEscape'],
             'type': 'str',
             'gtype':'as',
         },

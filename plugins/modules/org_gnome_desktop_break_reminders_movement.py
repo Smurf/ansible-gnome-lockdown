@@ -24,7 +24,7 @@ options:
     description:
     - Time between breaks
     - The time between rest breaks, in seconds.
-    type: str
+    type: int
     default: 1800
 
   interval-seconds_locked:
@@ -37,7 +37,7 @@ options:
     description:
     - Duration of each break
     - The duration of each rest break, in seconds.
-    type: str
+    type: int
     default: 300
 
   duration-seconds_locked:
@@ -50,7 +50,7 @@ options:
     description:
     - Amount to delay break if requested
     - The amount to delay taking the break by, if the user requests a delay, in seconds.
-    type: str
+    type: int
     default: 180
 
   delay-seconds_locked:
@@ -191,17 +191,17 @@ def main():
     keys_spec = {
         'interval-seconds': {
             'default': 1800,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'duration-seconds': {
             'default': 300,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'delay-seconds': {
             'default': 180,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'fade-screen': {

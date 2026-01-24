@@ -52,7 +52,7 @@ options:
     description:
     - Time before locking
     - The number of seconds after screensaver activation before locking the screen.
-    type: str
+    type: int
     default: 0
 
   lock-delay_locked:
@@ -127,7 +127,7 @@ options:
     - "The number of seconds after the screensaver activation before a logout option will\
       \ appear in the unlock dialog. This key has effect only if the 'logout_enable' key\
       \ is set to TRUE.\n\n        DEPRECATED: This key is deprecated and ignored"
-    type: str
+    type: int
     default: 7200
 
   logout-delay_locked:
@@ -326,7 +326,7 @@ def main():
         },
         'lock-delay': {
             'default': 0,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'show-full-name-in-top-bar': {
@@ -351,7 +351,7 @@ def main():
         },
         'logout-delay': {
             'default': 7200,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'logout-command': {
