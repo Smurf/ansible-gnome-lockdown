@@ -122,10 +122,10 @@ options:
     default:
     - org.mozilla.firefox.desktop
     - org.gnome.Calendar.desktop
+    - org.gnome.Music.desktop
     - org.gnome.Nautilus.desktop
     - org.gnome.Software.desktop
     - org.gnome.TextEditor.desktop
-    - org.gnome.Calculator.desktop
 
   favorite-apps_locked:
     description:
@@ -242,30 +242,38 @@ options:
         position: 3
       org.gnome.Maps.desktop:
         position: 4
-      org.gnome.Music.desktop:
+      org.gnome.Books.desktop:
         position: 5
-      simple-scan.desktop:
+      org.gnome.Photos.desktop:
         position: 6
-      org.gnome.Settings.desktop:
-        position: 7
-      org.gnome.Boxes.desktop:
-        position: 8
       org.gnome.Totem.desktop:
+        position: 7
+      org.gnome.Calculator.desktop:
+        position: 8
+      org.gnome.gedit.desktop:
         position: 9
-      org.gnome.Snapshot.desktop:
+      simple-scan.desktop:
         position: 10
-      org.gnome.Characters.desktop:
+      org.gnome.Settings.desktop:
         position: 11
-      Utilities:
+      org.gnome.SystemMonitor.desktop:
         position: 12
-      System:
+      org.gnome.Boxes.desktop:
         position: 13
-      org.gnome.Console.desktop:
+      org.gnome.Terminal.desktop:
         position: 14
-      org.gnome.Tour.desktop:
+      Utilities:
         position: 15
-      yelp.desktop:
+      org.gnome.Characters.desktop:
         position: 16
+      yelp.desktop:
+        position: 17
+      org.gnome.Screenshot.desktop:
+        position: 18
+      org.gnome.Cheese.desktop:
+        position: 19
+      org.gnome.font-viewer.desktop:
+        position: 20
 
   app-picker-layout_locked:
     description:
@@ -293,10 +301,10 @@ EXAMPLES = r'''
     favorite-apps:
     - org.mozilla.firefox.desktop
     - org.gnome.Calendar.desktop
+    - org.gnome.Music.desktop
     - org.gnome.Nautilus.desktop
     - org.gnome.Software.desktop
     - org.gnome.TextEditor.desktop
-    - org.gnome.Calculator.desktop
 
     command-history: []
 
@@ -321,30 +329,38 @@ EXAMPLES = r'''
         position: 3
       org.gnome.Maps.desktop:
         position: 4
-      org.gnome.Music.desktop:
+      org.gnome.Books.desktop:
         position: 5
-      simple-scan.desktop:
+      org.gnome.Photos.desktop:
         position: 6
-      org.gnome.Settings.desktop:
-        position: 7
-      org.gnome.Boxes.desktop:
-        position: 8
       org.gnome.Totem.desktop:
+        position: 7
+      org.gnome.Calculator.desktop:
+        position: 8
+      org.gnome.gedit.desktop:
         position: 9
-      org.gnome.Snapshot.desktop:
+      simple-scan.desktop:
         position: 10
-      org.gnome.Characters.desktop:
+      org.gnome.Settings.desktop:
         position: 11
-      Utilities:
+      org.gnome.SystemMonitor.desktop:
         position: 12
-      System:
+      org.gnome.Boxes.desktop:
         position: 13
-      org.gnome.Console.desktop:
+      org.gnome.Terminal.desktop:
         position: 14
-      org.gnome.Tour.desktop:
+      Utilities:
         position: 15
-      yelp.desktop:
+      org.gnome.Characters.desktop:
         position: 16
+      yelp.desktop:
+        position: 17
+      org.gnome.Screenshot.desktop:
+        position: 18
+      org.gnome.Cheese.desktop:
+        position: 19
+      org.gnome.font-viewer.desktop:
+        position: 20
 
 '''
 
@@ -391,7 +407,7 @@ def main():
             'gtype':'b',
         },
         'favorite-apps': {
-            'default': ['org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop', 'org.gnome.Calculator.desktop'],
+            'default': ['org.mozilla.firefox.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Music.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.TextEditor.desktop'],
             'type': 'str',
             'gtype':'as',
         },
@@ -426,7 +442,7 @@ def main():
             'gtype':'s',
         },
         'app-picker-layout': {
-            'default': [{'org.gnome.Geary.desktop': {'position': 0}, 'org.gnome.Contacts.desktop': {'position': 1}, 'org.gnome.Weather.desktop': {'position': 2}, 'org.gnome.clocks.desktop': {'position': 3}, 'org.gnome.Maps.desktop': {'position': 4}, 'org.gnome.Music.desktop': {'position': 5}, 'simple-scan.desktop': {'position': 6}, 'org.gnome.Settings.desktop': {'position': 7}, 'org.gnome.Boxes.desktop': {'position': 8}, 'org.gnome.Totem.desktop': {'position': 9}, 'org.gnome.Snapshot.desktop': {'position': 10}, 'org.gnome.Characters.desktop': {'position': 11}, 'Utilities': {'position': 12}, 'System': {'position': 13}, 'org.gnome.Console.desktop': {'position': 14}, 'org.gnome.Tour.desktop': {'position': 15}, 'yelp.desktop': {'position': 16}}],
+            'default': [{'org.gnome.Geary.desktop': {'position': 0}, 'org.gnome.Contacts.desktop': {'position': 1}, 'org.gnome.Weather.desktop': {'position': 2}, 'org.gnome.clocks.desktop': {'position': 3}, 'org.gnome.Maps.desktop': {'position': 4}, 'org.gnome.Books.desktop': {'position': 5}, 'org.gnome.Photos.desktop': {'position': 6}, 'org.gnome.Totem.desktop': {'position': 7}, 'org.gnome.Calculator.desktop': {'position': 8}, 'org.gnome.gedit.desktop': {'position': 9}, 'simple-scan.desktop': {'position': 10}, 'org.gnome.Settings.desktop': {'position': 11}, 'org.gnome.SystemMonitor.desktop': {'position': 12}, 'org.gnome.Boxes.desktop': {'position': 13}, 'org.gnome.Terminal.desktop': {'position': 14}, 'Utilities': {'position': 15}, 'org.gnome.Characters.desktop': {'position': 16}, 'yelp.desktop': {'position': 17}, 'org.gnome.Screenshot.desktop': {'position': 18}, 'org.gnome.Cheese.desktop': {'position': 19}, 'org.gnome.font-viewer.desktop': {'position': 20}}],
             'type': 'str',
             'gtype':'aa{sv}',
         },

@@ -77,7 +77,7 @@ options:
     - Page cache size in MiB
     - The maximum size that will be used to cache rendered pages, limits maximum zoom
       level.
-    type: str
+    type: int
     default: 50
 
   page-cache-size_locked:
@@ -167,7 +167,7 @@ def main():
         },
         'page-cache-size': {
             'default': 50,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'show-caret-navigation-message': {

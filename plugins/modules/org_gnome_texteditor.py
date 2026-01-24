@@ -24,7 +24,7 @@ options:
     description:
     - Auto Save Delay
     - The delay in seconds to wait before auto-saving a draft.
-    type: str
+    type: int
     default: 3
 
   auto-save-delay_locked:
@@ -76,7 +76,7 @@ options:
     description:
     - Tab Width
     - The number of spaces represented by a tab.
-    type: str
+    type: int
     default: 8
 
   tab-width_locked:
@@ -128,7 +128,7 @@ options:
     description:
     - Right Margin Position
     - The position in characters at which the right margin should be displayed.
-    type: str
+    type: int
     default: 80
 
   right-margin-position_locked:
@@ -433,7 +433,7 @@ def main():
     keys_spec = {
         'auto-save-delay': {
             'default': 3,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'style-variant': {
@@ -453,7 +453,7 @@ def main():
         },
         'tab-width': {
             'default': 8,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'indent-width': {
@@ -473,7 +473,7 @@ def main():
         },
         'right-margin-position': {
             'default': 80,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'show-map': {

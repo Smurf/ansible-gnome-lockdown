@@ -37,7 +37,7 @@ options:
     description:
     - Maximum recent characters
     - Description - Schema Blank
-    type: str
+    type: int
     default: 100
 
   max-recent-characters_locked:
@@ -76,7 +76,7 @@ def main():
         },
         'max-recent-characters': {
             'default': 100,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
     }

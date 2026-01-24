@@ -26,7 +26,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Home
+    - SuperHome
 
   switch-to-workspace-1_locked:
     description:
@@ -183,9 +183,9 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Page_Up
-    - <Super><Alt>Left
-    - <Control><Alt>Left
+    - SuperPage_Up
+    - SuperAltLeft
+    - ControlAltLeft
 
   switch-to-workspace-left_locked:
     description:
@@ -199,9 +199,9 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Page_Down
-    - <Super><Alt>Right
-    - <Control><Alt>Right
+    - SuperPage_Down
+    - SuperAltRight
+    - ControlAltRight
 
   switch-to-workspace-right_locked:
     description:
@@ -215,7 +215,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Alt>Up
+    - ControlAltUp
 
   switch-to-workspace-up_locked:
     description:
@@ -229,7 +229,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Alt>Down
+    - ControlAltDown
 
   switch-to-workspace-down_locked:
     description:
@@ -243,7 +243,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>End
+    - SuperEnd
 
   switch-to-workspace-last_locked:
     description:
@@ -257,8 +257,8 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Above_Tab
-    - <Alt>Above_Tab
+    - SuperAbove_Tab
+    - AltAbove_Tab
 
   switch-group_locked:
     description:
@@ -272,8 +272,8 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Super>Above_Tab
-    - <Shift><Alt>Above_Tab
+    - ShiftSuperAbove_Tab
+    - ShiftAltAbove_Tab
 
   switch-group-backward_locked:
     description:
@@ -287,8 +287,8 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Tab
-    - <Alt>Tab
+    - SuperTab
+    - AltTab
 
   switch-applications_locked:
     description:
@@ -302,8 +302,8 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Super>Tab
-    - <Shift><Alt>Tab
+    - ShiftSuperTab
+    - ShiftAltTab
 
   switch-applications-backward_locked:
     description:
@@ -343,7 +343,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Alt>Tab
+    - ControlAltTab
 
   switch-panels_locked:
     description:
@@ -357,7 +357,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Control><Alt>Tab
+    - ShiftControlAltTab
 
   switch-panels-backward_locked:
     description:
@@ -371,7 +371,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F6
+    - AltF6
 
   cycle-group_locked:
     description:
@@ -385,7 +385,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Alt>F6
+    - ShiftAltF6
 
   cycle-group-backward_locked:
     description:
@@ -399,7 +399,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>Escape
+    - AltEscape
 
   cycle-windows_locked:
     description:
@@ -413,7 +413,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Alt>Escape
+    - ShiftAltEscape
 
   cycle-windows-backward_locked:
     description:
@@ -427,7 +427,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Alt>Escape
+    - ControlAltEscape
 
   cycle-panels_locked:
     description:
@@ -441,7 +441,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Shift><Control><Alt>Escape
+    - ShiftControlAltEscape
 
   cycle-panels-backward_locked:
     description:
@@ -481,7 +481,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F2
+    - AltF2
 
   panel-run-dialog_locked:
     description:
@@ -508,7 +508,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>space
+    - Altspace
 
   activate-window-menu_locked:
     description:
@@ -535,7 +535,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F10
+    - AltF10
 
   toggle-maximized_locked:
     description:
@@ -562,7 +562,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Up
+    - SuperUp
 
   maximize_locked:
     description:
@@ -576,8 +576,8 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>Down
-    - <Alt>F5
+    - SuperDown
+    - AltF5
 
   unmaximize_locked:
     description:
@@ -591,7 +591,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super>h
+    - Superh
 
   minimize_locked:
     description:
@@ -605,7 +605,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F4
+    - AltF4
 
   close_locked:
     description:
@@ -619,7 +619,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F7
+    - AltF7
 
   begin-move_locked:
     description:
@@ -633,7 +633,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Alt>F8
+    - AltF8
 
   begin-resize_locked:
     description:
@@ -660,7 +660,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Home
+    - SuperShiftHome
 
   move-to-workspace-1_locked:
     description:
@@ -817,7 +817,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>End
+    - SuperShiftEnd
 
   move-to-workspace-last_locked:
     description:
@@ -831,9 +831,9 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Page_Up
-    - <Super><Shift><Alt>Left
-    - <Control><Shift><Alt>Left
+    - SuperShiftPage_Up
+    - SuperShiftAltLeft
+    - ControlShiftAltLeft
 
   move-to-workspace-left_locked:
     description:
@@ -847,9 +847,9 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Page_Down
-    - <Super><Shift><Alt>Right
-    - <Control><Shift><Alt>Right
+    - SuperShiftPage_Down
+    - SuperShiftAltRight
+    - ControlShiftAltRight
 
   move-to-workspace-right_locked:
     description:
@@ -863,7 +863,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Shift><Alt>Up
+    - ControlShiftAltUp
 
   move-to-workspace-up_locked:
     description:
@@ -877,7 +877,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Control><Shift><Alt>Down
+    - ControlShiftAltDown
 
   move-to-workspace-down_locked:
     description:
@@ -891,7 +891,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Left
+    - SuperShiftLeft
 
   move-to-monitor-left_locked:
     description:
@@ -905,7 +905,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Right
+    - SuperShiftRight
 
   move-to-monitor-right_locked:
     description:
@@ -919,7 +919,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Up
+    - SuperShiftUp
 
   move-to-monitor-up_locked:
     description:
@@ -933,7 +933,7 @@ options:
     - Description - Schema Blank
     type: str
     default:
-    - <Super><Shift>Down
+    - SuperShiftDown
 
   move-to-monitor-down_locked:
     description:
@@ -1129,7 +1129,7 @@ options:
     - Binding to select the next input source
     type: str
     default:
-    - <Super>space
+    - Superspace
     - XF86Keyboard
 
   switch-input-source_locked:
@@ -1144,8 +1144,8 @@ options:
     - Binding to select the previous input source
     type: str
     default:
-    - <Shift><Super>space
-    - <Shift>XF86Keyboard
+    - ShiftSuperspace
+    - ShiftXF86Keyboard
 
   switch-input-source-backward_locked:
     description:
@@ -1172,7 +1172,7 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.desktop.wm.keybindings
   org_gnome_desktop_wm_keybindings:
     switch-to-workspace-1:
-    - <Super>Home
+    - SuperHome
 
     switch-to-workspace-2: []
 
@@ -1197,110 +1197,110 @@ EXAMPLES = r'''
     switch-to-workspace-12: []
 
     switch-to-workspace-left:
-    - <Super>Page_Up
-    - <Super><Alt>Left
-    - <Control><Alt>Left
+    - SuperPage_Up
+    - SuperAltLeft
+    - ControlAltLeft
 
     switch-to-workspace-right:
-    - <Super>Page_Down
-    - <Super><Alt>Right
-    - <Control><Alt>Right
+    - SuperPage_Down
+    - SuperAltRight
+    - ControlAltRight
 
     switch-to-workspace-up:
-    - <Control><Alt>Up
+    - ControlAltUp
 
     switch-to-workspace-down:
-    - <Control><Alt>Down
+    - ControlAltDown
 
     switch-to-workspace-last:
-    - <Super>End
+    - SuperEnd
 
     switch-group:
-    - <Super>Above_Tab
-    - <Alt>Above_Tab
+    - SuperAbove_Tab
+    - AltAbove_Tab
 
     switch-group-backward:
-    - <Shift><Super>Above_Tab
-    - <Shift><Alt>Above_Tab
+    - ShiftSuperAbove_Tab
+    - ShiftAltAbove_Tab
 
     switch-applications:
-    - <Super>Tab
-    - <Alt>Tab
+    - SuperTab
+    - AltTab
 
     switch-applications-backward:
-    - <Shift><Super>Tab
-    - <Shift><Alt>Tab
+    - ShiftSuperTab
+    - ShiftAltTab
 
     switch-windows: []
 
     switch-windows-backward: []
 
     switch-panels:
-    - <Control><Alt>Tab
+    - ControlAltTab
 
     switch-panels-backward:
-    - <Shift><Control><Alt>Tab
+    - ShiftControlAltTab
 
     cycle-group:
-    - <Alt>F6
+    - AltF6
 
     cycle-group-backward:
-    - <Shift><Alt>F6
+    - ShiftAltF6
 
     cycle-windows:
-    - <Alt>Escape
+    - AltEscape
 
     cycle-windows-backward:
-    - <Shift><Alt>Escape
+    - ShiftAltEscape
 
     cycle-panels:
-    - <Control><Alt>Escape
+    - ControlAltEscape
 
     cycle-panels-backward:
-    - <Shift><Control><Alt>Escape
+    - ShiftControlAltEscape
 
     show-desktop: []
 
     panel-main-menu: []
 
     panel-run-dialog:
-    - <Alt>F2
+    - AltF2
 
     set-spew-mark: []
 
     activate-window-menu:
-    - <Alt>space
+    - Altspace
 
     toggle-fullscreen: []
 
     toggle-maximized:
-    - <Alt>F10
+    - AltF10
 
     toggle-above: []
 
     maximize:
-    - <Super>Up
+    - SuperUp
 
     unmaximize:
-    - <Super>Down
-    - <Alt>F5
+    - SuperDown
+    - AltF5
 
     minimize:
-    - <Super>h
+    - Superh
 
     close:
-    - <Alt>F4
+    - AltF4
 
     begin-move:
-    - <Alt>F7
+    - AltF7
 
     begin-resize:
-    - <Alt>F8
+    - AltF8
 
     toggle-on-all-workspaces: []
 
     move-to-workspace-1:
-    - <Super><Shift>Home
+    - SuperShiftHome
 
     move-to-workspace-2: []
 
@@ -1325,35 +1325,35 @@ EXAMPLES = r'''
     move-to-workspace-12: []
 
     move-to-workspace-last:
-    - <Super><Shift>End
+    - SuperShiftEnd
 
     move-to-workspace-left:
-    - <Super><Shift>Page_Up
-    - <Super><Shift><Alt>Left
-    - <Control><Shift><Alt>Left
+    - SuperShiftPage_Up
+    - SuperShiftAltLeft
+    - ControlShiftAltLeft
 
     move-to-workspace-right:
-    - <Super><Shift>Page_Down
-    - <Super><Shift><Alt>Right
-    - <Control><Shift><Alt>Right
+    - SuperShiftPage_Down
+    - SuperShiftAltRight
+    - ControlShiftAltRight
 
     move-to-workspace-up:
-    - <Control><Shift><Alt>Up
+    - ControlShiftAltUp
 
     move-to-workspace-down:
-    - <Control><Shift><Alt>Down
+    - ControlShiftAltDown
 
     move-to-monitor-left:
-    - <Super><Shift>Left
+    - SuperShiftLeft
 
     move-to-monitor-right:
-    - <Super><Shift>Right
+    - SuperShiftRight
 
     move-to-monitor-up:
-    - <Super><Shift>Up
+    - SuperShiftUp
 
     move-to-monitor-down:
-    - <Super><Shift>Down
+    - SuperShiftDown
 
     raise-or-lower: []
 
@@ -1384,12 +1384,12 @@ EXAMPLES = r'''
     move-to-center: []
 
     switch-input-source:
-    - <Super>space
+    - Superspace
     - XF86Keyboard
 
     switch-input-source-backward:
-    - <Shift><Super>space
-    - <Shift>XF86Keyboard
+    - ShiftSuperspace
+    - ShiftXF86Keyboard
 
     always-on-top: []
 
@@ -1408,7 +1408,7 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'switch-to-workspace-1': {
-            'default': ['<Super>Home'],
+            'default': ['SuperHome'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1468,47 +1468,47 @@ def main():
             'gtype':'as',
         },
         'switch-to-workspace-left': {
-            'default': ['<Super>Page_Up', '<Super><Alt>Left', '<Control><Alt>Left'],
+            'default': ['SuperPage_Up', 'SuperAltLeft', 'ControlAltLeft'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-workspace-right': {
-            'default': ['<Super>Page_Down', '<Super><Alt>Right', '<Control><Alt>Right'],
+            'default': ['SuperPage_Down', 'SuperAltRight', 'ControlAltRight'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-workspace-up': {
-            'default': ['<Control><Alt>Up'],
+            'default': ['ControlAltUp'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-workspace-down': {
-            'default': ['<Control><Alt>Down'],
+            'default': ['ControlAltDown'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-to-workspace-last': {
-            'default': ['<Super>End'],
+            'default': ['SuperEnd'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-group': {
-            'default': ['<Super>Above_Tab', '<Alt>Above_Tab'],
+            'default': ['SuperAbove_Tab', 'AltAbove_Tab'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-group-backward': {
-            'default': ['<Shift><Super>Above_Tab', '<Shift><Alt>Above_Tab'],
+            'default': ['ShiftSuperAbove_Tab', 'ShiftAltAbove_Tab'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-applications': {
-            'default': ['<Super>Tab', '<Alt>Tab'],
+            'default': ['SuperTab', 'AltTab'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-applications-backward': {
-            'default': ['<Shift><Super>Tab', '<Shift><Alt>Tab'],
+            'default': ['ShiftSuperTab', 'ShiftAltTab'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1523,42 +1523,42 @@ def main():
             'gtype':'as',
         },
         'switch-panels': {
-            'default': ['<Control><Alt>Tab'],
+            'default': ['ControlAltTab'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-panels-backward': {
-            'default': ['<Shift><Control><Alt>Tab'],
+            'default': ['ShiftControlAltTab'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-group': {
-            'default': ['<Alt>F6'],
+            'default': ['AltF6'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-group-backward': {
-            'default': ['<Shift><Alt>F6'],
+            'default': ['ShiftAltF6'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-windows': {
-            'default': ['<Alt>Escape'],
+            'default': ['AltEscape'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-windows-backward': {
-            'default': ['<Shift><Alt>Escape'],
+            'default': ['ShiftAltEscape'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-panels': {
-            'default': ['<Control><Alt>Escape'],
+            'default': ['ControlAltEscape'],
             'type': 'str',
             'gtype':'as',
         },
         'cycle-panels-backward': {
-            'default': ['<Shift><Control><Alt>Escape'],
+            'default': ['ShiftControlAltEscape'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1573,7 +1573,7 @@ def main():
             'gtype':'as',
         },
         'panel-run-dialog': {
-            'default': ['<Alt>F2'],
+            'default': ['AltF2'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1583,7 +1583,7 @@ def main():
             'gtype':'as',
         },
         'activate-window-menu': {
-            'default': ['<Alt>space'],
+            'default': ['Altspace'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1593,7 +1593,7 @@ def main():
             'gtype':'as',
         },
         'toggle-maximized': {
-            'default': ['<Alt>F10'],
+            'default': ['AltF10'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1603,32 +1603,32 @@ def main():
             'gtype':'as',
         },
         'maximize': {
-            'default': ['<Super>Up'],
+            'default': ['SuperUp'],
             'type': 'str',
             'gtype':'as',
         },
         'unmaximize': {
-            'default': ['<Super>Down', '<Alt>F5'],
+            'default': ['SuperDown', 'AltF5'],
             'type': 'str',
             'gtype':'as',
         },
         'minimize': {
-            'default': ['<Super>h'],
+            'default': ['Superh'],
             'type': 'str',
             'gtype':'as',
         },
         'close': {
-            'default': ['<Alt>F4'],
+            'default': ['AltF4'],
             'type': 'str',
             'gtype':'as',
         },
         'begin-move': {
-            'default': ['<Alt>F7'],
+            'default': ['AltF7'],
             'type': 'str',
             'gtype':'as',
         },
         'begin-resize': {
-            'default': ['<Alt>F8'],
+            'default': ['AltF8'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1638,7 +1638,7 @@ def main():
             'gtype':'as',
         },
         'move-to-workspace-1': {
-            'default': ['<Super><Shift>Home'],
+            'default': ['SuperShiftHome'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1698,47 +1698,47 @@ def main():
             'gtype':'as',
         },
         'move-to-workspace-last': {
-            'default': ['<Super><Shift>End'],
+            'default': ['SuperShiftEnd'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-workspace-left': {
-            'default': ['<Super><Shift>Page_Up', '<Super><Shift><Alt>Left', '<Control><Shift><Alt>Left'],
+            'default': ['SuperShiftPage_Up', 'SuperShiftAltLeft', 'ControlShiftAltLeft'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-workspace-right': {
-            'default': ['<Super><Shift>Page_Down', '<Super><Shift><Alt>Right', '<Control><Shift><Alt>Right'],
+            'default': ['SuperShiftPage_Down', 'SuperShiftAltRight', 'ControlShiftAltRight'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-workspace-up': {
-            'default': ['<Control><Shift><Alt>Up'],
+            'default': ['ControlShiftAltUp'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-workspace-down': {
-            'default': ['<Control><Shift><Alt>Down'],
+            'default': ['ControlShiftAltDown'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-monitor-left': {
-            'default': ['<Super><Shift>Left'],
+            'default': ['SuperShiftLeft'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-monitor-right': {
-            'default': ['<Super><Shift>Right'],
+            'default': ['SuperShiftRight'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-monitor-up': {
-            'default': ['<Super><Shift>Up'],
+            'default': ['SuperShiftUp'],
             'type': 'str',
             'gtype':'as',
         },
         'move-to-monitor-down': {
-            'default': ['<Super><Shift>Down'],
+            'default': ['SuperShiftDown'],
             'type': 'str',
             'gtype':'as',
         },
@@ -1813,12 +1813,12 @@ def main():
             'gtype':'as',
         },
         'switch-input-source': {
-            'default': ['<Super>space', 'XF86Keyboard'],
+            'default': ['Superspace', 'XF86Keyboard'],
             'type': 'str',
             'gtype':'as',
         },
         'switch-input-source-backward': {
-            'default': ['<Shift><Super>space', '<Shift>XF86Keyboard'],
+            'default': ['ShiftSuperspace', 'ShiftXF86Keyboard'],
             'type': 'str',
             'gtype':'as',
         },

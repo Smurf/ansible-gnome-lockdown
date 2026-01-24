@@ -24,7 +24,7 @@ options:
     description:
     - Time before session is considered idle
     - The number of seconds of inactivity before the session is considered idle.
-    type: str
+    type: int
     default: 300
 
   idle-delay_locked:
@@ -71,7 +71,7 @@ def main():
     keys_spec = {
         'idle-delay': {
             'default': 300,
-            'type': 'str',
+            'type': 'int',
             'gtype':'u',
         },
         'session-name': {

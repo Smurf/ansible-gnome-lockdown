@@ -26,7 +26,7 @@ options:
     - Keybinding to open the applications menu.
     type: str
     default:
-    - <Alt>F1
+    - AltF1
 
   apps-menu-toggle-menu_locked:
     description:
@@ -40,7 +40,7 @@ EXAMPLES = r'''
 - name: Configure and lock GNOME desktop settings for org.gnome.shell.extensions.apps-menu
   org_gnome_shell_extensions_apps_menu:
     apps-menu-toggle-menu:
-    - <Alt>F1
+    - AltF1
 
 '''
 
@@ -57,7 +57,7 @@ def main():
     # We have to do gross stuff with the bools here.
     keys_spec = {
         'apps-menu-toggle-menu': {
-            'default': ['<Alt>F1'],
+            'default': ['AltF1'],
             'type': 'str',
             'gtype':'as',
         },

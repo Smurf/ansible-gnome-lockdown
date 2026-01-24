@@ -59,19 +59,6 @@ options:
       If set to true, locks the 'command' key to prevent user modification.
     type: bool
     default: false
-  enable-in-lockscreen:
-    description:
-    - Enable in Lockscreen
-    - Whether the command can be invoked while the lockscreen is shown
-    type: bool
-    default: false
-
-  enable-in-lockscreen_locked:
-    description:
-    - >
-      If set to true, locks the 'enable-in-lockscreen' key to prevent user modification.
-    type: bool
-    default: false
 '''
 
 EXAMPLES = r'''
@@ -82,8 +69,6 @@ EXAMPLES = r'''
     binding: ''
 
     command: ''
-
-    enable-in-lockscreen: false
 
 '''
 
@@ -113,11 +98,6 @@ def main():
             'default': '',
             'type': 'str',
             'gtype':'s',
-        },
-        'enable-in-lockscreen': {
-            'default': False,
-            'type': 'bool',
-            'gtype':'b',
         },
     }
 

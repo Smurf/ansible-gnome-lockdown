@@ -80,8 +80,8 @@ options:
   disable-user-switching:
     description:
     - Disable user switching
-    - "Prevent the user from switching to another account while their session \n     \
-      \   is active."
+    - "Prevent the user from switching to another account while his session \n       \
+      \ is active."
     type: bool
     default: false
 
@@ -94,7 +94,7 @@ options:
   disable-lock-screen:
     description:
     - Disable lock screen
-    - Prevent the user from locking their screen.
+    - Prevent the user to lock his screen.
     type: bool
     default: false
 
